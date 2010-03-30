@@ -1,0 +1,32 @@
+= Milestones of the project =
+==1. Initialization==
+* create google code project
+* summarize the milestones
+* metrics calculation
+
+==2.Sequential sollution==
+* [http://service.felk.cvut.cz/courses/XD36PAR/zadani.dalkari.html#KAS here] is the task description
+
+==3.Sequential sollution - testing==
+* testing on cluster
+* note results
+
+==4.Parallel sollution A==
+* dividing stack: D-ADZ
+* selecting donor: asynchronous round robin
+
+==5.Parallel sollution B==
+* dividing stack: R-ADZ
+* selecting donor: global round robin
+
+==6.Parallel sollution C==
+* dividing stack: D-R-ADZ
+* selecting donor: random polling
+
+==7.Parallel sollutions - testing==
+* testing on cluster
+* find interesting problem instances
+* note results
+
+==8.Documentation==
+* compare results
