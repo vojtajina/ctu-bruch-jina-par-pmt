@@ -2,10 +2,79 @@
 
 = Coding Standards =
 
-  * all names (class, variable, class member, etc) are CamelCase
-  * class names start UpperCase (MyClass)
+  * all brackets all on new line
+  * indentation is done by 2 spaces (do not use tabs)
+  * all names (class, variable, class member, etc) are !CamelCase
+  * class names start !UpperCase (!MyClass)
   * other variables, fields, etc start lowerCase (myVariable, myMethod)
   * class has two files - `MyClass.h` (header), `MyClass.cpp` (content - implementation)
-  * header has `#ifndef _my_class_` to allow multiple inclusion
+  * header has `#ifndef MYCLASS_H` to allow multiple inclusion
   * method has comment (describing functionality, all params, return value)
   * class has comment
+
+== Code Example ==
+=== Class declaration - myclass.h ===
+{{{
+#ifndef MYCLASS_H
+#define MYCLASS_H
+
+/**
+ * @class MyClass
+ * @author Vojta
+ * @date 04/01/10
+ * @file myclass.h
+ * @brief Summary of this class
+ */
+class MyClass
+{
+  private:
+    int someInt;
+
+  public:
+    /**
+     * @brief Short summary of the constructor
+     */
+    MyClass();
+    
+    /**
+     * @brief Short summary of the destructor
+     */
+    ~MyClass();
+    
+    /**
+     * @brief Returns value of some int
+     */
+    int getSomeInt();
+    
+    /**
+     * @brief Sets the value
+     * @param val New value
+     */
+    void setSomeInt(int val);
+};
+
+#endif // MYCLASS_H
+}}}
+
+=== Class implementation - myclass.cpp ===
+{{{
+#include "myclass.h"
+
+MyClass::MyClass()
+{
+}
+
+MyClass::~MyClass()
+{
+}
+
+int MyClass::getSomeInt()
+{
+  return this->someInt;
+}
+
+void MyClass::setSomeInt(int val)
+{
+  this->someInt = val;
+}
+}}}
