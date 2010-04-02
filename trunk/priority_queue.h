@@ -16,8 +16,6 @@ template <typename T>
 class PriorityQueue
 {
   private:
-
-    bool isEmpty;
     int count;
     queue<T>* queues;
 
@@ -47,9 +45,15 @@ class PriorityQueue
      * @return True if the queue is empty, False otherwise
      */
     bool empty() const;
-
+    
+    /**
+     * @brief Number of items in the queue
+     * @return Number of items in the queue
+     */
+    int size() const;
 };
 
+// register typename for PriorityQueue<int>
 typedef PriorityQueue<int> IntPriQueue;
 
 #endif // PRIORITYQUEUE_H

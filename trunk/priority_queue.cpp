@@ -4,14 +4,13 @@ template <typename T>
 PriorityQueue<T>::PriorityQueue(int priorityCount)
 {
   this->count = 0;
-  this->isEmpty = true;
   this->queues = new queue<T>[priorityCount];
 }
 
 template <typename T>
 bool PriorityQueue<T>::empty() const
 {
-  return this->isEmpty;
+  return (this->count == 0);
 }
 
 template <typename T>
@@ -38,9 +37,6 @@ T PriorityQueue<T>::pop()
   q->pop();
   this->count--;
 
-  if (this->count == 0)
-    this->isEmpty = true;
-
   return item;
 }
 
@@ -50,5 +46,10 @@ void PriorityQueue<T>::push(T item, int priority)
   queue<T>* q = &this->queues[priority];
   q->push(item);
   this->count++;
-  this->isEmpty = false;
+}
+
+template <typename T>
+int PriorityQueue<T>::size() const
+{
+  return this->count;
 }
