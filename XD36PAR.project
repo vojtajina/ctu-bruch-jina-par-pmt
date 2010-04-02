@@ -80,6 +80,6 @@
     <File Name="task.h"/>
     <File Name="priority_queue.h"/>
   </VirtualDirectory>
-  <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>
+  <Dependencies Name="Debug"/>
 </CodeLite_Project>
