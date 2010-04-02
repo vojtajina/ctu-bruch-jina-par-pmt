@@ -1,21 +1,9 @@
 #include <iostream>
 #include <stdlib.h>
 #include "configuration.h"
-#include "priority_queue.h"
+#include "task.h"
 
 using namespace std;
-
-void printPQ(IntPriQueue* pq)
-{
-  int a;
-  while (!pq->empty())
-  {
-    a = pq->pop();
-    cout << a << ", ";
-  }
-
-  cout << "\n";
-}
 
 /**
  * ARGUMENTS
@@ -50,23 +38,11 @@ int main(int argc, char **argv)
   try
   {
     Configuration* cnf = new Configuration(k, q, F, K);
-    Configuration* cnf2 = new Configuration(*cnf);
     
-    cnf->move(1);
-    cnf->move(5);
-    cnf->move(20);
-    cnf->move(16);
-    
-    
-    
-    cnf2->move(24);
-    cnf2->move(14);
-    cnf2->move(13);
+    Task* t = new Task(true, true);
+    cnf = t->solve(cnf);
     
     cnf->dump();
-    cnf2->dump();
-    //IntPriQueue* pq = cnf->getAvailablePositions();
-    //printPQ(pq);
   }
   catch (exception& e)
   {
