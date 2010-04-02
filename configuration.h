@@ -181,6 +181,18 @@ class Configuration
     int getStepsCount() const;
 
     /**
+     * @brief Returns the length of one side of the field (k)
+     * @return Lenght of the side of the field
+     */
+    int getSideLength() const;
+    
+    /**
+     * @brief Returns the number of figures
+     * @return Number of figures in the configuration 
+     */
+    int getFiguresCount() const;
+    
+    /**
      * @brief Returns PriorityQueue of available positions (positions the queen can move to)
      * @return PriorityQueue of integers (available positions)
      */

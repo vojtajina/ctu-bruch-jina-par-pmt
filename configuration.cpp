@@ -269,21 +269,36 @@ bool Configuration::wasPositionVisited(int position) const
 
 void Configuration::dump() const
 {
-  cout << "Figures: " << figuresCount << " ";
+  int* steps = new int[fieldLength];
+  
+  for (int i = 0; i < fieldLength; i++)
+    steps[i] = -1;
 
-  if (figuresCount > 0)
+  for (int i = 0; i <= queenStepsCount; i++)
+    steps[queenSteps[i]] = i;
+
+  for (int i = 0; i < fieldLength; i++)
   {
-    for (int i = 0; i < fieldLength; i++)
-      if (figuresPosition[i])
-        cout << i << ", ";
+    if (steps[i] < 10 && steps[i] != -1)
+      cout << "0" << steps[i];
+    else if (steps[i] == -1)
+      cout << "--";
+    else
+      cout << steps[i];
+      
+    cout << " ";
+    
+    if ((i+1)%sideLength == 0)
+      cout << "\n";
   }
+}
 
-  cout << "\n";
+int Configuration::getFiguresCount() const
+{
+  return figuresCount;
+}
 
-  cout << "Steps: ";
-
-  for (int i = 0; i<= queenStepsCount; i++)
-    cout << queenSteps[i] << ", ";
-
-  cout << "\n==========================\n";
+int Configuration::getSideLength() const
+{
+  return sideLength;
 }
