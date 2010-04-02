@@ -3,3 +3,7 @@
 = List Meetings =
 === 30.3.2010, 8.00 ===
   * initial meeting with M.Šoch
+
+=== 2.4.2010, 13.00 ==
+  * skype call
+  * discuss sequential algorithm
