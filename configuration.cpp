@@ -1,4 +1,6 @@
 #include "configuration.h"
+#include <iostream>
+using namespace std;
 
 Configuration::Configuration(int k, int q, int* F, int K)
 {
@@ -35,6 +37,28 @@ Configuration::Configuration(int k, int q, int* F, int K)
   }
 }
 
+Configuration::Configuration(const Configuration& src)
+{
+  // copy values
+  fieldLength = src.fieldLength;
+  sideLength = src.sideLength;
+  queenStepsCount = src.queenStepsCount;
+  figuresCount = src.figuresCount;
+
+  // *figuresPosition - deep copy
+  figuresPosition = new bool[fieldLength];
+  for (int i = 0; i < fieldLength; i++)
+    figuresPosition[i] = src.figuresPosition[i];
+
+  // *queenSteps - deep copy
+  queenSteps = new int[fieldLength];
+  for (int i = 0; i <= queenStepsCount; i++)
+    queenSteps[i] = src.queenSteps[i];
+
+  // *figuresStartPosition - reference to the same memory address (these values never change)
+  figuresStartPosition = src.figuresStartPosition;
+}
+
 IntPriQueue* Configuration::getAvailablePositions() const
 {
   // new queue with two priorities
@@ -50,7 +74,7 @@ IntPriQueue* Configuration::getAvailablePositions() const
   this->addAvailableRightTop(pq);
   this->addAvailableLeftBottom(pq);
   this->addAvailableRightBottom(pq);
-  
+
   return pq;
 }
 
@@ -241,4 +265,25 @@ bool Configuration::wasPositionVisited(int position) const
       return true;
 
   return false;
+}
+
+void Configuration::dump() const
+{
+  cout << "Figures: " << figuresCount << " ";
+
+  if (figuresCount > 0)
+  {
+    for (int i = 0; i < fieldLength; i++)
+      if (figuresPosition[i])
+        cout << i << ", ";
+  }
+
+  cout << "\n";
+
+  cout << "Steps: ";
+
+  for (int i = 0; i<= queenStepsCount; i++)
+    cout << queenSteps[i] << ", ";
+
+  cout << "\n==========================\n";
 }

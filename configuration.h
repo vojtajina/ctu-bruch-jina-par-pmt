@@ -149,6 +149,13 @@ class Configuration
      * @param K Position of the queen (starting position)
      */
     Configuration(int k, int q, int* F, int K);
+    
+    /**
+     * @brief Copying constructor
+     * @param src Source Configuration object
+     * Object is deeply copyied (except figuresStartPosition pointer)
+     */
+    Configuration(const Configuration &src);
 
     /**
      * @brief Move queen to new position
@@ -178,6 +185,12 @@ class Configuration
      * @return PriorityQueue of integers (available positions)
      */
     IntPriQueue* getAvailablePositions() const;
+    
+    /**
+     * @brief Dump the configuration to console
+     * Test and debug purposes
+     */
+    void dump() const;
 };
 
 #endif // CONFIGURATION_H

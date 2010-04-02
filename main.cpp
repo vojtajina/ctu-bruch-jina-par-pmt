@@ -50,8 +50,23 @@ int main(int argc, char **argv)
   try
   {
     Configuration* cnf = new Configuration(k, q, F, K);
-    IntPriQueue* pq = cnf->getAvailablePositions();
-    printPQ(pq);
+    Configuration* cnf2 = new Configuration(*cnf);
+    
+    cnf->move(1);
+    cnf->move(5);
+    cnf->move(20);
+    cnf->move(16);
+    
+    
+    
+    cnf2->move(24);
+    cnf2->move(14);
+    cnf2->move(13);
+    
+    cnf->dump();
+    cnf2->dump();
+    //IntPriQueue* pq = cnf->getAvailablePositions();
+    //printPQ(pq);
   }
   catch (exception& e)
   {
