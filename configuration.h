@@ -13,6 +13,12 @@
 class Configuration
 {
   private:
+  
+    /**
+     * @brief Count of Configuration instances
+     * Used for checking in destructor (remove shared memory if its last instance)
+     */
+    static int instanceCount;
 
     /**
      * @brief Current position of remaining figures
