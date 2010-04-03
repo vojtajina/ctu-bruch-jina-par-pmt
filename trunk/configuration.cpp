@@ -35,6 +35,8 @@ Configuration::Configuration(int k, int q, int* F, int K)
     if (F[a]==i)
       a++;
   }
+  
+  Configuration::instanceCount++;
 }
 
 Configuration::Configuration(const Configuration& src)
@@ -57,10 +59,19 @@ Configuration::Configuration(const Configuration& src)
 
   // *figuresStartPosition - reference to the same memory address (these values never change)
   figuresStartPosition = src.figuresStartPosition;
+  
+  Configuration::instanceCount++;
 }
 
 Configuration::~Configuration()
 {
+  delete[] figuresPosition;
+  delete[] queenSteps;
+  
+  Configuration::instanceCount--;
+  
+  if (Configuration::instanceCount == 0)
+    delete[] figuresStartPosition;
 }
 
 IntPriQueue* Configuration::getAvailablePositions() const
@@ -295,6 +306,8 @@ void Configuration::dump() const
     if ((i+1)%sideLength == 0)
       cout << "\n";
   }
+  
+  delete[] steps;
 }
 
 int Configuration::getFiguresCount() const
@@ -306,3 +319,5 @@ int Configuration::getSideLength() const
 {
   return sideLength;
 }
+
+int Configuration::instanceCount = 0;

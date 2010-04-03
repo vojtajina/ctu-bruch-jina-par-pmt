@@ -21,6 +21,11 @@ class Task {
   Task();
   
   /**
+   * @brief Destructor
+   */
+  ~Task();
+  
+  /**
    * @brief The main business of this algorithm
    * @param start Initial configuration
    * @return Sollution - the best found Configuration

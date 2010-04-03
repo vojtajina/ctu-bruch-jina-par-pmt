@@ -35,19 +35,26 @@ int main(int argc, char **argv)
   }
 
   // solve
+  Configuration* cnf;
+  Task* t;
+  
   try
   {
-    Configuration* cnf = new Configuration(k, q, F, K);
-    
-    Task* t = new Task(true, true);
+    cnf = new Configuration(k, q, F, K);
+    t = new Task(false, true);
     cnf = t->solve(cnf);
-    
     cnf->dump();
+    cout << "Start figures: " << q << " Steps: " << cnf->getStepsCount();
   }
   catch (exception& e)
   {
     cout << "Exception: " << e.what();
   }
+  
+  // free the memory
+  delete[] F;
+  delete t;
+  delete cnf;
 
   return 0;
 }

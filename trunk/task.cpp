@@ -11,10 +11,15 @@ Task::Task(bool stopOnFirstFound, bool stopOnBestFound)
   this->stopOnBestFound = stopOnBestFound;
 }
 
+Task::~Task()
+{
+}
+
 Configuration* Task::solve(Configuration* start)
 {
   this->initConfiguration(start);
   this->processConfiguration(start);
+  delete start;
 
   return bestConf;
 }
@@ -44,7 +49,9 @@ bool Task::checkConfiguration(const Configuration* conf)
       // its better than current best
       if (bestConf->getStepsCount() > conf->getStepsCount())
       {
-        // TODO free memory of old bestConf;
+        // free the memory (delete the old best)
+        delete bestConf;
+        
         bestConf = new Configuration(*conf);
 
         // best sollution found
@@ -79,6 +86,9 @@ void Task::processConfiguration(Configuration* conf)
 
     conf->moveBack();
   }
+  
+  // free the memory
+  delete positions;
 }
 
 void Task::initConfiguration(const Configuration* conf)

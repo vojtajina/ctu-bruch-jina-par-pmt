@@ -3,26 +3,27 @@
 template <typename T>
 PriorityQueue<T>::PriorityQueue(int priorityCount)
 {
-  this->count = 0;
-  this->queues = new queue<T>[priorityCount];
+  count = 0;
+  queues = new queue<T>[priorityCount];
 }
 
 template <typename T>
 PriorityQueue<T>::~PriorityQueue()
 {
+  delete[] queues;
 }
 
 template <typename T>
 bool PriorityQueue<T>::empty() const
 {
-  return (this->count == 0);
+  return (count == 0);
 }
 
 template <typename T>
 T PriorityQueue<T>::pop()
 {
   // queue is empty
-  if (this->empty())
+  if (empty())
     return NULL;
 
   int i = -1;
@@ -32,7 +33,7 @@ T PriorityQueue<T>::pop()
   do
   {
     i++;
-    q = &this->queues[i];
+    q = &queues[i];
   }
   while (q->empty());
 
@@ -40,7 +41,7 @@ T PriorityQueue<T>::pop()
   // remove it from the queue
   T item = q->front();
   q->pop();
-  this->count--;
+  count--;
 
   return item;
 }
@@ -48,19 +49,20 @@ T PriorityQueue<T>::pop()
 template <typename T>
 void PriorityQueue<T>::push(T item, int priority)
 {
-  queue<T>* q = &this->queues[priority];
+  queue<T>* q = &queues[priority];
   q->push(item);
-  this->count++;
+  count++;
 }
 
 template <typename T>
 int PriorityQueue<T>::size() const
 {
-  return this->count;
+  return count;
 }
 
 // public methods for int
 template IntPriQueue::PriorityQueue(int);
+template IntPriQueue::~PriorityQueue();
 template bool IntPriQueue::empty() const;
 template int IntPriQueue::pop();
 template void IntPriQueue::push(int, int);
