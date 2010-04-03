@@ -2,7 +2,6 @@
 #define CONFIGURATION_H
 
 #include "priority_queue.h"
-#include "priority_queue.cpp"
 
 /**
  * @class Configuration
