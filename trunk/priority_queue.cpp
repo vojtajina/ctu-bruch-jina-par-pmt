@@ -53,3 +53,10 @@ int PriorityQueue<T>::size() const
 {
   return this->count;
 }
+
+// public methods for int
+template IntPriQueue::PriorityQueue(int);
+template bool IntPriQueue::empty() const;
+template int IntPriQueue::pop();
+template void IntPriQueue::push(int, int);
+template int IntPriQueue::size() const;
