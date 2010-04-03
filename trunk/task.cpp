@@ -9,20 +9,11 @@ Task::Task(bool stopOnFirstFound, bool stopOnBestFound)
 {
   this->stopOnFirstFound = stopOnFirstFound;
   this->stopOnBestFound = stopOnBestFound;
-  isFinished = false;
 }
 
 Configuration* Task::solve(Configuration* start)
 {
-  // determine maxSteps
-  if (start->getSideLength() >= start->getFiguresCount())
-    maxSteps = 2 * start->getFiguresCount();
-  else
-    maxSteps = (3 * start->getFiguresCount()) - start->getSideLength();
-
-  figuresCount = start->getFiguresCount();
-  bestConf = NULL;
-  
+  this->initConfiguration(start);
   this->processConfiguration(start);
 
   return bestConf;
@@ -88,4 +79,17 @@ void Task::processConfiguration(Configuration* conf)
 
     conf->moveBack();
   }
+}
+
+void Task::initConfiguration(const Configuration* conf)
+{
+  // determine maxSteps
+  if (conf->getSideLength() >= conf->getFiguresCount())
+    maxSteps = 2 * conf->getFiguresCount();
+  else
+    maxSteps = (3 * conf->getFiguresCount()) - conf->getSideLength();
+
+  figuresCount = conf->getFiguresCount();
+  bestConf = NULL;
+  isFinished = false;
 }

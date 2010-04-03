@@ -155,6 +155,11 @@ class Configuration
      * Object is deeply copyied (except figuresStartPosition pointer)
      */
     Configuration(const Configuration &src);
+    
+    /**
+     * @brief Destructor
+     */
+    ~Configuration();
 
     /**
      * @brief Move queen to new position

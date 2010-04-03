@@ -74,6 +74,13 @@ class Task {
    * @return 
    */
   bool checkConfiguration(const Configuration* conf);
+  
+  /**
+   * @brief Initialize the task (for new configuration)
+   * This method loads some initial variables (maxSteps, figuresCount, bestConf null, etc.)
+   * @param conf Initial configuration
+   */
+  void initConfiguration(const Configuration* conf);
 };
 
 #endif // TASK_H
