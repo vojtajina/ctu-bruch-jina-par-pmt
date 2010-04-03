@@ -59,6 +59,10 @@ Configuration::Configuration(const Configuration& src)
   figuresStartPosition = src.figuresStartPosition;
 }
 
+Configuration::~Configuration()
+{
+}
+
 IntPriQueue* Configuration::getAvailablePositions() const
 {
   // new queue with two priorities

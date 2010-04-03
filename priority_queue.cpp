@@ -8,6 +8,11 @@ PriorityQueue<T>::PriorityQueue(int priorityCount)
 }
 
 template <typename T>
+PriorityQueue<T>::~PriorityQueue()
+{
+}
+
+template <typename T>
 bool PriorityQueue<T>::empty() const
 {
   return (this->count == 0);

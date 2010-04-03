@@ -26,6 +26,11 @@ class PriorityQueue
      * @param Number of allowed
      */
     PriorityQueue(int priorityCount);
+    
+    /**
+     * @brief Destructor
+     */
+    ~PriorityQueue();
 
     /**
      * @brief Add item to the queue
