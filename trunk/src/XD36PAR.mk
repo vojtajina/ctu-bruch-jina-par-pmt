@@ -7,20 +7,20 @@ ProjectName            :=XD36PAR
 ConfigurationName      :=Debug
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
-WorkspacePath          := "C:\Users\Vojta\CodeLiteWorkspace\Default"
-ProjectPath            := "C:\Users\Vojta\CodeLiteWorkspace\Default\XD36PAR"
+WorkspacePath          := "C:\cygwin\home\Vojta\xd36par"
+ProjectPath            := "C:\cygwin\home\Vojta\xd36par\src"
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Vojta
-Date                   :=04/03/10
+Date                   :=04/04/10
 CodeLitePath           :="C:\Program Files\CodeLite"
 LinkerName             :=g++
 ArchiveTool            :=ar rcus
 SharedObjectLinkerName :=g++ -shared -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
-PreprocessSuffix       :=
+PreprocessSuffix       :=.o.i
 DebugSwitch            :=-gstab
 IncludeSwitch          :=-I
 LibrarySwitch          :=-l
@@ -34,7 +34,7 @@ OutputFile             :=$(IntermediateDirectory)/$(ProjectName)
 Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
-PreprocessOnlySwitch   :=
+PreprocessOnlySwitch   :=-E 
 MakeDirCommand         :=makedir
 CmpOptions             := -g $(Preprocessors)
 LinkOptions            :=  
@@ -48,6 +48,7 @@ LibPath                := "$(LibraryPathSwitch)."
 ## User defined environment variables
 ##
 UNIT_TEST_PP_SRC_DIR:=C:\Program Files\CodeLite\UnitTest
+CodeLiteDir:=C:\Program Files\CodeLite
 Objects=$(IntermediateDirectory)/main$(ObjectSuffix) $(IntermediateDirectory)/configuration$(ObjectSuffix) $(IntermediateDirectory)/task$(ObjectSuffix) $(IntermediateDirectory)/priority_queue$(ObjectSuffix) 
 
 ##
@@ -69,32 +70,36 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main$(DependSuffix)
-	@$(MakeDirCommand) "./Debug"
-	$(CompilerName) $(SourceSwitch) "C:/Users/Vojta/CodeLiteWorkspace/Default/XD36PAR/main.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/main$(ObjectSuffix) $(IncludePath)
+	$(CompilerName) $(SourceSwitch) "C:/cygwin/home/Vojta/xd36par/src/main.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/main$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main$(DependSuffix): main.cpp
-	@$(MakeDirCommand) "./Debug"
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MT$(IntermediateDirectory)/main$(ObjectSuffix) -MF$(IntermediateDirectory)/main$(DependSuffix) -MM "C:/Users/Vojta/CodeLiteWorkspace/Default/XD36PAR/main.cpp"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MT$(IntermediateDirectory)/main$(ObjectSuffix) -MF$(IntermediateDirectory)/main$(DependSuffix) -MM "C:/cygwin/home/Vojta/xd36par/src/main.cpp"
+
+$(IntermediateDirectory)/main$(PreprocessSuffix): main.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main$(PreprocessSuffix) "C:/cygwin/home/Vojta/xd36par/src/main.cpp"
 
 $(IntermediateDirectory)/configuration$(ObjectSuffix): configuration.cpp $(IntermediateDirectory)/configuration$(DependSuffix)
-	@$(MakeDirCommand) "./Debug"
-	$(CompilerName) $(SourceSwitch) "C:/Users/Vojta/CodeLiteWorkspace/Default/XD36PAR/configuration.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/configuration$(ObjectSuffix) $(IncludePath)
+	$(CompilerName) $(SourceSwitch) "C:/cygwin/home/Vojta/xd36par/src/configuration.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/configuration$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/configuration$(DependSuffix): configuration.cpp
-	@$(MakeDirCommand) "./Debug"
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MT$(IntermediateDirectory)/configuration$(ObjectSuffix) -MF$(IntermediateDirectory)/configuration$(DependSuffix) -MM "C:/Users/Vojta/CodeLiteWorkspace/Default/XD36PAR/configuration.cpp"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MT$(IntermediateDirectory)/configuration$(ObjectSuffix) -MF$(IntermediateDirectory)/configuration$(DependSuffix) -MM "C:/cygwin/home/Vojta/xd36par/src/configuration.cpp"
+
+$(IntermediateDirectory)/configuration$(PreprocessSuffix): configuration.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/configuration$(PreprocessSuffix) "C:/cygwin/home/Vojta/xd36par/src/configuration.cpp"
 
 $(IntermediateDirectory)/task$(ObjectSuffix): task.cpp $(IntermediateDirectory)/task$(DependSuffix)
-	@$(MakeDirCommand) "./Debug"
-	$(CompilerName) $(SourceSwitch) "C:/Users/Vojta/CodeLiteWorkspace/Default/XD36PAR/task.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/task$(ObjectSuffix) $(IncludePath)
+	$(CompilerName) $(SourceSwitch) "C:/cygwin/home/Vojta/xd36par/src/task.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/task$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/task$(DependSuffix): task.cpp
-	@$(MakeDirCommand) "./Debug"
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MT$(IntermediateDirectory)/task$(ObjectSuffix) -MF$(IntermediateDirectory)/task$(DependSuffix) -MM "C:/Users/Vojta/CodeLiteWorkspace/Default/XD36PAR/task.cpp"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MT$(IntermediateDirectory)/task$(ObjectSuffix) -MF$(IntermediateDirectory)/task$(DependSuffix) -MM "C:/cygwin/home/Vojta/xd36par/src/task.cpp"
+
+$(IntermediateDirectory)/task$(PreprocessSuffix): task.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/task$(PreprocessSuffix) "C:/cygwin/home/Vojta/xd36par/src/task.cpp"
 
 $(IntermediateDirectory)/priority_queue$(ObjectSuffix): priority_queue.cpp $(IntermediateDirectory)/priority_queue$(DependSuffix)
-	@$(MakeDirCommand) "./Debug"
-	$(CompilerName) $(SourceSwitch) "C:/Users/Vojta/CodeLiteWorkspace/Default/XD36PAR/priority_queue.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/priority_queue$(ObjectSuffix) $(IncludePath)
+	$(CompilerName) $(SourceSwitch) "C:/cygwin/home/Vojta/xd36par/src/priority_queue.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/priority_queue$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/priority_queue$(DependSuffix): priority_queue.cpp
-	@$(MakeDirCommand) "./Debug"
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MT$(IntermediateDirectory)/priority_queue$(ObjectSuffix) -MF$(IntermediateDirectory)/priority_queue$(DependSuffix) -MM "C:/Users/Vojta/CodeLiteWorkspace/Default/XD36PAR/priority_queue.cpp"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MT$(IntermediateDirectory)/priority_queue$(ObjectSuffix) -MF$(IntermediateDirectory)/priority_queue$(DependSuffix) -MM "C:/cygwin/home/Vojta/xd36par/src/priority_queue.cpp"
+
+$(IntermediateDirectory)/priority_queue$(PreprocessSuffix): priority_queue.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/priority_queue$(PreprocessSuffix) "C:/cygwin/home/Vojta/xd36par/src/priority_queue.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
