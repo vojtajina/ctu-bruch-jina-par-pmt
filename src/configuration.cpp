@@ -1,5 +1,7 @@
 #include "configuration.h"
+#include "exceptions.h"
 #include <iostream>
+
 using namespace std;
 
 Configuration::Configuration(int k, int q, int* F, int K)
@@ -105,6 +107,9 @@ int Configuration::getStepsCount() const
 
 void Configuration::move(int newPosition)
 {
+  if (newPosition < 0 || newPosition >= fieldLength)
+    throw invalid_position_ex;
+    
   queenStepsCount++;
   queenSteps[queenStepsCount] = newPosition;
   this->removeFigure(newPosition);

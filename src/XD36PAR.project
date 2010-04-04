@@ -17,6 +17,7 @@
     <File Name="configuration.h"/>
     <File Name="task.h"/>
     <File Name="priority_queue.h"/>
+    <File Name="exceptions.h"/>
   </VirtualDirectory>
   <Dependencies Name="Release"/>
   <Settings Type="Executable">
