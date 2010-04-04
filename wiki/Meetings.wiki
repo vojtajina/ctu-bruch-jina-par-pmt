@@ -7,3 +7,7 @@
 === 2.4.2010, 13.00 ==
   * skype call
   * discuss sequential algorithm
+
+== 3.4.2010, 19.00 ==
+  * skype call
+  * discuss unit tests
