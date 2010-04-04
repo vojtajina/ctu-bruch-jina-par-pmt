@@ -1,0 +1,1 @@
+g++ main.cpp configuration.cpp task.cpp priority_queue.cpp -o app
