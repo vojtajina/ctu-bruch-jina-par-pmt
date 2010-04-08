@@ -17,13 +17,14 @@ Configuration* GetConfiguration()
 	Configuration* c = new Configuration(k,q,F,K);
 	return c;
 }
-
+//constructor test
 TEST(TestConfiguration_Configuration)
 {	
 	Configuration* c = GetConfiguration();
 	delete(c);
 }
 
+//constructor test
 TEST(TestConfiguration_ConfigurationConfiguration)
 {
 	Configuration* c = GetConfiguration();
@@ -32,6 +33,7 @@ TEST(TestConfiguration_ConfigurationConfiguration)
 	delete(c2);
 }
 
+//Configuration.dump()
 TEST(TestConfiguration_dump)
 {
 	Configuration* c = GetConfiguration();
@@ -39,6 +41,7 @@ TEST(TestConfiguration_dump)
 	delete(c);
 }
 
+//Configuration.final()
 TEST(TestConfiguration_final)
 {
 	Configuration* c = GetConfiguration();
@@ -51,6 +54,7 @@ TEST(TestConfiguration_final)
 	delete(c);
 }
 
+//Configuration.getAvailablePositions()
 TEST(TestConfiguration_getAvailablePositions)
 {
 	Configuration* c = GetConfiguration();
@@ -67,6 +71,7 @@ TEST(TestConfiguration_getAvailablePositions)
 	delete(c);
 }
 
+//Configuration.getFiguresCount()
 TEST(TestConfiguration_getFiguresCount)
 {
 	Configuration* c = GetConfiguration();
@@ -75,6 +80,7 @@ TEST(TestConfiguration_getFiguresCount)
 	delete(c);
 }
 
+//Configuration.getSideLength()
 TEST(TestConfiguration_getSideLength)
 {
 	Configuration* c = GetConfiguration();
@@ -84,6 +90,9 @@ TEST(TestConfiguration_getSideLength)
 	delete(c);
 }
 
+//Configuration.getStepsCount()
+//Configuration.move()
+//Configuration.moveBack()
 TEST(TestConfiguration_getStepsCount)
 {
 	Configuration* c = GetConfiguration();
@@ -98,17 +107,3 @@ TEST(TestConfiguration_getStepsCount)
 	CHECK(value == 1);
 	delete(c);
 }
-
-TEST(TestConfiguration_move)
-{
-	
-	Configuration* c = GetConfiguration();
-	delete(c);
-}
-
-TEST(TestConfiguration_moveBack)
-{
-	Configuration* c = GetConfiguration();	
-	delete(c);
-}
-
