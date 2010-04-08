@@ -2,7 +2,7 @@
 #include "../src/priority_queue.h"
 #include "../src/priority_queue.cpp"
 
-
+//constructor test
 TEST(TestPriorityQueue_PriorityQueue)
 {
 	IntPriQueue *pq = new IntPriQueue(5);	
@@ -10,6 +10,7 @@ TEST(TestPriorityQueue_PriorityQueue)
 	delete(pq);
 }
 
+//IntPriQueue.empty()
 TEST(TestPriorityQueue_empty)
 {
 	IntPriQueue *pq = new IntPriQueue(5);
@@ -29,6 +30,8 @@ TEST(TestPriorityQueue_empty)
 	delete(pq);
 }
 
+//IntPriQueue.push()
+//IntPriQueue.pop()
 TEST(TestPriorityQueue_pushpop)
 {
 	IntPriQueue *pq = new IntPriQueue(5);
@@ -52,6 +55,7 @@ TEST(TestPriorityQueue_pushpop)
 	delete(pq);
 }
 
+//IntPriQueue.size()
 TEST(TestPriorityQueue_size)
 {
 	IntPriQueue *pq = new IntPriQueue(5);
