@@ -4,10 +4,15 @@
 === 30.3.2010, 8.00 ===
   * initial meeting with M.Šoch
 
-=== 2.4.2010, 13.00 ==
+=== 2.4.2010, 13.00 ===
   * skype call
   * discuss sequential algorithm
 
-== 3.4.2010, 19.00 ==
+=== 3.4.2010, 19.00 ===
   * skype call
   * discuss unit tests
+
+=== 11.4.2010, 20.00 ===
+  * skype call
+  * discuss parallel sollution
+  * stack division
