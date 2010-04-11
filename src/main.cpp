@@ -32,6 +32,7 @@ int main(int argc, char **argv)
   catch (exception& e)
   {
     cout << "Bad input arguments (Exception: " << e.what() << ")";
+    return 1;
   }
 
   // solve

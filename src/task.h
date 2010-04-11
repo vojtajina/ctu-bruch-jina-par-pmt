@@ -4,6 +4,13 @@
 #include "configuration.h"
 #include "priority_queue.h"
 
+/**
+ * @class Task
+ * @author Vojta
+ * @date 04/01/10
+ * @file task.h
+ * @brief Contains the whole logic of the sequential algorithm
+ */
 class Task {
 
   public:

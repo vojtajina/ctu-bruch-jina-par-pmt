@@ -69,7 +69,7 @@ bool Task::checkConfiguration(const Configuration* conf)
     return false;
     
   // reach current bestConf steps - stop expanding
-  if (conf->getStepsCount() >= bestConf->getStepsCount())
+  if (bestConf && (conf->getStepsCount() >= bestConf->getStepsCount()))
     return false;
 
   return true;
