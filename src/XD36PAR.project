@@ -12,12 +12,17 @@
     <File Name="configuration.cpp"/>
     <File Name="task.cpp"/>
     <File Name="priority_queue.cpp"/>
+    <File Name="split_stack.cpp"/>
+    <File Name="parallel_task.cpp"/>
   </VirtualDirectory>
   <VirtualDirectory Name="header">
     <File Name="configuration.h"/>
     <File Name="task.h"/>
     <File Name="priority_queue.h"/>
     <File Name="exceptions.h"/>
+    <File Name="split_stack.h"/>
+    <File Name="parallel_task.h"/>
+    <File Name="mpi_constants.h"/>
   </VirtualDirectory>
   <Dependencies Name="Release"/>
   <Settings Type="Executable">
