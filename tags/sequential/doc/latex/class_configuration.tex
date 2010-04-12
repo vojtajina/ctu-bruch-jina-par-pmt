@@ -1,0 +1,177 @@
+\hypertarget{class_configuration}{
+\section{Configuration Class Reference}
+\label{class_configuration}\index{Configuration@{Configuration}}
+}
+
+
+{\ttfamily \#include $<$configuration.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_configuration_a341c35d408954b68b37a533df2953b9a}{Configuration} (int k, int q, int $\ast$F, int K)
+\begin{DoxyCompactList}\small\item\em Constructor. \item\end{DoxyCompactList}\item 
+\hyperlink{class_configuration_a8fb945e5f8e16521556b7d440f1fa69a}{Configuration} (const \hyperlink{class_configuration}{Configuration} \&src)
+\begin{DoxyCompactList}\small\item\em Copying constructor. \item\end{DoxyCompactList}\item 
+\hyperlink{class_configuration_a0dd0fa189e239f4c9a036303f641441e}{$\sim$Configuration} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \item\end{DoxyCompactList}\item 
+void \hyperlink{class_configuration_a376c3c8652d090d37e833edbd8062401}{move} (int newPosition)
+\begin{DoxyCompactList}\small\item\em Move queen to new position. \item\end{DoxyCompactList}\item 
+void \hyperlink{class_configuration_a0ea8b5ce3341e601c8dcc8af0d0b066f}{moveBack} ()
+\begin{DoxyCompactList}\small\item\em Revert last move of the queen. \item\end{DoxyCompactList}\item 
+bool \hyperlink{class_configuration_ae2ed3d89437a75e3aee87f43dbdc4a2c}{final} () const 
+\begin{DoxyCompactList}\small\item\em Is this configuration final = sollution ? \item\end{DoxyCompactList}\item 
+int \hyperlink{class_configuration_a899f2320c29a361457f95262eff51571}{getStepsCount} () const 
+\begin{DoxyCompactList}\small\item\em Return number of steps done in this configuration. \item\end{DoxyCompactList}\item 
+int \hyperlink{class_configuration_a6c683c5112b783922f924446cb5a8e5b}{getSideLength} () const 
+\begin{DoxyCompactList}\small\item\em Returns the length of one side of the field (k). \item\end{DoxyCompactList}\item 
+int \hyperlink{class_configuration_a309ee0fb70a3fbbdeb82a2e5f856e9f5}{getFiguresCount} () const 
+\begin{DoxyCompactList}\small\item\em Returns the number of figures. \item\end{DoxyCompactList}\item 
+\hyperlink{class_priority_queue}{IntPriQueue} $\ast$ \hyperlink{class_configuration_aea495abb2084891fef34c972b586609a}{getAvailablePositions} () const 
+\begin{DoxyCompactList}\small\item\em Returns \hyperlink{class_priority_queue}{PriorityQueue} of available positions (positions the queen can move to). \item\end{DoxyCompactList}\item 
+void \hyperlink{class_configuration_a154b6bf5556ec7e5953652171876dca4}{dump} () const 
+\begin{DoxyCompactList}\small\item\em Dump the configuration to console Test and debug purposes. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Vojta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04/01/10 
+\end{DoxyDate}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_configuration_a341c35d408954b68b37a533df2953b9a}{
+\index{Configuration@{Configuration}!Configuration@{Configuration}}
+\index{Configuration@{Configuration}!Configuration@{Configuration}}
+\subsubsection[{Configuration}]{\setlength{\rightskip}{0pt plus 5cm}Configuration::Configuration (int {\em k}, \/  int {\em q}, \/  int $\ast$ {\em F}, \/  int {\em K})}}
+\label{class_configuration_a341c35d408954b68b37a533df2953b9a}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em k}]Size of the chess box (k x k) \item[{\em q}]Number of figures \item[{\em F}]Array of integers (length q) with positions of the figures \item[{\em K}]Position of the queen (starting position) \end{DoxyParams}
+\hypertarget{class_configuration_a8fb945e5f8e16521556b7d440f1fa69a}{
+\index{Configuration@{Configuration}!Configuration@{Configuration}}
+\index{Configuration@{Configuration}!Configuration@{Configuration}}
+\subsubsection[{Configuration}]{\setlength{\rightskip}{0pt plus 5cm}Configuration::Configuration (const {\bf Configuration} \& {\em src})}}
+\label{class_configuration_a8fb945e5f8e16521556b7d440f1fa69a}
+
+
+Copying constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]Source \hyperlink{class_configuration}{Configuration} object Object is deeply copyied (except figuresStartPosition pointer) \end{DoxyParams}
+\hypertarget{class_configuration_a0dd0fa189e239f4c9a036303f641441e}{
+\index{Configuration@{Configuration}!$\sim$Configuration@{$\sim$Configuration}}
+\index{$\sim$Configuration@{$\sim$Configuration}!Configuration@{Configuration}}
+\subsubsection[{$\sim$Configuration}]{\setlength{\rightskip}{0pt plus 5cm}Configuration::$\sim$Configuration ()}}
+\label{class_configuration_a0dd0fa189e239f4c9a036303f641441e}
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_configuration_a154b6bf5556ec7e5953652171876dca4}{
+\index{Configuration@{Configuration}!dump@{dump}}
+\index{dump@{dump}!Configuration@{Configuration}}
+\subsubsection[{dump}]{\setlength{\rightskip}{0pt plus 5cm}void Configuration::dump () const}}
+\label{class_configuration_a154b6bf5556ec7e5953652171876dca4}
+
+
+Dump the configuration to console Test and debug purposes. 
+
+\hypertarget{class_configuration_ae2ed3d89437a75e3aee87f43dbdc4a2c}{
+\index{Configuration@{Configuration}!final@{final}}
+\index{final@{final}!Configuration@{Configuration}}
+\subsubsection[{final}]{\setlength{\rightskip}{0pt plus 5cm}bool Configuration::final () const}}
+\label{class_configuration_ae2ed3d89437a75e3aee87f43dbdc4a2c}
+
+
+Is this configuration final = sollution ? 
+
+\begin{DoxyReturn}{Returns}
+True if configuration is final, False otherwise 
+\end{DoxyReturn}
+\hypertarget{class_configuration_aea495abb2084891fef34c972b586609a}{
+\index{Configuration@{Configuration}!getAvailablePositions@{getAvailablePositions}}
+\index{getAvailablePositions@{getAvailablePositions}!Configuration@{Configuration}}
+\subsubsection[{getAvailablePositions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf IntPriQueue} $\ast$ Configuration::getAvailablePositions () const}}
+\label{class_configuration_aea495abb2084891fef34c972b586609a}
+
+
+Returns \hyperlink{class_priority_queue}{PriorityQueue} of available positions (positions the queen can move to). 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_priority_queue}{PriorityQueue} of integers (available positions) 
+\end{DoxyReturn}
+\hypertarget{class_configuration_a309ee0fb70a3fbbdeb82a2e5f856e9f5}{
+\index{Configuration@{Configuration}!getFiguresCount@{getFiguresCount}}
+\index{getFiguresCount@{getFiguresCount}!Configuration@{Configuration}}
+\subsubsection[{getFiguresCount}]{\setlength{\rightskip}{0pt plus 5cm}int Configuration::getFiguresCount () const}}
+\label{class_configuration_a309ee0fb70a3fbbdeb82a2e5f856e9f5}
+
+
+Returns the number of figures. 
+
+\begin{DoxyReturn}{Returns}
+Number of figures in the configuration 
+\end{DoxyReturn}
+\hypertarget{class_configuration_a6c683c5112b783922f924446cb5a8e5b}{
+\index{Configuration@{Configuration}!getSideLength@{getSideLength}}
+\index{getSideLength@{getSideLength}!Configuration@{Configuration}}
+\subsubsection[{getSideLength}]{\setlength{\rightskip}{0pt plus 5cm}int Configuration::getSideLength () const}}
+\label{class_configuration_a6c683c5112b783922f924446cb5a8e5b}
+
+
+Returns the length of one side of the field (k). 
+
+\begin{DoxyReturn}{Returns}
+Lenght of the side of the field 
+\end{DoxyReturn}
+\hypertarget{class_configuration_a899f2320c29a361457f95262eff51571}{
+\index{Configuration@{Configuration}!getStepsCount@{getStepsCount}}
+\index{getStepsCount@{getStepsCount}!Configuration@{Configuration}}
+\subsubsection[{getStepsCount}]{\setlength{\rightskip}{0pt plus 5cm}int Configuration::getStepsCount () const}}
+\label{class_configuration_a899f2320c29a361457f95262eff51571}
+
+
+Return number of steps done in this configuration. 
+
+\begin{DoxyReturn}{Returns}
+Number of steps 
+\end{DoxyReturn}
+\hypertarget{class_configuration_a376c3c8652d090d37e833edbd8062401}{
+\index{Configuration@{Configuration}!move@{move}}
+\index{move@{move}!Configuration@{Configuration}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void Configuration::move (int {\em newPosition})}}
+\label{class_configuration_a376c3c8652d090d37e833edbd8062401}
+
+
+Move queen to new position. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em newPosition}]Index of the new position \end{DoxyParams}
+\hypertarget{class_configuration_a0ea8b5ce3341e601c8dcc8af0d0b066f}{
+\index{Configuration@{Configuration}!moveBack@{moveBack}}
+\index{moveBack@{moveBack}!Configuration@{Configuration}}
+\subsubsection[{moveBack}]{\setlength{\rightskip}{0pt plus 5cm}void Configuration::moveBack ()}}
+\label{class_configuration_a0ea8b5ce3341e601c8dcc8af0d0b066f}
+
+
+Revert last move of the queen. 
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{configuration_8h}{configuration.h}\item 
+src/\hyperlink{configuration_8cpp}{configuration.cpp}\end{DoxyCompactItemize}
