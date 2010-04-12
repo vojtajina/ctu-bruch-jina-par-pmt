@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.6.0_19" class="java.beans.XMLDecoder"> 
+ <object class="com.horstmann.violet.product.diagram.activity.ActivityDiagramGraph"> 
+  <void method="addNode"> 
+   <object id="ScenarioStartNode0" class="com.horstmann.violet.product.diagram.activity.ScenarioStartNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>200.0</double> 
+       <double>150.0</double> 
+       <double>20.0</double> 
+       <double>20.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>200.0</double> 
+      <double>150.0</double> 
+      <double>20.0</double> 
+      <double>20.0</double> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>200.0</double> 
+     <double>150.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="DecisionNode0" class="com.horstmann.violet.product.diagram.activity.DecisionNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>130.0</double> 
+       <double>310.0</double> 
+       <double>160.0</double> 
+       <double>100.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>130.0</double> 
+      <double>310.0</double> 
+      <double>160.0</double> 
+      <double>100.0</double> 
+     </void> 
+    </void> 
+    <void property="condition"> 
+     <void property="text"> 
+      <string>stack.empty()
+OR isFinished</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>130.0</double> 
+     <double>310.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ActivityNode0" class="com.horstmann.violet.product.diagram.activity.ActivityNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>470.0</double> 
+       <double>330.0</double> 
+       <double>100.0</double> 
+       <double>60.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>470.0</double> 
+      <double>330.0</double> 
+      <double>100.0</double> 
+      <double>60.0</double> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>x = stack.read()</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>470.0</double> 
+     <double>330.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="DecisionNode1" class="com.horstmann.violet.product.diagram.activity.DecisionNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>700.0</double> 
+       <double>340.0</double> 
+       <double>80.0</double> 
+       <double>40.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>700.0</double> 
+      <double>340.0</double> 
+      <double>80.0</double> 
+      <double>40.0</double> 
+     </void> 
+    </void> 
+    <void property="condition"> 
+     <void property="text"> 
+      <string>x &lt; 0</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>700.0</double> 
+     <double>340.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ActivityNode1" class="com.horstmann.violet.product.diagram.activity.ActivityNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>470.0</double> 
+       <double>200.0</double> 
+       <double>100.0</double> 
+       <double>60.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>470.0</double> 
+      <double>200.0</double> 
+      <double>100.0</double> 
+      <double>60.0</double> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>stack.pop()
+conf.moveBack()</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>470.0</double> 
+     <double>200.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ActivityNode2" class="com.horstmann.violet.product.diagram.activity.ActivityNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>690.0</double> 
+       <double>430.0</double> 
+       <double>100.0</double> 
+       <double>60.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>690.0</double> 
+      <double>430.0</double> 
+      <double>100.0</double> 
+      <double>60.0</double> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>conf.move(x)
+stack.pop()
+stack.push(-x)</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>690.0</double> 
+     <double>430.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="DecisionNode2" class="com.horstmann.violet.product.diagram.activity.DecisionNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>280.0</double> 
+       <double>440.0</double> 
+       <double>120.0</double> 
+       <double>80.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>280.0</double> 
+      <double>440.0</double> 
+      <double>120.0</double> 
+      <double>80.0</double> 
+     </void> 
+    </void> 
+    <void property="condition"> 
+     <void property="text"> 
+      <string>checkConf()</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>280.0</double> 
+     <double>440.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ActivityNode3" class="com.horstmann.violet.product.diagram.activity.ActivityNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>220.0</double> 
+       <double>560.0</double> 
+       <double>240.0</double> 
+       <double>60.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>220.0</double> 
+      <double>560.0</double> 
+      <double>240.0</double> 
+      <double>60.0</double> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>stack.push(conf.getAvailablePositions())</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>220.0</double> 
+     <double>560.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ScenarioEndNode0" class="com.horstmann.violet.product.diagram.activity.ScenarioEndNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>200.0</double> 
+       <double>650.0</double> 
+       <double>20.0</double> 
+       <double>20.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>200.0</double> 
+      <double>650.0</double> 
+      <double>20.0</double> 
+      <double>20.0</double> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>200.0</double> 
+     <double>650.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="NoteNode0" class="com.horstmann.violet.NoteNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>560.0</double> 
+       <double>270.0</double> 
+       <double>200.0</double> 
+       <double>40.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>560.0</double> 
+      <double>270.0</double> 
+      <double>200.0</double> 
+      <double>40.0</double> 
+     </void> 
+    </void> 
+    <void property="text"> 
+     <void property="text"> 
+      <string>True for opened statates (-1, -2, ...)
+False for states to expand (1, 2, ...)</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>560.0</double> 
+     <double>270.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="NoteNode1" class="com.horstmann.violet.NoteNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>400.0</double> 
+       <double>510.0</double> 
+       <double>280.0</double> 
+       <double>40.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>400.0</double> 
+      <double>510.0</double> 
+      <double>280.0</double> 
+      <double>40.0</double> 
+     </void> 
+    </void> 
+    <void property="text"> 
+     <void property="text"> 
+      <string>True if this state should be expanded
+False if not (reached maxSteps, or is sollution, ...)</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>400.0</double> 
+     <double>510.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="NoteNode2" class="com.horstmann.violet.NoteNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>580.0</double> 
+       <double>370.0</double> 
+       <double>120.0</double> 
+       <double>40.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>580.0</double> 
+      <double>370.0</double> 
+      <double>120.0</double> 
+      <double>40.0</double> 
+     </void> 
+    </void> 
+    <void property="text"> 
+     <void property="text"> 
+      <string>Opening the state</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>580.0</double> 
+     <double>370.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="PointNode0" class="com.horstmann.violet.PointNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>724.0</double> 
+       <double>348.0</double> 
+       <double>0.0</double> 
+       <double>0.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>724.0</double> 
+      <double>348.0</double> 
+      <double>0.0</double> 
+      <double>0.0</double> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>724.0</double> 
+     <double>348.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="PointNode1" class="com.horstmann.violet.PointNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>694.0</double> 
+       <double>433.0</double> 
+       <double>0.0</double> 
+       <double>0.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>694.0</double> 
+      <double>433.0</double> 
+      <double>0.0</double> 
+      <double>0.0</double> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>694.0</double> 
+     <double>433.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="DecisionNode3" class="com.horstmann.violet.product.diagram.activity.DecisionNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>330.0</double> 
+       <double>330.0</double> 
+       <double>100.0</double> 
+       <double>60.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>330.0</double> 
+      <double>330.0</double> 
+      <double>100.0</double> 
+      <double>60.0</double> 
+     </void> 
+    </void> 
+    <void property="condition"> 
+     <void property="text"> 
+      <string>counter()</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>330.0</double> 
+     <double>330.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ActivityNode4" class="com.horstmann.violet.product.diagram.activity.ActivityNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>320.0</double> 
+       <double>240.0</double> 
+       <double>120.0</double> 
+       <double>60.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>320.0</double> 
+      <double>240.0</double> 
+      <double>120.0</double> 
+      <double>60.0</double> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>checkkMessages()</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>320.0</double> 
+     <double>240.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="NoteNode3" class="com.horstmann.violet.NoteNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>350.0</double> 
+       <double>400.0</double> 
+       <double>220.0</double> 
+       <double>40.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>350.0</double> 
+      <double>400.0</double> 
+      <double>220.0</double> 
+      <double>40.0</double> 
+     </void> 
+    </void> 
+    <void property="text"> 
+     <void property="text"> 
+      <string>(counter % CHECK_INTERVAL) == 0</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>350.0</double> 
+     <double>400.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="PointNode2" class="com.horstmann.violet.PointNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>404.0</double> 
+       <double>376.0</double> 
+       <double>0.0</double> 
+       <double>0.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>404.0</double> 
+      <double>376.0</double> 
+      <double>0.0</double> 
+      <double>0.0</double> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>404.0</double> 
+     <double>376.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="PointNode3" class="com.horstmann.violet.PointNode"> 
+    <void property="bounds"> 
+     <object class="java.awt.geom.Rectangle2D$Double"> 
+      <void method="setRect"> 
+       <double>379.0</double> 
+       <double>493.0</double> 
+       <double>0.0</double> 
+       <double>0.0</double> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="bounds"> 
+     <void method="setRect"> 
+      <double>379.0</double> 
+      <double>493.0</double> 
+      <double>0.0</double> 
+      <double>0.0</double> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>379.0</double> 
+     <double>493.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="startLabel"> 
+     <string>TRUE</string> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode1"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>769.0</double> 
+     <double>361.0</double> 
+    </void> 
+   </object> 
+   <object idref="ActivityNode1"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>560.0</double> 
+     <double>228.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+   </object> 
+   <object idref="ActivityNode1"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>499.0</double> 
+     <double>227.0</double> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode0"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>212.0</double> 
+     <double>317.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+   </object> 
+   <object idref="ActivityNode0"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>557.0</double> 
+     <double>360.0</double> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode1"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>709.0</double> 
+     <double>360.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="startLabel"> 
+     <string>FALSE</string> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode1"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>745.0</double> 
+     <double>367.0</double> 
+    </void> 
+   </object> 
+   <object idref="ActivityNode2"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>728.0</double> 
+     <double>458.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+   </object> 
+   <object idref="ActivityNode2"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>728.0</double> 
+     <double>471.0</double> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode2"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>383.0</double> 
+     <double>477.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="startLabel"> 
+     <string>TRUE</string> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode2"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>341.0</double> 
+     <double>503.0</double> 
+    </void> 
+   </object> 
+   <object idref="ActivityNode3"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>327.0</double> 
+     <double>577.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+   </object> 
+   <object idref="ActivityNode3"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>238.0</double> 
+     <double>588.0</double> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode0"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>137.0</double> 
+     <double>362.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="startLabel"> 
+     <string>FALSE</string> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode2"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>311.0</double> 
+     <double>485.0</double> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode0"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>146.0</double> 
+     <double>359.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+   </object> 
+   <object idref="ScenarioStartNode0"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>214.0</double> 
+     <double>161.0</double> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode0"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>209.0</double> 
+     <double>313.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="startLabel"> 
+     <string>TRUE</string> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode0"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>207.0</double> 
+     <double>394.0</double> 
+    </void> 
+   </object> 
+   <object idref="ScenarioEndNode0"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>212.0</double> 
+     <double>651.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.NoteEdge"/> 
+   <object idref="NoteNode0"/> 
+   <object idref="PointNode0"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.NoteEdge"/> 
+   <object idref="NoteNode2"/> 
+   <object idref="PointNode1"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="startLabel"> 
+     <string>FALSE</string> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode0"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>276.0</double> 
+     <double>361.0</double> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode3"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>338.0</double> 
+     <double>359.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="startLabel"> 
+     <string>TRUE</string> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode3"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>380.0</double> 
+     <double>342.0</double> 
+    </void> 
+   </object> 
+   <object idref="ActivityNode4"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>353.0</double> 
+     <double>288.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>FALSE</string> 
+    </void> 
+   </object> 
+   <object idref="DecisionNode3"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>418.0</double> 
+     <double>361.0</double> 
+    </void> 
+   </object> 
+   <object idref="ActivityNode0"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>493.0</double> 
+     <double>360.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.product.diagram.activity.ActivityTransitionEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+   </object> 
+   <object idref="ActivityNode4"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>433.0</double> 
+     <double>259.0</double> 
+    </void> 
+   </object> 
+   <object idref="ActivityNode0"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>522.0</double> 
+     <double>337.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.NoteEdge"/> 
+   <object idref="NoteNode3"/> 
+   <object idref="PointNode2"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.NoteEdge"/> 
+   <object idref="NoteNode1"/> 
+   <object idref="PointNode3"/> 
+  </void> 
+ </object> 
+</java> 
