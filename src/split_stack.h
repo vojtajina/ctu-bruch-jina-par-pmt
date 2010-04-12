@@ -59,6 +59,12 @@ class SplitStack<T>
      * @return Pointer to new instance of SplitStack<T>
      */
     SplitStack<T>* splitToStack();
+    
+    /**
+     * @brief Whether the stack can be splitted
+     * @return True if is possible to split the stack, False otherwise
+     */
+    bool canSplit() const;
 
   private:
     // TODO
