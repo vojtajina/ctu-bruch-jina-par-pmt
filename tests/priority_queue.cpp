@@ -55,6 +55,30 @@ TEST(TestPriorityQueue_pushpop)
 	delete(pq);
 }
 
+//IntPriQueue.reversePop()
+TEST(TestPriorityQueue_reversepop)
+{
+	IntPriQueue *pq = new IntPriQueue(5);
+	pq->push(5,2);
+	pq->push(22,3);	
+	pq->push(1,4);	
+	pq->push(99,1);	
+	pq->push(10,3);
+	pq->push(1,2);	
+	int checkvalue;
+	checkvalue = pq->reversePop();
+	CHECK(checkvalue == 1);
+	checkvalue = pq->reversePop();
+	CHECK(checkvalue == 22);
+	checkvalue = pq->reversePop();
+	CHECK(checkvalue == 10);
+	checkvalue = pq->reversePop();
+	CHECK(checkvalue == 5);
+	checkvalue = pq->reversePop();
+	CHECK(checkvalue == 1);
+	delete(pq);
+}
+
 //IntPriQueue.size()
 TEST(TestPriorityQueue_size)
 {
