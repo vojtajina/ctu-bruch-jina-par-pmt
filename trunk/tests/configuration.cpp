@@ -1,4 +1,5 @@
 #include <UnitTest++.h>
+#include "../src/exceptions.h"
 #include "../src/configuration.h"
 #include "../src/configuration.cpp"
 
@@ -106,4 +107,12 @@ TEST(TestConfiguration_getStepsCount)
 	value = c->getStepsCount();
 	CHECK(value == 1);
 	delete(c);
+}
+
+TEST(TestConfiguration_invalidposition)
+{
+  Configuration* c = GetConfiguration();
+  CHECK_THROW(c->move(-1), InvalidPositionException);
+  CHECK_THROW(c->move(10), InvalidPositionException);
+  delete(c);
 }

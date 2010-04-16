@@ -1,4 +1,5 @@
 #include <UnitTest++.h>
+#include "../src/exceptions.h"
 #include "../src/priority_queue.h"
 #include "../src/priority_queue.cpp"
 
@@ -96,5 +97,13 @@ TEST(TestPriorityQueue_size)
 	pq->push(1,2);	
 	CHECK(pq->size() == 6);	
 	delete(pq);
+}
+
+TEST(TestPriorityQueue_invalidpriority)
+{
+  IntPriQueue *pq = new IntPriQueue(2);
+  CHECK_THROW(pq->push(2,3), InvalidPriorityException);
+  CHECK_THROW(pq->push(2,-1), InvalidPriorityException);
+  delete(pq);
 }
 
