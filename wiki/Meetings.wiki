@@ -16,3 +16,7 @@
   * skype call
   * discuss parallel sollution
   * stack division
+
+=== 16.4.2010, 17.00 ===
+  * skype call
+  * discuss stack implementation
