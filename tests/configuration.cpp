@@ -7,15 +7,17 @@
 //returns initial configuration for UnitTest
 Configuration* GetConfiguration()
 {
-	int k, K, q;
-	int* F;  
-    k = 3;
-    K = 0;
-    q = 2;	
-	int a[2] = {1,4};
-	F = a;	
+	int k = 3;
+  int K = 1;
+  int q = 2;
+	int F[2] = {2,5};
 	
-	Configuration* c = new Configuration(k,q,F,K);
+	Configuration* c = new Configuration(k,q,&F[0],K);
+  IntPriQueue* pq = c->getAvailablePositions();
+  int i = 0;
+  while (!pq->empty())
+    i = pq->pop();
+    
 	return c;
 }
 //constructor test
@@ -48,8 +50,8 @@ TEST(TestConfiguration_final)
 	Configuration* c = GetConfiguration();
 	bool value = c->final();
 	CHECK(value == false);	
-	c->move(1);
-	c->move(4);
+	c->move(2);
+	c->move(5);
 	value = c->final();
 	CHECK(value == true);
 	delete(c);
@@ -61,14 +63,14 @@ TEST(TestConfiguration_getAvailablePositions)
 	Configuration* c = GetConfiguration();
 	IntPriQueue* value;
 	value = c->getAvailablePositions();
-	int i= value->pop();	
-	CHECK(i == 1);
+	int i = value->pop();	
+	CHECK(i == 2);
+	i = value->pop();	
+	CHECK(i == 5);
 	i = value->pop();	
 	CHECK(i == 4);
 	i = value->pop();	
-	CHECK(i == 3);
-	i = value->pop();	
-	CHECK(i == 6);	
+	CHECK(i == 7);	
 	delete(c);
 }
 

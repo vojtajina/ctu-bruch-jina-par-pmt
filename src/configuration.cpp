@@ -7,18 +7,20 @@ Configuration::Configuration(int k, int q, int* F, int K)
 {
   fieldLength = k * k;
   sideLength = k;
-  figuresPosition = new bool[fieldLength];
-  figuresStartPosition = new bool[fieldLength];
+  figuresPosition = new bool[fieldLength + 1];
+  figuresStartPosition = new bool[fieldLength + 1];
   figuresCount = q;
   queenSteps = new int[fieldLength];
   queenStepsCount = 0;
 
   // add queen start position to queenSteps history
+  this->validatePosition(K);
   queenSteps[0] = K;
 
   // load figure positions
   int a = 0;
-  for (int i = 0; i < fieldLength; i++)
+
+  for (int i = 1; i <= fieldLength; i++)
   {
     // there is a figure on i position
     if (a < q && F[a] ==i)
@@ -26,6 +28,7 @@ Configuration::Configuration(int k, int q, int* F, int K)
       figuresPosition[i] = true;
       figuresStartPosition[i] = true;
     }
+
     // no figure on i position
     else
     {
@@ -37,6 +40,9 @@ Configuration::Configuration(int k, int q, int* F, int K)
       a++;
   }
   
+  if (a < q)
+    throw InvalidPositionException();
+
   Configuration::instanceCount++;
 }
 
@@ -49,18 +55,20 @@ Configuration::Configuration(const Configuration& src)
   figuresCount = src.figuresCount;
 
   // *figuresPosition - deep copy
-  figuresPosition = new bool[fieldLength];
-  for (int i = 0; i < fieldLength; i++)
+  figuresPosition = new bool[fieldLength + 1];
+
+  for (int i = 1; i <= fieldLength; i++)
     figuresPosition[i] = src.figuresPosition[i];
 
   // *queenSteps - deep copy
   queenSteps = new int[fieldLength];
+
   for (int i = 0; i <= queenStepsCount; i++)
     queenSteps[i] = src.queenSteps[i];
 
   // *figuresStartPosition - reference to the same memory address (these values never change)
   figuresStartPosition = src.figuresStartPosition;
-  
+
   Configuration::instanceCount++;
 }
 
@@ -68,9 +76,9 @@ Configuration::~Configuration()
 {
   delete[] figuresPosition;
   delete[] queenSteps;
-  
+
   Configuration::instanceCount--;
-  
+
   if (Configuration::instanceCount == 0)
     delete[] figuresStartPosition;
 }
@@ -106,9 +114,8 @@ int Configuration::getStepsCount() const
 
 void Configuration::move(int newPosition)
 {
-  if (newPosition < 0 || newPosition >= fieldLength)
-    throw InvalidPositionException();
-    
+  this->validatePosition(newPosition);
+
   queenStepsCount++;
   queenSteps[queenStepsCount] = newPosition;
   this->removeFigure(newPosition);
@@ -132,7 +139,9 @@ bool Configuration::removeFigure(int position)
     return false;
 
   figuresPosition[position] = false;
+
   figuresCount--;
+
   return true;
 }
 
@@ -144,7 +153,9 @@ bool Configuration::restoreFigure(int position)
     return false;
 
   figuresPosition[position] = true;
+
   figuresCount++;
+
   return true;
 }
 
@@ -158,7 +169,7 @@ void Configuration::addAvailableLeft(IntPriQueue* pq) const
   // init
   int queenPos = this->getQueenPosition();
   int y = queenPos - 1;
-  int min = queenPos - (queenPos % sideLength);
+  int min = queenPos - ((queenPos - 1) % sideLength);
   int priority = 1;
 
   while (y >= min && priority == 1)
@@ -173,7 +184,7 @@ void Configuration::addAvailableRight(IntPriQueue* pq) const
   // init
   int queenPos = this->getQueenPosition();
   int y = queenPos + 1;
-  int max = queenPos - (queenPos % sideLength) + sideLength;
+  int max = queenPos - ((queenPos - 1) % sideLength) + sideLength;
   int priority = 1;
 
   while (y < max && priority == 1)
@@ -181,7 +192,6 @@ void Configuration::addAvailableRight(IntPriQueue* pq) const
     priority = this->addAvailablePosition(pq, y);
     y = y + 1;
   }
-
 }
 
 void Configuration::addAvailableTop(IntPriQueue* pq) const
@@ -190,7 +200,7 @@ void Configuration::addAvailableTop(IntPriQueue* pq) const
   int y = this->getQueenPosition() - sideLength;
   int priority = 1;
 
-  while (y >= 0 && priority == 1)
+  while (y > 0 && priority == 1)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y - sideLength;
@@ -203,7 +213,7 @@ void Configuration::addAvailableBottom(IntPriQueue* pq) const
   int y = this->getQueenPosition() + sideLength;
   int priority = 1;
 
-  while (y < fieldLength && priority == 1)
+  while (y <= fieldLength && priority == 1)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y + sideLength;
@@ -216,7 +226,7 @@ void Configuration::addAvailableLeftTop(IntPriQueue* pq) const
   int y = this->getQueenPosition() - sideLength - 1;
   int priority = 1;
 
-  while (y >= 0 && priority == 1)
+  while (y > 0 && (y % sideLength) > 0 && priority == 1)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y - sideLength - 1;
@@ -229,7 +239,7 @@ void Configuration::addAvailableRightTop(IntPriQueue* pq) const
   int y = this->getQueenPosition() - sideLength + 1;
   int priority = 1;
 
-  while (y > 0 && (y % sideLength) > 0 && priority == 1)
+  while (y > 0 && ((y - 1) % sideLength) > 0 && priority == 1)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y - sideLength + 1;
@@ -242,7 +252,7 @@ void Configuration::addAvailableLeftBottom(IntPriQueue* pq) const
   int y = this->getQueenPosition() + sideLength - 1;
   int priority = 1;
 
-  while (y < fieldLength && ((y + 1) % sideLength) > 0 && priority == 1)
+  while (y <= fieldLength && (y % sideLength) > 0 && priority == 1)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y + sideLength - 1;
@@ -255,7 +265,7 @@ void Configuration::addAvailableRightBottom(IntPriQueue* pq) const
   int y = this->getQueenPosition() + sideLength + 1;
   int priority = 1;
 
-  while (y < fieldLength && priority == 1)
+  while (y <= fieldLength && ((y - 1) % sideLength) > 0 && priority == 1)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y + sideLength + 1;
@@ -274,12 +284,13 @@ int Configuration::addAvailablePosition(IntPriQueue* pq, int position) const
   int priority = (figuresPosition[position]) ? 0 : 1;
 
   pq->push(position, priority);
+
   return priority;
 }
 
 bool Configuration::wasPositionVisited(int position) const
 {
-  for (int i = 0; i<=queenStepsCount; i++)
+  for (int i = 0; i <= queenStepsCount; i++)
     if (queenSteps[i] == position)
       return true;
 
@@ -288,15 +299,15 @@ bool Configuration::wasPositionVisited(int position) const
 
 void Configuration::dump() const
 {
-  int* steps = new int[fieldLength];
-  
-  for (int i = 0; i < fieldLength; i++)
+  int* steps = new int[fieldLength + 1];
+
+  for (int i = 1; i <= fieldLength; i++)
     steps[i] = -1;
 
   for (int i = 0; i <= queenStepsCount; i++)
     steps[queenSteps[i]] = i;
 
-  for (int i = 0; i < fieldLength; i++)
+  for (int i = 1; i <= fieldLength; i++)
   {
     if (steps[i] < 10 && steps[i] != -1)
       cout << "0" << steps[i];
@@ -304,13 +315,13 @@ void Configuration::dump() const
       cout << "--";
     else
       cout << steps[i];
-      
+
     cout << " ";
-    
-    if ((i+1)%sideLength == 0)
+
+    if (i % sideLength == 0)
       cout << "\n";
   }
-  
+
   delete[] steps;
 }
 
@@ -322,6 +333,12 @@ int Configuration::getFiguresCount() const
 int Configuration::getSideLength() const
 {
   return sideLength;
+}
+
+void Configuration::validatePosition(int& pos) const
+{
+  if (pos < 1 || pos > fieldLength)
+    throw InvalidPositionException();
 }
 
 int Configuration::instanceCount = 0;
