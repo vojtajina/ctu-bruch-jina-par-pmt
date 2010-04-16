@@ -1,19 +1,28 @@
 #ifndef SPLITSTACK_H
 #define SPLITSTACK_H
 
-#include <stdlib.h>
+#include <vector>
+#include "string.h"
+#include "math.h"
+#include <sstream>
 
+using namespace std;
 /**
  * @class SplitStack
- * @author Vojta
- * @date 04/12/10
+ * @author jBr
+ * @date 2010-04-16
  * @file split_stack.h
+ * @version beta1
  * @brief Stack with some special features (can be splitted)
  */
-template <typename T>
-class SplitStack<T>
+
+class SplitStack
 {
-  public:
+	
+	  
+public:
+  
+
     /**
      * @brief Default constructor
      */
@@ -28,18 +37,31 @@ class SplitStack<T>
      * @brief Add item to the top of the stack
      * @param item Added item
      */
-    void push(T item);
+    void push(int item);
 
     /**
      * @brief Remove item from the top of the stack
      * @return Removed item
      */
-    T pop();
+    int pop();
+	
+	/**
+     * @brief Returns item from the top of the stack
+     * @return Last item
+     */
+    int head();
+
+	/**	
+	*	@brief Turn head value into negative	
+	*/
+	void turnHead();
+
 
     /**
      * @brief Whether the stack is empty
      * @return True if stack is empty, False otherwise
-     */
+     */	
+
     bool empty() const;
 
     /**
@@ -49,28 +71,37 @@ class SplitStack<T>
     int size() const;
 
     /**
-     * @brief Split the stack (remove some items)
+     * @brief return as integer Array
      * @return Pointer to array of splitted items
      */
-    T* split();
+    int* toArray();
 
     /**
      * @brief Split the stack (same as split())
      * @return Pointer to new instance of SplitStack<T>
      */
-    SplitStack<T>* splitToStack();
+    SplitStack* splitToStack(int divider);
     
     /**
      * @brief Whether the stack can be splitted
      * @return True if is possible to split the stack, False otherwise
      */
-    bool canSplit() const;
-
+    bool canSplit(int divider) ;
+	
+	/*
+	*
+	*	@brief returns readable current state of stack 
+	*/
+	string toString();	
   private:
     // TODO
+	    vector<int>* data;
+		
+		int getFloorCount();		
+		int getStatesCountInFloor(int floor);
 
-  // register typename for SplitStack<int>
-  typedef SplitStack<int> IntSplitStack;
+  // register typename for SplitStack
+  typedef SplitStack IntSplitStack;
 };
 
 #endif // SPLITSTACK_H
