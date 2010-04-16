@@ -96,7 +96,7 @@ TEST(TestConfiguration_getSideLength)
 TEST(TestConfiguration_getStepsCount)
 {
 	Configuration* c = GetConfiguration();
-	c->move(9);
+	c->move(8);
 	int value = c->getStepsCount();
 	CHECK(value == 1);
 	c->move(3);
