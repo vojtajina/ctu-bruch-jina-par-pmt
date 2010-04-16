@@ -144,6 +144,13 @@ class Configuration
      * @return True if position has been visited, False otherwise
      */
     bool wasPositionVisited(int position) const;
+    
+    /**
+     * @brief Validate position (whether is in the range of the field)
+     * @param pos True if position is valid, False otherwise
+     * @throw InvalidPositionException
+     */
+    void validatePosition(int& pos) const;
 
   public:
 
