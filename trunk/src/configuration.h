@@ -1,6 +1,7 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
+#include "exceptions.h"
 #include "priority_queue.h"
 
 /**

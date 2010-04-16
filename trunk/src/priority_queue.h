@@ -1,6 +1,7 @@
 #ifndef PRIORITYQUEUE_H
 #define PRIORITYQUEUE_H
 
+#include "exceptions.h"
 #include <queue>
 using namespace std;
 
@@ -17,7 +18,9 @@ class PriorityQueue
 {
   private:
     int count;
+    int priorityCount;
     queue<T>* queues;
+    T pop(bool reverse);
 
   public:
 
@@ -44,6 +47,12 @@ class PriorityQueue
      * @return Item
      */
     T pop();
+    
+    /**
+     * @brief Return the the lowest priority at first (order of items of same priority is same as in pop())
+     * @return Item
+     */
+    T reversePop();
 
     /**
      * @brief Is the queue empty ?

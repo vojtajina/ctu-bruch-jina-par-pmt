@@ -1,5 +1,4 @@
 #include "configuration.h"
-#include "exceptions.h"
 #include <iostream>
 
 using namespace std;
@@ -108,7 +107,7 @@ int Configuration::getStepsCount() const
 void Configuration::move(int newPosition)
 {
   if (newPosition < 0 || newPosition >= fieldLength)
-    throw invalid_position_ex;
+    throw InvalidPositionException();
     
   queenStepsCount++;
   queenSteps[queenStepsCount] = newPosition;

@@ -3,8 +3,9 @@
 template <typename T>
 PriorityQueue<T>::PriorityQueue(int priorityCount)
 {
-  count = 0;
+  this->priorityCount = priorityCount;
   queues = new queue<T>[priorityCount];
+  count = 0;
 }
 
 template <typename T>
@@ -22,33 +23,21 @@ bool PriorityQueue<T>::empty() const
 template <typename T>
 T PriorityQueue<T>::pop()
 {
-  // queue is empty
-  if (empty())
-    return NULL;
+  return PriorityQueue<T>::pop(false);
+}
 
-  int i = -1;
-  queue<T>* q;
-
-  // get the first non-empty queue with the highest priority
-  do
-  {
-    i++;
-    q = &queues[i];
-  }
-  while (q->empty());
-
-  // get front item
-  // remove it from the queue
-  T item = q->front();
-  q->pop();
-  count--;
-
-  return item;
+template <typename T>
+T PriorityQueue<T>::reversePop()
+{
+  return PriorityQueue<T>::pop(true);
 }
 
 template <typename T>
 void PriorityQueue<T>::push(T item, int priority)
 {
+  if (priority < 0 || priority > (priorityCount - 1))
+    throw InvalidPriorityException();
+
   queue<T>* q = &queues[priority];
   q->push(item);
   count++;
@@ -60,10 +49,39 @@ int PriorityQueue<T>::size() const
   return count;
 }
 
+// private
+template <typename T>
+T PriorityQueue<T>::pop(bool reverse)
+{
+  // queue is empty
+  if (empty())
+    return NULL;
+
+  int i = reverse ? priorityCount : -1;
+  bool last;
+  queue<T>* q;
+
+  // get the first non-empty queue with the highest priority
+  do {
+    i = reverse ? i - 1 : i + 1;
+    q = &queues[i];
+    last = reverse ? (i == 0) : (i == priorityCount - 1);
+  } while (q->empty() && !last);
+
+  // get front item
+  // remove it from the queue
+  T item = q->front();
+  q->pop();
+  count--;
+
+  return item;
+}
+
 // public methods for int
 template IntPriQueue::PriorityQueue(int);
 template IntPriQueue::~PriorityQueue();
 template bool IntPriQueue::empty() const;
 template int IntPriQueue::pop();
+template int IntPriQueue::reversePop();
 template void IntPriQueue::push(int, int);
 template int IntPriQueue::size() const;
