@@ -172,7 +172,7 @@ void Configuration::addAvailableLeft(IntPriQueue* pq) const
   int min = queenPos - ((queenPos - 1) % sideLength);
   int priority = 1;
 
-  while (y >= min && priority == 1)
+  while (y >= min && priority != 0)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y - 1;
@@ -187,7 +187,7 @@ void Configuration::addAvailableRight(IntPriQueue* pq) const
   int max = queenPos - ((queenPos - 1) % sideLength) + sideLength;
   int priority = 1;
 
-  while (y < max && priority == 1)
+  while (y < max && priority != 0)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y + 1;
@@ -200,7 +200,7 @@ void Configuration::addAvailableTop(IntPriQueue* pq) const
   int y = this->getQueenPosition() - sideLength;
   int priority = 1;
 
-  while (y > 0 && priority == 1)
+  while (y > 0 && priority != 0)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y - sideLength;
@@ -213,7 +213,7 @@ void Configuration::addAvailableBottom(IntPriQueue* pq) const
   int y = this->getQueenPosition() + sideLength;
   int priority = 1;
 
-  while (y <= fieldLength && priority == 1)
+  while (y <= fieldLength && priority != 0)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y + sideLength;
@@ -226,7 +226,7 @@ void Configuration::addAvailableLeftTop(IntPriQueue* pq) const
   int y = this->getQueenPosition() - sideLength - 1;
   int priority = 1;
 
-  while (y > 0 && (y % sideLength) > 0 && priority == 1)
+  while (y > 0 && (y % sideLength) > 0 && priority != 0)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y - sideLength - 1;
@@ -239,7 +239,7 @@ void Configuration::addAvailableRightTop(IntPriQueue* pq) const
   int y = this->getQueenPosition() - sideLength + 1;
   int priority = 1;
 
-  while (y > 0 && ((y - 1) % sideLength) > 0 && priority == 1)
+  while (y > 0 && ((y - 1) % sideLength) > 0 && priority != 0)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y - sideLength + 1;
@@ -252,7 +252,7 @@ void Configuration::addAvailableLeftBottom(IntPriQueue* pq) const
   int y = this->getQueenPosition() + sideLength - 1;
   int priority = 1;
 
-  while (y <= fieldLength && (y % sideLength) > 0 && priority == 1)
+  while (y <= fieldLength && (y % sideLength) > 0 && priority != 0)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y + sideLength - 1;
@@ -265,7 +265,7 @@ void Configuration::addAvailableRightBottom(IntPriQueue* pq) const
   int y = this->getQueenPosition() + sideLength + 1;
   int priority = 1;
 
-  while (y <= fieldLength && ((y - 1) % sideLength) > 0 && priority == 1)
+  while (y <= fieldLength && ((y - 1) % sideLength) > 0 && priority != 0)
   {
     priority = this->addAvailablePosition(pq, y);
     y = y + sideLength + 1;
