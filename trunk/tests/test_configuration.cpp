@@ -116,3 +116,16 @@ TEST(TestConfiguration_invalidposition)
   CHECK_THROW(c->move(10), InvalidPositionException);
   delete(c);
 }
+
+// check whether queen can jump over visited position
+TEST(TestConfiguration_skipvisited)
+{
+  Configuration* c = GetConfiguration();
+  c->move(5);
+  c->move(8);
+  IntPriQueue* q = c->getAvailablePositions();
+  int pos = q->pop();
+  CHECK(pos == 2);
+  delete q;
+  delete c;
+}
