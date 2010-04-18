@@ -1,7 +1,6 @@
 #include "r_split_stack.h"
 
-
-bool RSplitStack::canSplit(int divider)
+bool RSplitStack::canSplit(int divider) const
 {
 	//TODO
 	int states = this->data->size();

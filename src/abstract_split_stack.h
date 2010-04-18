@@ -47,7 +47,7 @@ public:
      * @brief Returns item from the top of the stack
      * @return Last item
      */
-    virtual int head();
+    virtual int head() const;
 
 	/**	
 	*	@brief Turn head value into negative	
@@ -69,39 +69,57 @@ public:
     virtual int size() const;
 
     /**
-     * @brief return as integer Array
-     * @return Pointer to array of splitted items
+     * @brief Return as integer array (without enclosing zero)
+     * @return Pointer to array of integers
      */
-    virtual int* toArray();
+    virtual int* toArray() const;
+    
+    /**
+     * @brief Return as integer array
+     * @param enclosingZero If true enclosing zero will appended after the array
+     * @return Pointer to array of integers
+     */
+    virtual int* toArray(bool enclosingZero) const;
 
     /**
-     * @brief Split the stack (same as split())
-     * @return Pointer to new instance of SplitStack<T>
+     * @brief Split the stack (extract half - default divider is 2)
+     * @return Pointer to new instance of SplitStack
+     */
+    virtual AbstractSplitStack* split();
+    
+    /**
+     * @brief Split the stack
+     * @param divider Number of parts that stack should be divided into
+     * @return Pointer to new instance of SplitStack
      */
     virtual AbstractSplitStack* split(int divider) = 0;
     
     /**
-     * @brief Whether the stack can be splitted
+     * @brief Whether the stack can be splitted (default divider is 2)
      * @return True if is possible to split the stack, False otherwise
      */
-    virtual bool canSplit(int divider) = 0;
+    virtual bool canSplit() const;
+    
+    /**
+     * @brief Whether the stack can be splitted
+     * @param divider Number of parts that stack should be divided into
+     * @return True if is possible to split the stack, False otherwise
+     */
+    virtual bool canSplit(int divider) const = 0;
 	
 	/**	
 	*	@brief returns readable current state of stack 
 	* 	@return readable state
 	*/
-	virtual string toString();	
+	virtual string toString() const;	
 	
   protected:
     // TODO
 	    vector<int>* data;
 		
-		int getFloorCount();		
-		int getStatesCountInFloor(int floor);
-		int getFloorStartIndex(int floor);
-
-  // register typename for SplitStack
-  //typedef SplitStack IntSplitStack;
+		int getFloorCount() const;		
+		int getStatesCountInFloor(int floor) const;
+		int getFloorStartIndex(int floor) const;
 };
 
 #endif // SPLITSTACK_H

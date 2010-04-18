@@ -1,20 +1,13 @@
 #include "d_split_stack.h"
 
-DSplitStack::DSplitStack()
-{
-}
-
-DSplitStack::~DSplitStack()
-{
-}
-
-bool DSplitStack::canSplit(int divider)
+bool DSplitStack::canSplit(int divider) const
 {
 	//TODO 
 	int states = this->data->size();
 	int floors = this->getFloorCount();
 	float countf = (states - floors) / divider;
 	int counti = ceil(countf);
+  
 	return (counti > 1);
 }
 
