@@ -2,6 +2,10 @@
 #define PARALLELTASK_H
 
 #include <mpi.h>
+#include "d_split_stack.h"
+#include "priority_queue.h"
+#include "configuration.h"
+#include "mpi_constants.h"
 
 /**
  * @class ParallelTask
@@ -17,43 +21,70 @@
 class ParallelTask
 {
 
-  public:
-    ParallelTask();
-    ~ParallelTask();
+public:
+  ParallelTask();
+  ~ParallelTask();
 
-    /**
-     * @brief The main business of this algorithm
-     * @param start Initial configuration
-     * @return Sollution - the best found Configuration
-     */
-    Configuration* solve(Configuration* start);
+  /**
+   * @brief The main business of this algorithm
+   * @param start Initial configuration
+   * @return Sollution - the best found Configuration
+   */
+  Configuration* solve(Configuration* start);
 
-  private:
+  /**
+   * @brief Is this peer master ? (process 0 is master)
+   * @return True if this MPI peer has id 0, False otherwise
+   */
+  bool isMaster() const;
+
+private:
   Configuration* bestConf;
   Configuration* initConf;
   Configuration* workConf;
+
+  AbstractSplitStack* stack;
   
-  IntSplitStack* stack;
   int maxSteps;
+  int figuresCount;
+  
   bool isFinished;
+  bool isActive;
   
-  void checkMessage();
+  bool requestSent;
+  bool tokenSent;
   
-  void handleWorkRequest(MPI_Status* status);
-  void handleWorkSent(MPI_Status* status);
-  void handleWorkNone(MPI_Status* status);
-  void handleToken(MPI_Status* status);
-  void handleFinish(MPI_Status* status);
+  int recievedSollutionsCount;
   
-  void sendWorkRequest(int peer);
-  void sendWork(int peer, int* work);
-  void sendWorkNone(int peer);
-  void sendToken(int peer, bool token);
-  void sendFinish();
-  void sendFinish(int* sollution);
+  bool stopOnBestFound;
+  bool stopOnFirstFound;
   
-  // run the state machine
-  void process();
+  int workRequestPeerCounter;
+  
+  int peerId;
+  int peersCount;
+
+  void checkNewMessage();
+
+  void handleWorkRequest();
+  void handleWorkSent();
+  void handleWorkNone();
+  void handleToken();
+  void handleFinish();
+  void handleSollution();
+  void handleNoSollution();
+
+  void send(int recieverId, int tag);
+  void send(int recieverId, int tag, char message);
+  void send(int recieverId, int tag, int* message, int msgLength);
+
+  void processStack();
+  bool checkConfiguration(const Configuration* conf);
+  void noWork();
+  int getNextPeerId() const;
+  int getNextPeerId(int id) const;
+  int getNextWorkRequestPeerId();
+  void incRecievedSollutions();
 
 };
 

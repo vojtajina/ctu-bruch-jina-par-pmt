@@ -1,0 +1,11 @@
+mpic++ \
+main.cpp \
+configuration.cpp \
+task.cpp \
+priority_queue.cpp \
+parallel_task.cpp \
+abstract_split_stack.cpp \
+d_split_stack.cpp \
+dr_split_stack.cpp \
+r_split_stack.cpp \
+-o par
