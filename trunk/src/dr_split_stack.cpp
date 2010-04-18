@@ -1,14 +1,6 @@
 #include "dr_split_stack.h"
 
-DRSplitStack::DRSplitStack()
-{
-}
-
-DRSplitStack::~DRSplitStack()
-{
-}
-
-bool DRSplitStack::canSplit(int divider)
+bool DRSplitStack::canSplit(int divider) const
 {	
 	int states = this->data->size();
 	int floors = this->getFloorCount();

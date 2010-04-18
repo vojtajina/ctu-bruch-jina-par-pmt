@@ -3,13 +3,12 @@
 
 #include "abstract_split_stack.h" // Base class: AbstractSplitStack
 #include "math.h"
-class DSplitStack : public AbstractSplitStack {
 
-public:
-	DSplitStack();
-	~DSplitStack();
-	DSplitStack* split(int divider);
-	bool canSplit(int divider);
+class DSplitStack : public AbstractSplitStack
+{
+  public:
+    DSplitStack* split(int divider);
+    bool canSplit(int divider) const;
 };
 
 #endif // DSPLITSTACK_H
