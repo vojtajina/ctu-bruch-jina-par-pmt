@@ -39,9 +39,9 @@ Configuration::Configuration(int k, int q, int* F, int K)
     if (F[a]==i)
       a++;
   }
-  
+
   if (a < q)
-    throw InvalidPositionException();
+    throw InvalidPositionException(F[a]);
 
   Configuration::instanceCount++;
 }
@@ -338,7 +338,28 @@ int Configuration::getSideLength() const
 void Configuration::validatePosition(int& pos) const
 {
   if (pos < 1 || pos > fieldLength)
-    throw InvalidPositionException();
+    throw InvalidPositionException(pos);
+}
+
+int* Configuration::toArray() const
+{
+  return Configuration::toArray(false);
+}
+
+int* Configuration::toArray(bool addZero) const
+{
+  int size = this->getStepsCount();
+  int* iArray = new int[addZero ? size + 1 : size];
+
+  for (int i = 0; i < size; i++)
+  {
+    iArray[i] = queenSteps[i];
+  }
+
+  if (addZero)
+    iArray[size] = 0;
+
+  return iArray;
 }
 
 int Configuration::instanceCount = 0;
