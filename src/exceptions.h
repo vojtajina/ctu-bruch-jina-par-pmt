@@ -2,6 +2,8 @@
 #define EXCEPTIONS_H
 
 #include <exception>
+#include <stdio.h>
+
 using namespace std;
 
 /**
@@ -17,11 +19,22 @@ using namespace std;
  * @brief This exception is thrown when someone refers to invalid position.
  * Invalid position is out of field range of the configuration.
  */
+
 class InvalidPositionException: public exception
 {
-  virtual const char* what() const throw() {
-    return "This position is invalid !";
-  }
+  private:
+    char message[50];
+
+  public:
+    InvalidPositionException(int position)
+    {
+      sprintf(message, "This position(%d) is invalid !", position);
+    }
+
+    virtual const char* what() const throw()
+    {
+      return message;
+    }
 };
 
 
@@ -32,11 +45,22 @@ class InvalidPositionException: public exception
  * @file exceptions.h
  * @brief This exception is thrown when someone uses out of range priority
  */
+
 class InvalidPriorityException: public exception
 {
-  virtual const char* what() const throw() {
-    return "This priority is invalid !";
-  }
+  private:
+    char message[50];
+
+  public:
+    InvalidPriorityException(int priority)
+    {
+      sprintf(message, "This priority(%d) is invalid !", priority);
+    }
+
+    virtual const char* what() const throw()
+    {
+      return message;
+    }
 };
 
 #endif // EXCEPTIONS_H

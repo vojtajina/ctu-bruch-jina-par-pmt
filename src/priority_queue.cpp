@@ -36,7 +36,7 @@ template <typename T>
 void PriorityQueue<T>::push(T item, int priority)
 {
   if (priority < 0 || priority > (priorityCount - 1))
-    throw InvalidPriorityException();
+    throw InvalidPriorityException(priority);
 
   queue<T>* q = &queues[priority];
   q->push(item);

@@ -221,6 +221,19 @@ class Configuration
      * Test and debug purposes
      */
     void dump() const;
+    
+    /**
+     * @brief Return as integer array (array of steps)
+     * @return Pointer to integer array
+     */
+    int* toArray() const;
+    
+    /**
+     * @brief Return as integer array (array of steps)
+     * @param addZero If true - enclosing zero is added at the end of the array
+     * @return Pointer to integer array
+     */
+    int* toArray(bool addZero) const;
 };
 
 #endif // CONFIGURATION_H
