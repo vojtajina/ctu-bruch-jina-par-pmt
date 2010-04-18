@@ -20,3 +20,10 @@
 === 16.4.2010, 17.00 ===
   * skype call
   * discuss stack implementation
+
+=== 17.4.2010, 21.00 ==
+  * skype call
+  * discuss unit tests
+  * stack architecture
+  * parallel task
+  * svn co-operation
