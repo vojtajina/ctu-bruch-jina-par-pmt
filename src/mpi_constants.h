@@ -16,8 +16,20 @@
 // signal from master peer - number 0 (end of the whole process)
 #define MSG_FINISH       1004
 
+// send sollution to master, after finish recieved
+#define MSG_SOLLUTION    1005
+
+// send to master - no sollution found by this peer
+#define MSG_NO_SOLLUTION 1006
+
 // token values
-#define TOKEN_WHITE      true
-#define TOKEN_BLACK      false
+// MPI has no type bool, therefore I have used char
+#define TOKEN_WHITE      'w'
+#define TOKEN_BLACK      'b'
+
+
+// configuration
+#define BUFFER_SIZE        20
+#define CHECK_MSG_INTERVAL 100
 
 #endif // MPICONSTANTS_H
