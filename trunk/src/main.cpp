@@ -1,9 +1,11 @@
-#include <iostream>
 #include <stdlib.h>
 #include "configuration.h"
-#include "parallel_task.h"
 
-using namespace std;
+#ifdef SEQUENTIAL
+  #include "sequential_task.h"
+#else
+  #include "parallel_task.h"
+#endif
 
 /**
  * ARGUMENTS
@@ -17,7 +19,7 @@ int main(int argc, char **argv)
   // parse inputs
   int k, K, q;
   int* F;
-  
+
   if (argc < 4)
     goto bad_args;
 
@@ -26,49 +28,56 @@ int main(int argc, char **argv)
     k = atoi(argv[1]);
     K = atoi(argv[2]);
     q = atoi(argv[3]);
-    
+
     if (argc < (4 + q))
       goto bad_args;
 
     F = new int[q];
+
     for (int i = 0; i < q; i++)
       F[i] = atoi(argv[i+4]);
 
   }
   catch (exception& e)
   {
-    cout << "Exception: " << e.what() << "\n";
+    printf("Exception: %s\n", e.what());
     goto bad_args;
   }
 
   // solve
   Configuration* cnf;
-  ParallelTask* t;
-  
+  AbstractTask* t;
+
   try
   {
+    #ifdef SEQUENTIAL
+      t = new SequentialTask();
+    #else
+      t = new ParallelTask();
+    #endif
+    
     cnf = new Configuration(k, q, F, K);
-    t = new ParallelTask();
     cnf = t->solve(cnf);
-    if (t->isMaster())
+
+    if (cnf)
     {
       cnf->dump();
-      cout << "Start figures: " << q << " Steps: " << cnf->getStepsCount() << "\n";
+      delete cnf;
     }
   }
   catch (exception& e)
   {
-    cout << "Exception: " << e.what();
+    printf("Exception: %s\n", e.what());
   }
-  
+
   // free the memory
   delete[] F;
   delete t;
-  delete cnf;
 
   return 0;
-  
-  bad_args:
-  cout << "Bad input arguments\n";
+
+bad_args:
+  printf("Bad input arguments\n");
+
   return 1;
 }
