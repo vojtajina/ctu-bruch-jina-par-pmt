@@ -18,30 +18,25 @@ Configuration::Configuration(int k, int q, int* F, int K)
   queenSteps[0] = K;
 
   // load figure positions
-  int a = 0;
-
   for (int i = 1; i <= fieldLength; i++)
   {
-    // there is a figure on i position
-    if (a < q && F[a] ==i)
-    {
-      figuresPosition[i] = true;
-      figuresStartPosition[i] = true;
-    }
-
-    // no figure on i position
-    else
-    {
-      figuresPosition[i] = false;
-      figuresStartPosition[i] = false;
-    }
-
-    if (F[a]==i)
-      a++;
+    figuresPosition[i] = false;
+    figuresStartPosition[i] = false;
   }
 
-  if (a < q)
-    throw InvalidPositionException(F[a]);
+  // add figures
+  for (int i = 0; i < q; i++)
+  {
+    // validate position
+    this->validatePosition(F[i]);
+    
+    // check unique figure position
+    if (figuresPosition[F[i]])
+      throw InvalidPositionException(F[i]);
+    
+    figuresPosition[F[i]] = true;
+    figuresStartPosition[F[i]] = true;
+  }
 
   Configuration::instanceCount++;
 }
