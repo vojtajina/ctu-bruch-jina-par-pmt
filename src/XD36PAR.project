@@ -13,10 +13,11 @@
     <File Name="dr_split_stack.cpp"/>
     <File Name="d_split_stack.cpp"/>
     <File Name="main.cpp"/>
-    <File Name="parallel_task.cpp"/>
     <File Name="priority_queue.cpp"/>
     <File Name="r_split_stack.cpp"/>
-    <File Name="task.cpp"/>
+    <File Name="abstract_task.cpp"/>
+    <File Name="parallel_task.cpp"/>
+    <File Name="sequential_task.cpp"/>
   </VirtualDirectory>
   <VirtualDirectory Name="header">
     <File Name="abstract_split_stack.h"/>
@@ -25,10 +26,11 @@
     <File Name="d_split_stack.h"/>
     <File Name="exceptions.h"/>
     <File Name="mpi_constants.h"/>
-    <File Name="parallel_task.h"/>
     <File Name="priority_queue.h"/>
     <File Name="r_split_stack.h"/>
-    <File Name="task.h"/>
+    <File Name="abstract_task.h"/>
+    <File Name="parallel_task.h"/>
+    <File Name="sequential_task.h"/>
   </VirtualDirectory>
   <Dependencies Name="Release"/>
   <Settings Type="Executable">

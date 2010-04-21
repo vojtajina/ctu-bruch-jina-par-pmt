@@ -6,7 +6,10 @@ ParallelTask::ParallelTask()
   MPI_Init (0, 0);
   MPI_Comm_rank (MPI_COMM_WORLD, &peerId);
   MPI_Comm_size (MPI_COMM_WORLD, &peersCount);
-  workRequestPeerCounter = peerId;
+
+  localRequestsCounter = peerId;
+  stopOnFirstFound = false;
+  stopOnBestFound = true;
 }
 
 ParallelTask::~ParallelTask()
@@ -14,50 +17,33 @@ ParallelTask::~ParallelTask()
   MPI_Finalize();
 }
 
-Configuration* ParallelTask::solve (Configuration* start)
+void ParallelTask::initConfiguration(Configuration* init)
 {
-  // init
-  if (start->getSideLength() >= start->getFiguresCount() )
-    maxSteps = 2 * start->getFiguresCount();
-  else
-    maxSteps = (3 * start->getFiguresCount() ) - start->getSideLength();
-
-  figuresCount = start->getFiguresCount();
-
-  isFinished = false;
-
-  bestConf = NULL;
+  AbstractTask::initConfiguration(init);
 
   isActive = true;
-
-  initConf = start;
-
-  workConf = new Configuration (*start);
-
   requestSent = false;
-
   tokenSent = false;
-
   recievedSollutionsCount = 0;
-
-  stopOnBestFound = false;
-
-  stopOnFirstFound = false;
-
   stack = new DSplitStack();
 
   if (this->isMaster() )
   {
-    IntPriQueue* positions = start->getAvailablePositions();
+    IntPriQueue* positions = init->getAvailablePositions();
 
     printf("%d: init positions(%d)\n", peerId, positions->size());
 
     while (!positions->empty() )
       stack->push (positions->reversePop() );
 
-    this->checkNewMessage();
+    delete positions;
   }
+  // TODO slaves should wait for work
+  // TODO master should divide stack and send init work to each slave
+}
 
+void ParallelTask::processConfiguration()
+{
   // state machine
   while (isActive)
   {
@@ -65,17 +51,18 @@ Configuration* ParallelTask::solve (Configuration* start)
     this->noWork();
     this->checkNewMessage();
   }
+}
 
-  //printf ("Task %d of %d\n", peerId, peersCount);
-
-  // release memory
-  delete initConf;
-
-  delete workConf;
-
+void ParallelTask::releaseMemory()
+{
+  AbstractTask::releaseMemory();
   delete stack;
 
-  return bestConf;
+  if (!this->isMaster() && bestConf)
+  {
+    delete bestConf;
+    bestConf = 0;
+  }
 }
 
 bool ParallelTask::isMaster() const
@@ -99,11 +86,11 @@ int ParallelTask::getNextWorkRequestPeerId()
   // skip myself
   do
   {
-    workRequestPeerCounter = this->getNextPeerId(workRequestPeerCounter);
+    localRequestsCounter = this->getNextPeerId(localRequestsCounter);
   }
-  while (workRequestPeerCounter == peerId);
+  while (localRequestsCounter == peerId);
 
-  return workRequestPeerCounter;
+  return localRequestsCounter;
 }
 
 void ParallelTask::incRecievedSollutions()
@@ -191,7 +178,10 @@ void ParallelTask::processStack()
       workConf->move(position);
       stack->turnHead();
 
-      if (this->checkConfiguration(workConf))
+      if (workConf->final())
+        printf("%d: SOLLUTION(%d)\n", peerId, workConf->getStepsCount());
+
+      if (this->checkConfiguration())
       {
         IntPriQueue* pq = workConf->getAvailablePositions();
 
@@ -205,62 +195,6 @@ void ParallelTask::processStack()
     if ((++counter % CHECK_MSG_INTERVAL) == 0)
       this->checkNewMessage();
   }
-}
-
-bool ParallelTask::checkConfiguration(const Configuration* conf)
-{
-  // is sollution
-  if (conf->final())
-  {
-    printf("%d: SOLLUTION (%d)\n", peerId, conf->getStepsCount());
-
-    // current best is empty - this is first sollution
-
-    if (!bestConf)
-    {
-      bestConf = new Configuration(*conf);
-
-      // best sollution found
-
-      if (stopOnBestFound && bestConf->getStepsCount() == figuresCount)
-        isFinished = true;
-
-      // stop whole algorithm
-      if (stopOnFirstFound)
-        isFinished = true;
-    }
-
-    // its not first sollution
-    else
-    {
-      // its better than current best
-      if (bestConf->getStepsCount() > conf->getStepsCount())
-      {
-        // free the memory (delete the old best)
-        delete bestConf;
-
-        bestConf = new Configuration(*conf);
-
-        // best sollution found
-
-        if (stopOnBestFound && bestConf->getStepsCount() == figuresCount)
-          isFinished = true;
-      }
-    }
-
-    // stop expanding this branch
-    return false;
-  }
-
-  // reach max steps - stop expanding
-  if (conf->getStepsCount() >= maxSteps)
-    return false;
-
-  // reach current bestConf steps - stop expanding
-  if (bestConf && (conf->getStepsCount() >= bestConf->getStepsCount()))
-    return false;
-
-  return true;
 }
 
 void ParallelTask::noWork()
