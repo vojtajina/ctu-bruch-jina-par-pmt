@@ -5,10 +5,10 @@ bool DSplitStack::canSplit(int divider) const
 	//TODO 
 	int states = this->data->size();
 	int floors = this->getFloorCount();
-	float countf = (states - floors) / divider;
+	float countf = (states - floors) / (double)divider;
 	int counti = ceil(countf);
   
-	return (counti > 1);
+	return (counti >= 1);
 }
 
 DSplitStack* DSplitStack::split(int divider)

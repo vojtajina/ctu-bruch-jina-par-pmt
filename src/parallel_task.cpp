@@ -37,9 +37,37 @@ void ParallelTask::initConfiguration(Configuration* init)
       stack->push (positions->reversePop() );
 
     delete positions;
+
+    int splitDivider;
+    int* data;
+    AbstractSplitStack* ss;
+
+    // send work to each slave
+    for (int i = 1; i < peersCount; i++)
+    {
+      splitDivider = peersCount - i + 1;
+      printf("%d: split for %d\n", peerId, splitDivider);
+      if (stack->canSplit(splitDivider))
+      {
+        ss = stack->split(splitDivider);
+        data = ss->toArray();
+        this->send(i, MSG_WORK_SENT, data, ss->size());
+
+        delete ss;
+        delete data;
+      }
+      else
+      {
+        int zero = 0;
+        this->send(i, MSG_WORK_SENT, &zero, 1);
+      }
+    }
   }
-  // TODO slaves should wait for work
-  // TODO master should divide stack and send init work to each slave
+  // slave wait for initial work
+  else
+  {
+    this->handleWorkSent();
+  }
 }
 
 void ParallelTask::processConfiguration()
@@ -298,7 +326,7 @@ void ParallelTask::handleWorkRequest ()
   // i can split the stack
   // so i have some work for the sender
 
-  if (stack->canSplit())
+  if (stack->canSplit() && !isFinished)
   {
     AbstractSplitStack* s = stack->split();
     int* sa = s->toArray();
@@ -332,7 +360,7 @@ void ParallelTask::handleWorkSent ()
     stack->push(buffer[i]);
 
     if (buffer[i] < 0)
-      workConf->move(buffer[i]);
+      workConf->move(-buffer[i]);
 
     i++;
   }
