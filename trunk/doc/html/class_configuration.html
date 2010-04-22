@@ -18,6 +18,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -38,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
     </ul>
   </div>
@@ -71,6 +73,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns <a class="el" href="class_priority_queue.html">PriorityQueue</a> of available positions (positions the queen can move to).  <a href="#aea495abb2084891fef34c972b586609a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_configuration.html#a154b6bf5556ec7e5953652171876dca4">dump</a> () const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dump the configuration to console Test and debug purposes.  <a href="#a154b6bf5556ec7e5953652171876dca4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_configuration.html#afc300d192257586adce4c19bfa605229">toArray</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return as integer array (array of steps).  <a href="#afc300d192257586adce4c19bfa605229"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_configuration.html#a0f08d93f2107c97313f6498f9d127567">toArray</a> (bool addZero) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return as integer array (array of steps).  <a href="#a0f08d93f2107c97313f6498f9d127567"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <dl class="author"><dt><b>Author:</b></dt><dd>Vojta </dd></dl>
@@ -336,6 +342,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 </div>
 </div>
+<a class="anchor" id="a0f08d93f2107c97313f6498f9d127567"></a><!-- doxytag: member="Configuration::toArray" ref="a0f08d93f2107c97313f6498f9d127567" args="(bool addZero) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int * Configuration::toArray </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>addZero</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return as integer array (array of steps). </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>addZero</em>&nbsp;</td><td>If true - enclosing zero is added at the end of the array </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to integer array </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="afc300d192257586adce4c19bfa605229"></a><!-- doxytag: member="Configuration::toArray" ref="afc300d192257586adce4c19bfa605229" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int * Configuration::toArray </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return as integer array (array of steps). </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to integer array </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="configuration_8h_source.html">configuration.h</a></li>
 <li>src/<a class="el" href="configuration_8cpp.html">configuration.cpp</a></li>
@@ -346,7 +399,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -355,7 +408,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Apr 11 21:57:41 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
