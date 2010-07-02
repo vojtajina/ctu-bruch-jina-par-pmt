@@ -116,6 +116,12 @@ class ParallelTask : public AbstractTask
     void handleWorkRequest();
     
     /**
+     * @brief Handles MSG_WORK_REQ_INDIRECT received
+     * @brief Master can receive msg from requester (without any data
+     */
+    void handleWorkRequestIndirect();
+    
+    /**
     * @brief Handles MSG_WORK_SENT received
     * @brief Add received work to local stack
     */
@@ -229,6 +235,12 @@ class ParallelTask : public AbstractTask
      * @brief The algorithm is set in donorAlg member
      */
     void sendWorkRequest();
+    
+    /**
+     * @brief Check stack and send MSG_WORK_SENT or MSG_WORK_NOWORK
+     * @param recieverId Id of the receiver
+     */
+    void sendWork(int recieverId);
     
     /**
      * @brief Check whether there is a new message

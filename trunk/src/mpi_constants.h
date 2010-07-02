@@ -4,6 +4,12 @@
 // sender peer requests some work
 #define MSG_WORK_REQUEST 1000
 
+// sender peer requests some for indirect
+// requester to master (without data)
+// master to donor (with integer - id of requester)
+// donor will reply MSG_WORK_SENT or MSG_WORK_NOWORK to requester
+#define MSG_WORK_REQ_INDIRECT 1008
+
 // sender peer sends some work
 #define MSG_WORK_SENT    1001
 

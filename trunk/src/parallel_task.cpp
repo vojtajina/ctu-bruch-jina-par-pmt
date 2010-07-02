@@ -12,7 +12,7 @@ ParallelTask::ParallelTask()
 
   stopOnFirstFound = false;
   stopOnBestFound = true;
-  donorAlg = ParallelTask::LOCAL;
+  donorAlg = ParallelTask::GLOBAL;
 }
 
 ParallelTask::~ParallelTask()
@@ -315,24 +315,8 @@ void ParallelTask::handleWorkRequest ()
   MPI_Recv(0, 0, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
   printf("%d: recieved work request\n", peerId);
-  // i can split the stack
-  // so i have some work for the sender
 
-  if (stack->canSplit() && !isFinished)
-  {
-    AbstractSplitStack* s = stack->split();
-    int* sa = s->toArray();
-    this->send(status.MPI_SOURCE, MSG_WORK_SENT, sa, s->size());
-
-    delete s;
-    delete sa;
-  }
-
-  // there is no work
-  else
-  {
-    this->send(status.MPI_SOURCE, MSG_WORK_NOWORK);
-  }
+  this->sendWork(status.MPI_SOURCE);
 }
 
 void ParallelTask::handleWorkSent ()
@@ -505,6 +489,39 @@ void ParallelTask::handleSollutionSteps()
   }
 }
 
+void ParallelTask::handleWorkRequestIndirect()
+{
+  MPI_Status status;
+  int buffer;
+
+  if (this->isMaster())
+  {
+    MPI_Recv(0, 0, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
+
+    // select the donor (use master's local counter = global counter)
+    do
+    {
+      localRequestsCounter = this->getNextPeerId(localRequestsCounter);
+    }
+    while (localRequestsCounter == status.MPI_SOURCE);
+
+    // the master is donor, immediately send the work
+    if (localRequestsCounter == 0)
+    {
+      this->sendWork(status.MPI_SOURCE);
+    }
+    else
+    {
+      this->send(localRequestsCounter, MSG_WORK_REQ_INDIRECT, status.MPI_SOURCE);
+    }
+  }
+  else
+  {
+    MPI_Recv(&buffer, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
+    this->sendWork(buffer);
+  }
+}
+
 bool ParallelTask::checkConfiguration()
 {
   if (globalBestConfSteps > 0 && workConf->getStepsCount() >= globalBestConfSteps)
@@ -567,4 +584,24 @@ void ParallelTask::sendWorkRequest()
 
   requestSent = true;
 
+}
+
+void ParallelTask::sendWork(int recieverId)
+{
+  // there is some available work
+  if (stack->canSplit() && !isFinished)
+  {
+    AbstractSplitStack* s = stack->split();
+    int* sa = s->toArray();
+    this->send(recieverId, MSG_WORK_SENT, sa, s->size());
+
+    delete s;
+    delete sa;
+  }
+
+  // there is no work
+  else
+  {
+    this->send(recieverId, MSG_WORK_NOWORK);
+  }
 }
