@@ -2,6 +2,7 @@
 #define PARALLELTASK_H
 
 #include <mpi.h>
+#include <cstdlib> 
 #include "d_split_stack.h"
 #include "dr_split_stack.h"
 #include "r_split_stack.h"
@@ -28,6 +29,11 @@ class ParallelTask : public AbstractTask
      * @brief Default destructor (closes MPI)
      */
     ~ParallelTask();
+    
+    /**
+     * @brief Enum of possible select donor algorithms
+     */
+    enum SelectDonorAlgorithm { LOCAL, GLOBAL, RANDOM };
 
   protected:
 
@@ -63,6 +69,12 @@ class ParallelTask : public AbstractTask
     * @brief Whether this peer is still active in the MPI communication (can be finished, but still active)
     */
     bool isActive;
+    
+    /**
+     * @brief Algorithm, that will be used for requesting work
+     * @brief Default is LOCAL counter
+     */
+    SelectDonorAlgorithm donorAlg;
 
     /**
     * @brief Whether request for work has been sent
@@ -213,6 +225,12 @@ class ParallelTask : public AbstractTask
     void broadcast(int tag, int* message, int msgLength);
     
     /**
+     * @brief Send request for work - with selected algorithm
+     * @brief The algorithm is set in donorAlg member
+     */
+    void sendWorkRequest();
+    
+    /**
      * @brief Check whether there is a new message
      */
     void checkNewMessage();
@@ -240,14 +258,6 @@ class ParallelTask : public AbstractTask
     * @return Id of the next peer
     */
     int getNextPeerId(int id) const;
-    
-    /**
-    * @brief Determine next peer to send request for work
-    * @brief Uses local counter
-    * @todo Different implementations
-    * @return Id of the peer
-    */
-    int getNextWorkRequestPeerId();
     
     /**
     * @brief Increment sollutions counter and check whether it was the last
