@@ -10,6 +10,7 @@ ParallelTask::ParallelTask()
   localRequestsCounter = peerId;
   stopOnFirstFound = false;
   stopOnBestFound = true;
+  globalBestConfSteps = 0;
 }
 
 ParallelTask::~ParallelTask()
@@ -182,6 +183,11 @@ void ParallelTask::checkNewMessage()
       case MSG_NO_SOLLUTION:
         this->handleNoSollution();
         break;
+
+        // send has found new global best, here is the steps value
+      case MSG_SOLLUTION_STEPS:
+        this->handleSollutionSteps();
+        break;
     }
   }
 }
@@ -302,7 +308,8 @@ void ParallelTask::handleToken ()
     if (!isFinished && !stack->empty())
       token = TOKEN_BLACK;
 
-    this->send(this->getNextPeerId(), MSG_TOKEN, token);
+    // if token is black - send direct to master
+    this->send((token == TOKEN_BLACK) ? 0 : this->getNextPeerId(), MSG_TOKEN, token);
   }
 }
 
@@ -415,6 +422,13 @@ void ParallelTask::send(int recieverId, int tag)
   MPI_Send (0, 0, MPI_INT, recieverId, tag, MPI_COMM_WORLD);
 }
 
+void ParallelTask::send(int recieverId, int tag, int message)
+{
+  printf("%d: send %d(value: %d) to %d\n", peerId, tag, message, recieverId);
+
+  MPI_Send (&message, 1, MPI_INT, recieverId, tag, MPI_COMM_WORLD);
+}
+
 void ParallelTask::send(int recieverId, int tag, char message)
 {
   printf("%d: send(%c) %d to %d\n", peerId, message, tag, recieverId);
@@ -444,4 +458,70 @@ void ParallelTask::send(int recieverId, int tag, int* message, int msgLength)
   buffer[msgLength] = 0;
 
   MPI_Send (&buffer, msgLength + 1, MPI_INT, recieverId, tag, MPI_COMM_WORLD);
+}
+
+void ParallelTask::broadcast(int tag)
+{
+  for (int i = 0; i < peersCount; i++)
+  {
+    if (i != peerId)
+      this->send(i, tag);
+  }
+}
+
+void ParallelTask::broadcast(int tag, int message)
+{
+  for (int i = 0; i < peersCount; i++)
+  {
+    if (i != peerId)
+      this->send(i, tag, message);
+  }
+}
+
+void ParallelTask::broadcast(int tag, char message)
+{
+  for (int i = 0; i < peersCount; i++)
+  {
+    if (i != peerId)
+      this->send(i, tag, message);
+  }
+}
+
+void ParallelTask::broadcast(int tag, int* message, int msgLength)
+{
+  for (int i = 0; i < peersCount; i++)
+  {
+    if (i != peerId)
+      this->send(i, tag, message, msgLength);
+  }
+}
+
+void ParallelTask::handleSollutionSteps()
+{
+  printf("%d: recieved new global sollution (steps)\n", peerId);
+
+  MPI_Status status;
+  int buffer;
+  MPI_Recv(&buffer, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
+
+  if (globalBestConfSteps > buffer || globalBestConfSteps == 0)
+    globalBestConfSteps = buffer;
+}
+
+bool ParallelTask::checkConfiguration()
+{
+  if (globalBestConfSteps > 0 && workConf->getStepsCount() >= globalBestConfSteps)
+  {
+    printf("%d: work conf has reached globalBest - stop\n", peerId);
+    return false;
+  }
+
+  if (workConf->final() && (globalBestConfSteps == 0 || globalBestConfSteps > workConf->getStepsCount()))
+  {
+    printf("%d: new globalBest - broadcast\n", peerId);
+    globalBestConfSteps = workConf->getStepsCount();
+    this->broadcast(MSG_SOLLUTION_STEPS, globalBestConfSteps);
+  }
+
+  return AbstractTask::checkConfiguration();
 }

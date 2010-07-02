@@ -22,6 +22,10 @@
 // send to master - no sollution found by this peer
 #define MSG_NO_SOLLUTION 1006
 
+// sender has found better sollution (than current global best)
+// this message contains only number of steps not whole configuration
+#define MSG_SOLLUTION_STEPS 1007
+
 // token values
 // MPI has no type bool, therefore I have used char
 #define TOKEN_WHITE      'w'

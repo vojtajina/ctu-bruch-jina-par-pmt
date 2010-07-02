@@ -42,6 +42,12 @@ class ParallelTask : public AbstractTask
      * @brief The core logic of the process (state machine)
      */
     void processConfiguration();
+    
+    /**
+     * @brief Checks working configuration, whether it is a sollution, determine end of the algorithm
+     * @return True if configuration should be expanded, False otherwise
+     */
+    bool checkConfiguration();
 
     /**
      * @brief Release dynamic allocated memory
@@ -135,6 +141,12 @@ class ParallelTask : public AbstractTask
     * @brief [used only by master]
     */
     void handleNoSollution();
+    
+    /**
+     * @brief Handles MSG_SOLLUTION_STEPS received
+     * @brief This message contains new global sollution (current best)
+     */
+    void handleSollutionSteps();
 
     /**
      * @brief Sends message without any content
@@ -142,6 +154,14 @@ class ParallelTask : public AbstractTask
      * @param tag Tag of the message
      */
     void send(int recieverId, int tag);
+    
+    /**
+     * @brief Sends message with one integer
+     * @param recieverId Id of the receiver
+     * @param tag Tag of the message
+     * @param message The content of the message
+     */
+    void send(int recieverId, int tag, int message);
     
     /**
      * @brief Sends message with one character
@@ -160,6 +180,38 @@ class ParallelTask : public AbstractTask
      */
     void send(int recieverId, int tag, int* message, int msgLength);
 
+    /**
+     * @brief Sends message without any content to all peers
+     * @see ParallelTask::send(int recieverId, int tag)
+     * @param tag Tag of the message
+     */
+    void broadcast(int tag);
+    
+    /**
+     * @brief Sends message with one integer to all peers
+     * @see ParallelTask::send(int recieverId, int tag, int message)
+     * @param tag Tag of the message
+     * @param message The content of the message
+     */
+    void broadcast(int tag, int message);
+    
+    /**
+     * @brief Sends message with one character to all peers
+     * @see ParallelTask::send(int recieverId, int tag, char message)
+     * @param tag Tag of the message
+     * @param message The content of the message
+     */
+    void broadcast(int tag, char message);
+    
+    /**
+     * @brief Sends message with array of integers to all peers
+     * @see ParallelTask::send(int recieverId, int tag, int* message, int msgLength);
+     * @param tag Tag of the message
+     * @param message Pointer to array of integers, that should be sent
+     * @param msgLength Size of the content array
+     */
+    void broadcast(int tag, int* message, int msgLength);
+    
     /**
      * @brief Check whether there is a new message
      */
@@ -208,6 +260,13 @@ class ParallelTask : public AbstractTask
     * @return True if this peer is master
     */
     bool isMaster() const;
+    
+    /**
+     * @brief The best sollution (across all peers)
+     * @brief It's not whole configuration object (only number of its steps)
+     * @brief When peer finds better Configuration than this number, broadcast the new value to all peers
+     */
+    int globalBestConfSteps;
 };
 
 #endif // PARALLELTASK_H
