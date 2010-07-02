@@ -21,9 +21,13 @@
   * skype call
   * discuss stack implementation
 
-=== 17.4.2010, 21.00 ==
+=== 17.4.2010, 21.00 ===
   * skype call
   * discuss unit tests
   * stack architecture
   * parallel task
   * svn co-operation
+
+=== 1.7.2010, 19.00 ===
+  * icq chat
+  * finishing project
