@@ -33,7 +33,7 @@
 
 
 // configuration
-#define BUFFER_SIZE        20
-#define CHECK_MSG_INTERVAL 100
+#define BUFFER_SIZE        30
+#define CHECK_MSG_INTERVAL 80
 
 #endif // MPICONSTANTS_H

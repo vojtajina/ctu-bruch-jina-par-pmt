@@ -8,9 +8,11 @@ ParallelTask::ParallelTask()
   MPI_Comm_size (MPI_COMM_WORLD, &peersCount);
 
   localRequestsCounter = peerId;
+  globalBestConfSteps = 0;
+
   stopOnFirstFound = false;
   stopOnBestFound = true;
-  globalBestConfSteps = 0;
+  donorAlg = ParallelTask::LOCAL;
 }
 
 ParallelTask::~ParallelTask()
@@ -107,19 +109,6 @@ int ParallelTask::getNextPeerId() const
 int ParallelTask::getNextPeerId(int id) const
 {
   return (id + 1) % peersCount;
-}
-
-int ParallelTask::getNextWorkRequestPeerId()
-{
-  // workRequestPeerCounter is local counter
-  // skip myself
-  do
-  {
-    localRequestsCounter = this->getNextPeerId(localRequestsCounter);
-  }
-  while (localRequestsCounter == peerId);
-
-  return localRequestsCounter;
 }
 
 void ParallelTask::incRecievedSollutions()
@@ -233,7 +222,7 @@ void ParallelTask::processStack()
 
 void ParallelTask::noWork()
 {
-  printf("%d: no work\n", peerId);
+  printf("%d: no work (active: %s, finished: %s)\n", peerId, isActive ? "true" : "false", isFinished ? "true" : "false");
 
   // master does not request for work
   // send finish token
@@ -251,10 +240,7 @@ void ParallelTask::noWork()
   else
   {
     if (!requestSent)
-    {
-      this->send(this->getNextWorkRequestPeerId(), MSG_WORK_REQUEST);
-      requestSent = true;
-    }
+      this->sendWorkRequest();
   }
 }
 
@@ -294,8 +280,7 @@ void ParallelTask::handleToken ()
     // send finish token to all peers
     if (token == TOKEN_WHITE)
     {
-      for (int i = 1; i < peersCount; i++)
-        this->send(i, MSG_FINISH);
+      this->broadcast(MSG_FINISH);
     }
     else
     {
@@ -321,7 +306,7 @@ void ParallelTask::handleWorkNone ()
   printf("%d: no work\n", peerId);
 
   // send new request
-  this->send(this->getNextWorkRequestPeerId(), MSG_WORK_REQUEST);
+  this->sendWorkRequest();
 }
 
 void ParallelTask::handleWorkRequest ()
@@ -498,21 +483,33 @@ void ParallelTask::broadcast(int tag, int* message, int msgLength)
 
 void ParallelTask::handleSollutionSteps()
 {
-  printf("%d: recieved new global sollution (steps)\n", peerId);
-
   MPI_Status status;
   int buffer;
   MPI_Recv(&buffer, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
+  printf("%d: recieved new global sollution (steps: %d)\n", peerId, buffer);
+
+  // received globalBest is better than my current
   if (globalBestConfSteps > buffer || globalBestConfSteps == 0)
+  {
     globalBestConfSteps = buffer;
+
+    // check for best possible sollution
+    if (this->isMaster() && stopOnBestFound && globalBestConfSteps == initConf->getFiguresCount())
+    {
+      isFinished = true;
+      isActive = false;
+      tokenSent = true;
+      this->broadcast(MSG_FINISH);
+    }
+  }
 }
 
 bool ParallelTask::checkConfiguration()
 {
   if (globalBestConfSteps > 0 && workConf->getStepsCount() >= globalBestConfSteps)
   {
-    printf("%d: work conf has reached globalBest - stop\n", peerId);
+    //printf("%d: work conf has reached globalBest - stop\n", peerId);
     return false;
   }
 
@@ -520,8 +517,54 @@ bool ParallelTask::checkConfiguration()
   {
     printf("%d: new globalBest - broadcast\n", peerId);
     globalBestConfSteps = workConf->getStepsCount();
-    this->broadcast(MSG_SOLLUTION_STEPS, globalBestConfSteps);
+
+    // if master finds the best sollution - stop immediately
+    if (this->isMaster() && stopOnBestFound && globalBestConfSteps == initConf->getFiguresCount())
+    {
+      isFinished = true;
+      isActive = false;
+      tokenSent = true;
+      this->broadcast(MSG_FINISH);
+    }
+    else
+    {
+      this->broadcast(MSG_SOLLUTION_STEPS, globalBestConfSteps);
+    }
+
   }
 
   return AbstractTask::checkConfiguration();
+}
+
+void ParallelTask::sendWorkRequest()
+{
+  // this situation should not occur (master does not request)
+  // if so, the global behavior is local (global counter is master's local counter)
+  if (this->isMaster() && donorAlg == ParallelTask::GLOBAL)
+    donorAlg = ParallelTask::LOCAL;
+
+  int lastRequestPeerId = localRequestsCounter;
+
+  switch (donorAlg)
+  {
+      // send direct request to specific peer
+    case ParallelTask::RANDOM:
+    case ParallelTask::LOCAL:
+      do
+      {
+        localRequestsCounter = (donorAlg == ParallelTask::RANDOM) ? (rand() % peersCount) : this->getNextPeerId(localRequestsCounter);
+      }
+      // do not send to self and do not send to last
+      while (localRequestsCounter == peerId && (peersCount > 2 && localRequestsCounter == lastRequestPeerId));
+
+      this->send(localRequestsCounter, MSG_WORK_REQUEST);
+      break;
+      // send request to master
+    case ParallelTask::GLOBAL:
+      // TODO
+      break;
+  }
+
+  requestSent = true;
+
 }
