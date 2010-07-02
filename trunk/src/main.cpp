@@ -78,6 +78,7 @@ int main(int argc, char **argv)
 
 bad_args:
   printf("Bad input arguments\n");
+  printf("Arguments: field_size queen_position number_of_figures figures_positions\n");
 
   return 1;
 }
