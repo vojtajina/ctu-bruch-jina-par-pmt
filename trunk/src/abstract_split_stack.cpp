@@ -18,9 +18,10 @@ using namespace std;
  */
 
 
-AbstractSplitStack::AbstractSplitStack()
+AbstractSplitStack::AbstractSplitStack(int maxSplitDepth)
 {
   this->data = new vector<int>();
+  this->maxSplitDepth = maxSplitDepth;
 }
 
 AbstractSplitStack::~AbstractSplitStack()
@@ -69,7 +70,7 @@ int* AbstractSplitStack::toArray() const
 
 int* AbstractSplitStack::toArray(bool enclosingZero) const
 {
-  int size =this->data->size();
+  int size = this->data->size();
   int *iArray = new int[enclosingZero ? size + 1 : size];
 
   for (int i = 0; i < size; i++)

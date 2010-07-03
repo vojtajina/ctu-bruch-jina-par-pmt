@@ -28,7 +28,7 @@ void ParallelTask::initConfiguration(Configuration* init)
   requestSent = false;
   tokenSent = false;
   recievedSollutionsCount = 0;
-  stack = new DSplitStack();
+  stack = new DSplitStack(ceil(maxSteps / 2));
 
   if (this->isMaster() )
   {
@@ -50,13 +50,12 @@ void ParallelTask::initConfiguration(Configuration* init)
     {
       splitDivider = peersCount - i + 1;
       printf("%d: split for %d\n", peerId, splitDivider);
-      if (stack->canSplit(splitDivider))
-      {
-        ss = stack->split(splitDivider);
+      ss = stack->split(splitDivider);
+      if (ss)
+      {        
         data = ss->toArray();
         this->send(i, MSG_WORK_SENT, data, ss->size());
 
-        delete ss;
         delete data;
       }
       else
@@ -64,6 +63,8 @@ void ParallelTask::initConfiguration(Configuration* init)
         int zero = 0;
         this->send(i, MSG_WORK_SENT, &zero, 1);
       }
+      
+      delete ss;
     }
   }
   // slave wait for initial work

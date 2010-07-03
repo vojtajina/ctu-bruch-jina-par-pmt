@@ -6,7 +6,8 @@
 
 class DSplitStack : public AbstractSplitStack
 {
-  public:
+public:
+    DSplitStack(int maxSplitDepth) : AbstractSplitStack(maxSplitDepth) {};
     DSplitStack* split(int divider);
     bool canSplit(int divider) const;
 };
