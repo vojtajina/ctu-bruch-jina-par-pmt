@@ -2,7 +2,8 @@
 #define PARALLELTASK_H
 
 #include <mpi.h>
-#include <cstdlib> 
+#include <cstdlib>
+#include "math.h"
 #include "d_split_stack.h"
 #include "dr_split_stack.h"
 #include "r_split_stack.h"

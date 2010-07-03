@@ -6,7 +6,8 @@
 
 class DRSplitStack : public AbstractSplitStack
 {
-  public:
+public:
+    DRSplitStack(int maxSplitDepth) : AbstractSplitStack(maxSplitDepth) {};
     DRSplitStack* split(int divider);
     bool canSplit(int divider) const;
 };
