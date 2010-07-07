@@ -306,6 +306,8 @@ void Configuration::dump() const
   {
     if (steps[i] < 10 && steps[i] != -1)
       cout << "0" << steps[i];
+    else if (steps[i] == -1 && figuresPosition[i])
+      cout << "FF";
     else if (steps[i] == -1)
       cout << "--";
     else
@@ -348,7 +350,7 @@ int* Configuration::toArray(bool addZero) const
 
   for (int i = 0; i < size; i++)
   {
-    iArray[i] = queenSteps[i];
+    iArray[i] = queenSteps[i + 1];
   }
 
   if (addZero)

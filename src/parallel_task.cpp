@@ -52,7 +52,7 @@ void ParallelTask::initConfiguration(Configuration* init)
       printf("%d: split for %d\n", peerId, splitDivider);
       ss = stack->split(splitDivider);
       if (ss)
-      {        
+      {
         data = ss->toArray();
         this->send(i, MSG_WORK_SENT, data, ss->size());
 
@@ -63,7 +63,7 @@ void ParallelTask::initConfiguration(Configuration* init)
         int zero = 0;
         this->send(i, MSG_WORK_SENT, &zero, 1);
       }
-      
+
       delete ss;
     }
   }
@@ -251,14 +251,18 @@ void ParallelTask::handleFinish ()
   MPI_Recv(0, 0, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
   printf("%d: recieved finish\n", peerId);
-  // I have sollution - send it to master
 
-  if (bestConf)
+  // peer has sollution and it's equal to global best
+  if (bestConf && (globalBestConfSteps == 0 || globalBestConfSteps >= bestConf->getStepsCount()))
   {
+    printf("%d: my local best (steps: %d, figures: %d)\n", peerId, bestConf->getStepsCount(), bestConf->getFiguresCount());
+    bestConf->dump();
+
     int* sollution = bestConf->toArray();
     this->send(status.MPI_SOURCE, MSG_SOLLUTION, sollution, bestConf->getStepsCount());
     delete sollution;
   }
+  // no local sollution or it's not the global best - do not send
   else
   {
     this->send(status.MPI_SOURCE, MSG_NO_SOLLUTION);
@@ -330,6 +334,11 @@ void ParallelTask::handleWorkSent ()
   // TODO check if the stack is empty, it should be
 
   int i = 0;
+
+  // release old object
+  if (workConf)
+    delete workConf;
+
   workConf = new Configuration(*initConf);
 
   while (buffer[i] != 0 && i < BUFFER_SIZE)
@@ -364,12 +373,18 @@ void ParallelTask::handleSollution()
     i++;
   }
 
-  // compare with local best
-  if (cnf->getStepsCount() < bestConf->getStepsCount())
+  // no local best - accept it as the best
+  if (!bestConf)
+  {
+    bestConf = cnf;
+  }
+  // we have local best, but incoming one is better
+  else if (cnf->getStepsCount() < bestConf->getStepsCount())
   {
     delete bestConf;
     bestConf = cnf;
   }
+  // local best is better than incoming one
   else
   {
     delete cnf;
@@ -483,7 +498,6 @@ void ParallelTask::handleSollutionSteps()
     if (this->isMaster() && stopOnBestFound && globalBestConfSteps == initConf->getFiguresCount())
     {
       isFinished = true;
-      isActive = false;
       tokenSent = true;
       this->broadcast(MSG_FINISH);
     }
@@ -540,7 +554,6 @@ bool ParallelTask::checkConfiguration()
     if (this->isMaster() && stopOnBestFound && globalBestConfSteps == initConf->getFiguresCount())
     {
       isFinished = true;
-      isActive = false;
       tokenSent = true;
       this->broadcast(MSG_FINISH);
     }
@@ -605,4 +618,9 @@ void ParallelTask::sendWork(int recieverId)
   {
     this->send(recieverId, MSG_WORK_NOWORK);
   }
+}
+
+int ParallelTask::getPeerId() const
+{
+  return peerId;
 }

@@ -35,6 +35,8 @@ class ParallelTask : public AbstractTask
      * @brief Enum of possible select donor algorithms
      */
     enum SelectDonorAlgorithm { LOCAL, GLOBAL, RANDOM };
+    
+    int getPeerId() const;
 
   protected:
 
