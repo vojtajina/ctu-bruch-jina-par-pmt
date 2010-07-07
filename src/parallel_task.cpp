@@ -70,7 +70,11 @@ void ParallelTask::initConfiguration(Configuration* init)
   // slave wait for initial work
   else
   {
-    this->handleWorkSent();
+    // wait for initial work
+    // there could be other messages before initial work (faster peer has already found a sollution for example)
+    requestSent = true;
+    while(requestSent)
+      this->checkNewMessage();
   }
 }
 
