@@ -56,7 +56,7 @@ int main(int argc, char **argv)
       t = new ParallelTask();
     #endif
     
-    cnf = new Configuration(k, q, F, K);
+    cnf = new Configuration(k, q, F, K);   
     cnf = t->solve(cnf);
 
     if (cnf)
@@ -67,7 +67,11 @@ int main(int argc, char **argv)
   }
   catch (exception& e)
   {
-    printf("Exception: %s\n", e.what());
+    #ifdef SEQUENTIAL
+      printf("Exception: %s\n", e.what());
+    #else
+      printf("%d: Exception: %s\n", ((ParallelTask*)t)->getPeerId(), e.what());
+    #endif
   }
 
   // free the memory
