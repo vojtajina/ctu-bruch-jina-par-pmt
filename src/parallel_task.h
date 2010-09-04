@@ -292,6 +292,12 @@ class ParallelTask : public AbstractTask
      * @brief When peer finds better Configuration than this number, broadcast the new value to all peers
      */
     int globalBestConfSteps;
+    
+    /**
+     * @brief Start time (after the work is divided)
+     * @brief [used only by master]
+     */
+    double startTime;
 };
 
 #endif // PARALLELTASK_H

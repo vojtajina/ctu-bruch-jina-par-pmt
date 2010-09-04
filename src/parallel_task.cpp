@@ -28,6 +28,7 @@ void ParallelTask::initConfiguration(Configuration* init)
   requestSent = false;
   tokenSent = false;
   recievedSollutionsCount = 0;
+  globalBestConfSteps = 0;
   stack = new DSplitStack(ceil(maxSteps / 2));
 
   if (this->isMaster() )
@@ -76,6 +77,13 @@ void ParallelTask::initConfiguration(Configuration* init)
     while(requestSent)
       this->checkNewMessage();
   }
+  
+  // sync all peers - after all work is sent
+  // we are about to start the process
+  MPI_Barrier(MPI_COMM_WORLD);
+  
+  if (this->isMaster())
+    startTime = MPI_Wtime();
 }
 
 void ParallelTask::processConfiguration()
@@ -84,8 +92,12 @@ void ParallelTask::processConfiguration()
   while (isActive)
   {
     this->processStack();
-    this->noWork();
-    this->checkNewMessage();
+    
+    if (isActive)
+    {
+      this->noWork();
+      this->checkNewMessage();
+    }
   }
 }
 
@@ -129,7 +141,7 @@ void ParallelTask::incRecievedSollutions()
 
 void ParallelTask::checkNewMessage()
 {
-  printf("%d: check messages\n", peerId);
+  //printf("%d: check messages\n", peerId);
 
   int flag;
   MPI_Status status;
@@ -289,6 +301,7 @@ void ParallelTask::handleToken ()
     // send finish token to all peers
     if (token == TOKEN_WHITE)
     {
+      elapsedTime = (MPI_Wtime() - startTime) * 1000;
       this->broadcast(MSG_FINISH);
     }
     else
@@ -503,6 +516,7 @@ void ParallelTask::handleSollutionSteps()
     {
       isFinished = true;
       tokenSent = true;
+      elapsedTime = (MPI_Wtime() - startTime) * 1000;
       this->broadcast(MSG_FINISH);
     }
   }
@@ -559,6 +573,7 @@ bool ParallelTask::checkConfiguration()
     {
       isFinished = true;
       tokenSent = true;
+      elapsedTime = (MPI_Wtime() - startTime) * 1000;
       this->broadcast(MSG_FINISH);
     }
     else
