@@ -72,6 +72,7 @@ void AbstractTask::initConfiguration(Configuration* init)
   initConf = new Configuration(*init);
   workConf = init;
   bestConf = 0;
+  elapsedTime = 0;
 
   // determine maxSteps = the worst sollution
   if (init->getSideLength() >= init->getFiguresCount() )
@@ -97,3 +98,9 @@ Configuration* AbstractTask::solve(Configuration* init)
 
   return bestConf;
 }
+
+double AbstractTask::getTime()
+{
+  return elapsedTime;
+}
+
