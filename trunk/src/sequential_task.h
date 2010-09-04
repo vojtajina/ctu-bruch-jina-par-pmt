@@ -2,6 +2,7 @@
 #define SEQUENTIALTASK_H
 
 #include "abstract_task.h" // Base class: AbstractTask
+#include <ctime>
 
 /**
  * @class SequentialTask
@@ -13,6 +14,13 @@
  */
 class SequentialTask : public AbstractTask
 {
+  public:
+
+    /**
+     * @brief Added elapsed time counting
+     */
+    virtual Configuration* solve(Configuration* init);
+    
   protected:
 
     /**

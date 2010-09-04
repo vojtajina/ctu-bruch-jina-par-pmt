@@ -39,6 +39,12 @@ class AbstractTask
      * @return The best found sollution
      */
     virtual Configuration* solve(Configuration* init);
+    
+    /**
+     * @brief Get elapsed time of the last task
+     * @return The elapsed time in ms
+     */
+    double getTime();
 
   protected:
     /**
@@ -97,6 +103,11 @@ class AbstractTask
      * @brief Whether the algorithm is still working
      */
     bool isFinished;
+    
+    /**
+     * @brief Elapsed time
+     */
+    float elapsedTime;
 };
 
 #endif // ABSTRACTTASK_H

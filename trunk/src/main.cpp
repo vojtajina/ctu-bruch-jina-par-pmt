@@ -61,7 +61,9 @@ int main(int argc, char **argv)
 
     if (cnf)
     {
+      printf("FINAL SOLLUTION:\n");
       cnf->dump();
+      printf("TIME: %f ms\n", t->getTime());
       delete cnf;
     }
   }
