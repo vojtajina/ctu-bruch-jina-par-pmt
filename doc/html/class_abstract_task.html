@@ -18,7 +18,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -46,6 +45,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>AbstractTask Class Reference</h1><!-- doxytag: class="AbstractTask" -->
+<p>Provides API for handling all tasks and some shared logic.  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="abstract__task_8h_source.html">abstract_task.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for AbstractTask:</div>
@@ -70,6 +72,8 @@ Inheritance diagram for AbstractTask:</div>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Default destructor.  <a href="#a559db2c24775b841d6534a894505dfe7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_configuration.html">Configuration</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_task.html#abf65eb5d2bc8dcf16394bce466dadbb4">solve</a> (<a class="el" href="class_configuration.html">Configuration</a> *init)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Entry point of the whole algorithm.  <a href="#abf65eb5d2bc8dcf16394bce466dadbb4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_task.html#a70d4a02f6efdffe8f233605a2a322ed2">getTime</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get elapsed time of the last task.  <a href="#a70d4a02f6efdffe8f233605a2a322ed2"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_task.html#a5a42ae5ea15a93e6ab600ffaf8024c4c">initConfiguration</a> (<a class="el" href="class_configuration.html">Configuration</a> *init)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Init the process.  <a href="#a5a42ae5ea15a93e6ab600ffaf8024c4c"></a><br/></td></tr>
@@ -81,9 +85,9 @@ Inheritance diagram for AbstractTask:</div>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Release all dynamic allocated memory.  <a href="#a03dca0bb7b204aa819805d79b265c93d"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_configuration.html">Configuration</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_task.html#a4518cfbfb7bc6542aaddccef3a161817">bestConf</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The best sollution (<a class="el" href="class_configuration.html">Configuration</a>), null if no sollution found yet.  <a href="#a4518cfbfb7bc6542aaddccef3a161817"></a><br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The best sollution (<a class="el" href="class_configuration.html" title="This class represents instance of the problem.">Configuration</a>), null if no sollution found yet.  <a href="#a4518cfbfb7bc6542aaddccef3a161817"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_configuration.html">Configuration</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_task.html#a439e749cceca7c6f39abc379d7600cac">initConf</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initial <a class="el" href="class_configuration.html">Configuration</a> (constant - this object will not change during the process).  <a href="#a439e749cceca7c6f39abc379d7600cac"></a><br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initial <a class="el" href="class_configuration.html" title="This class represents instance of the problem.">Configuration</a> (constant - this object will not change during the process).  <a href="#a439e749cceca7c6f39abc379d7600cac"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_configuration.html">Configuration</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_task.html#a5996afe16c36997ac6da9630f04f0258">workConf</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Current working configuration.  <a href="#a5996afe16c36997ac6da9630f04f0258"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_task.html#aec0baaebc66e863d2d35d8e200283180">stopOnFirstFound</a></td></tr>
@@ -94,8 +98,11 @@ Inheritance diagram for AbstractTask:</div>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The number of the worst possible sollution (when this number is reached, configuration expanding stops).  <a href="#adf3081928a6e1fcb510b4e5c5b0ecfd0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_task.html#aed0bce6fef2bc26647a32c6c6c7eed0a">isFinished</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Whether the algorithm is still working.  <a href="#aed0bce6fef2bc26647a32c6c6c7eed0a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_task.html#a6d0772e7961e5355cea11a1c822eb470">elapsedTime</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Elapsed time.  <a href="#a6d0772e7961e5355cea11a1c822eb470"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Provides API for handling all tasks and some shared logic. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Vojta Jina </dd></dl>
 <dl class="date"><dt><b>Date:</b></dt><dd>04/21/2010 </dd></dl>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
@@ -191,6 +198,28 @@ Inheritance diagram for AbstractTask:</div>
 
 <p>Checks working configuration, whether it is a sollution, determine end of the algorithm. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if configuration should be expanded, False otherwise </dd></dl>
+
+<p>Reimplemented in <a class="el" href="class_parallel_task.html#a478364efeee52c9e8030dc4e5d291dc8">ParallelTask</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a70d4a02f6efdffe8f233605a2a322ed2"></a><!-- doxytag: member="AbstractTask::getTime" ref="a70d4a02f6efdffe8f233605a2a322ed2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double AbstractTask::getTime </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get elapsed time of the last task. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The elapsed time in ms </dd></dl>
 
 </div>
 </div>
@@ -289,6 +318,8 @@ Inheritance diagram for AbstractTask:</div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The best found sollution </dd></dl>
 
+<p>Reimplemented in <a class="el" href="class_sequential_task.html#a27acbf76a7d0d19f3988c48e272e79d7">SequentialTask</a>.</p>
+
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
@@ -303,7 +334,22 @@ Inheritance diagram for AbstractTask:</div>
 </div>
 <div class="memdoc">
 
-<p>The best sollution (<a class="el" href="class_configuration.html">Configuration</a>), null if no sollution found yet. </p>
+<p>The best sollution (<a class="el" href="class_configuration.html" title="This class represents instance of the problem.">Configuration</a>), null if no sollution found yet. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6d0772e7961e5355cea11a1c822eb470"></a><!-- doxytag: member="AbstractTask::elapsedTime" ref="a6d0772e7961e5355cea11a1c822eb470" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_abstract_task.html#a6d0772e7961e5355cea11a1c822eb470">AbstractTask::elapsedTime</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Elapsed time. </p>
 
 </div>
 </div>
@@ -318,7 +364,7 @@ Inheritance diagram for AbstractTask:</div>
 </div>
 <div class="memdoc">
 
-<p>Initial <a class="el" href="class_configuration.html">Configuration</a> (constant - this object will not change during the process). </p>
+<p>Initial <a class="el" href="class_configuration.html" title="This class represents instance of the problem.">Configuration</a> (constant - this object will not change during the process). </p>
 
 </div>
 </div>
@@ -407,7 +453,7 @@ Inheritance diagram for AbstractTask:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -416,7 +462,7 @@ Inheritance diagram for AbstractTask:</div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Sep 5 18:25:33 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

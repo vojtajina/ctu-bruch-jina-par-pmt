@@ -18,7 +18,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -48,6 +47,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li class="current"><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
     </ul>
   </div>
 </div>
@@ -58,6 +59,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>data
 : <a class="el" href="class_abstract_split_stack.html#ad42d57ab8807b924f8d20ef410b88c55">AbstractSplitStack</a>
+</li>
+<li>donorAlg
+: <a class="el" href="class_parallel_task.html#a85d666de6096634a6a1d2710b09ea9e5">ParallelTask</a>
+</li>
+<li>elapsedTime
+: <a class="el" href="class_abstract_task.html#a6d0772e7961e5355cea11a1c822eb470">AbstractTask</a>
+</li>
+<li>globalBestConfSteps
+: <a class="el" href="class_parallel_task.html#a28ec1066a2776a040f1f14fc414bf633">ParallelTask</a>
 </li>
 <li>initConf
 : <a class="el" href="class_abstract_task.html#a439e749cceca7c6f39abc379d7600cac">AbstractTask</a>
@@ -70,6 +80,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>localRequestsCounter
 : <a class="el" href="class_parallel_task.html#a93f9ee0bc295414125155ff588e8b244">ParallelTask</a>
+</li>
+<li>maxSplitDepth
+: <a class="el" href="class_abstract_split_stack.html#a62d5e1d936599740cc85173b9f256428">AbstractSplitStack</a>
 </li>
 <li>maxSteps
 : <a class="el" href="class_abstract_task.html#adf3081928a6e1fcb510b4e5c5b0ecfd0">AbstractTask</a>
@@ -88,6 +101,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>stack
 : <a class="el" href="class_parallel_task.html#a7a187d89f7ae33e1ff4ce1df633f4470">ParallelTask</a>
+</li>
+<li>startTime
+: <a class="el" href="class_parallel_task.html#ac9d838f970f5e993c5555bc27e81fbd0">ParallelTask</a>
 </li>
 <li>stopOnBestFound
 : <a class="el" href="class_abstract_task.html#a33ce82234f853f61b0e55eb7a05d894e">AbstractTask</a>
@@ -108,7 +124,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -117,7 +133,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Sep 5 18:25:33 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

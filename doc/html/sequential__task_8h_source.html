@@ -18,7 +18,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -45,23 +44,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>src/sequential_task.h</h1><a href="sequential__task_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef SEQUENTIALTASK_H</span>
 <a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define SEQUENTIALTASK_H</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
-<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="abstract__task_8h.html" title="Provides interface for handling all tasks and some shared logic.">abstract_task.h</a>&quot;</span> <span class="comment">// Base class: AbstractTask</span>
-<a name="l00005"></a>00005 
-<a name="l00014"></a><a class="code" href="class_sequential_task.html">00014</a> <span class="keyword">class </span><a class="code" href="class_sequential_task.html">SequentialTask</a> : <span class="keyword">public</span> <a class="code" href="class_abstract_task.html">AbstractTask</a>
-<a name="l00015"></a>00015 {
-<a name="l00016"></a>00016   <span class="keyword">protected</span>:
-<a name="l00017"></a>00017 
-<a name="l00021"></a>00021     <span class="keywordtype">void</span> <a class="code" href="class_sequential_task.html#ab37f3fc518432b044fbb95a72572d643" title="The main logic of this algorithm.">processConfiguration</a>();
-<a name="l00022"></a>00022 };
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024 <span class="preprocessor">#endif // SEQUENTIALTASK_H</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="abstract__task_8h.html" title="Definition of the AbstractTask class.">abstract_task.h</a>&quot;</span> <span class="comment">// Base class: AbstractTask</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;ctime&gt;</span>
+<a name="l00011"></a>00011 
+<a name="l00019"></a><a class="code" href="class_sequential_task.html">00019</a> <span class="keyword">class </span><a class="code" href="class_sequential_task.html" title="Sequential sollution algorithm.">SequentialTask</a> : <span class="keyword">public</span> <a class="code" href="class_abstract_task.html" title="Provides API for handling all tasks and some shared logic.">AbstractTask</a>
+<a name="l00020"></a>00020 {
+<a name="l00021"></a>00021   <span class="keyword">public</span>:
+<a name="l00022"></a>00022 
+<a name="l00026"></a>00026     <span class="keyword">virtual</span> <a class="code" href="class_configuration.html" title="This class represents instance of the problem.">Configuration</a>* <a class="code" href="class_sequential_task.html#a27acbf76a7d0d19f3988c48e272e79d7" title="Added elapsed time counting.">solve</a>(<a class="code" href="class_configuration.html" title="This class represents instance of the problem.">Configuration</a>* init);
+<a name="l00027"></a>00027     
+<a name="l00028"></a>00028   <span class="keyword">protected</span>:
+<a name="l00029"></a>00029 
+<a name="l00033"></a>00033     <span class="keywordtype">void</span> <a class="code" href="class_sequential_task.html#ab37f3fc518432b044fbb95a72572d643" title="The main logic of this algorithm.">processConfiguration</a>();
+<a name="l00034"></a>00034 };
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="preprocessor">#endif // SEQUENTIALTASK_H</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -70,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Sep 5 18:25:33 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

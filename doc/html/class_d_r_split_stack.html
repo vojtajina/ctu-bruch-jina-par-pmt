@@ -18,7 +18,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -46,6 +45,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>DRSplitStack Class Reference</h1><!-- doxytag: class="DRSplitStack" --><!-- doxytag: inherits="AbstractSplitStack" -->
+<p>Represents DR type of stack.  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dr__split__stack_8h_source.html">dr_split_stack.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DRSplitStack:</div>
@@ -61,11 +63,44 @@ Inheritance diagram for DRSplitStack:</div>
 <p><a href="class_d_r_split_stack-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_r_split_stack.html#abcf49cf8cc62e4ebedd79116ee88b332">DRSplitStack</a> (int <a class="el" href="class_abstract_split_stack.html#a62d5e1d936599740cc85173b9f256428">maxSplitDepth</a>)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#abcf49cf8cc62e4ebedd79116ee88b332"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_d_r_split_stack.html">DRSplitStack</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_r_split_stack.html#afeb09c69c6cc131fa064f957f6830b1a">split</a> (int divider)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Split the stack.  <a href="#afeb09c69c6cc131fa064f957f6830b1a"></a><br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Split the stack - the main algorithm is here.  <a href="#afeb09c69c6cc131fa064f957f6830b1a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_r_split_stack.html#ab67c88875d7775f93494b4314198a8e9">canSplit</a> (int divider) const </td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Whether the stack can be splitted.  <a href="#ab67c88875d7775f93494b4314198a8e9"></a><br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Could this stack be splitted ?  <a href="#ab67c88875d7775f93494b4314198a8e9"></a><br/></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Represents DR type of stack. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Jirka </dd></dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>04/01/10 DR type means DR type of splitting algorithm </dd></dl>
+<hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="abcf49cf8cc62e4ebedd79116ee88b332"></a><!-- doxytag: member="DRSplitStack::DRSplitStack" ref="abcf49cf8cc62e4ebedd79116ee88b332" args="(int maxSplitDepth)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DRSplitStack::DRSplitStack </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>maxSplitDepth</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Constructor. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>maxSplitDepth</em>&nbsp;</td><td>After reaches this depth, no splitting </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="ab67c88875d7775f93494b4314198a8e9"></a><!-- doxytag: member="DRSplitStack::canSplit" ref="ab67c88875d7775f93494b4314198a8e9" args="(int divider) const " -->
 <div class="memitem">
@@ -83,14 +118,8 @@ Inheritance diagram for DRSplitStack:</div>
 </div>
 <div class="memdoc">
 
-<p>Whether the stack can be splitted. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>divider</em>&nbsp;</td><td>Number of parts that stack should be divided into </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>True if is possible to split the stack, False otherwise </dd></dl>
+<p>Could this stack be splitted ? </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True if is able to be splitted </dd></dl>
 
 <p>Implements <a class="el" href="class_abstract_split_stack.html#ab52869472277ec22b4573b9e97e4d01a">AbstractSplitStack</a>.</p>
 
@@ -112,14 +141,14 @@ Inheritance diagram for DRSplitStack:</div>
 </div>
 <div class="memdoc">
 
-<p>Split the stack. </p>
+<p>Split the stack - the main algorithm is here. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>divider</em>&nbsp;</td><td>Number of parts that stack should be divided into </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>divider</em>&nbsp;</td><td>The number how many parts </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to new instance of <a class="el" href="class_split_stack.html">SplitStack</a> </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>New <a class="el" href="class_d_split_stack.html" title="Represents D type of stack.">DSplitStack</a> </dd></dl>
 
 <p>Implements <a class="el" href="class_abstract_split_stack.html#a07c39eac52601e13594a9c24eba1b2b2">AbstractSplitStack</a>.</p>
 
@@ -135,7 +164,7 @@ Inheritance diagram for DRSplitStack:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -144,7 +173,7 @@ Inheritance diagram for DRSplitStack:</div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Sep 5 18:25:33 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

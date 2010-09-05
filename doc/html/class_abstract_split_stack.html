@@ -18,7 +18,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -46,6 +45,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>AbstractSplitStack Class Reference</h1><!-- doxytag: class="AbstractSplitStack" -->
+<p>Stack with some special features (can be splitted).  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="abstract__split__stack_8h_source.html">abstract_split_stack.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for AbstractSplitStack:</div>
@@ -63,8 +65,8 @@ Inheritance diagram for AbstractSplitStack:</div>
 <p><a href="class_abstract_split_stack-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_split_stack.html#a45c9981792deccecb273a8d0ceae95dc">AbstractSplitStack</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Default constructor.  <a href="#a45c9981792deccecb273a8d0ceae95dc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_split_stack.html#a59ddb52366e40953ba8cd087a746724b">AbstractSplitStack</a> (int <a class="el" href="class_abstract_split_stack.html#a62d5e1d936599740cc85173b9f256428">maxSplitDepth</a>)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Default constructor.  <a href="#a59ddb52366e40953ba8cd087a746724b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_split_stack.html#aef3f0525edaa8461cb27e9f77a81f895">~AbstractSplitStack</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Default destructor.  <a href="#aef3f0525edaa8461cb27e9f77a81f895"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_split_stack.html#acfb4b7c62fe89bc740b3f5f11f565d52">push</a> (int item)</td></tr>
@@ -95,20 +97,31 @@ Inheritance diagram for AbstractSplitStack:</div>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns readable current state of stack  <a href="#a75b35bc89c963c18e46a1fc492f5373e"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_split_stack.html#a250158eba1676f4143f57af162539b54">getFloorCount</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Number of floors (depth).  <a href="#a250158eba1676f4143f57af162539b54"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_split_stack.html#acff9c0d3000104c5ff3018872f0f247c">getStatesCountInFloor</a> (int floor) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Number of not-opened items in specific floor.  <a href="#acff9c0d3000104c5ff3018872f0f247c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_split_stack.html#ac385754ce657a02188fbda53bcf3fc77">getFloorStartIndex</a> (int floor) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The index of the first item in specific floor.  <a href="#ac385754ce657a02188fbda53bcf3fc77"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt; *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_split_stack.html#ad42d57ab8807b924f8d20ef410b88c55">data</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The storage for the data (integers).  <a href="#ad42d57ab8807b924f8d20ef410b88c55"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_split_stack.html#a62d5e1d936599740cc85173b9f256428">maxSplitDepth</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The stack could be splitted up to this depth.  <a href="#a62d5e1d936599740cc85173b9f256428"></a><br/></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Stack with some special features (can be splitted). </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Vojta Jina </dd></dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>04/12/10 This is an abstract class, that provides the basic API for all concrete stacks Conrete stacks contain the logic of splitting the stack </dd></dl>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a45c9981792deccecb273a8d0ceae95dc"></a><!-- doxytag: member="AbstractSplitStack::AbstractSplitStack" ref="a45c9981792deccecb273a8d0ceae95dc" args="()" -->
+<a class="anchor" id="a59ddb52366e40953ba8cd087a746724b"></a><!-- doxytag: member="AbstractSplitStack::AbstractSplitStack" ref="a59ddb52366e40953ba8cd087a746724b" args="(int maxSplitDepth)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">AbstractSplitStack::AbstractSplitStack </td>
           <td>(</td>
-          <td class="paramname"></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>maxSplitDepth</em></td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
         </tr>
@@ -117,6 +130,12 @@ Inheritance diagram for AbstractSplitStack:</div>
 <div class="memdoc">
 
 <p>Default constructor. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>maxSplitDepth</em>&nbsp;</td><td>The depth, that stack could be splitted up to </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -224,6 +243,8 @@ Inheritance diagram for AbstractSplitStack:</div>
 </div>
 <div class="memdoc">
 
+<p>Number of floors (depth). </p>
+
 </div>
 </div>
 <a class="anchor" id="ac385754ce657a02188fbda53bcf3fc77"></a><!-- doxytag: member="AbstractSplitStack::getFloorStartIndex" ref="ac385754ce657a02188fbda53bcf3fc77" args="(int floor) const " -->
@@ -242,6 +263,14 @@ Inheritance diagram for AbstractSplitStack:</div>
 </div>
 <div class="memdoc">
 
+<p>The index of the first item in specific floor. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>floor</em>&nbsp;</td><td>Specific floor (starts with 1) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="acff9c0d3000104c5ff3018872f0f247c"></a><!-- doxytag: member="AbstractSplitStack::getStatesCountInFloor" ref="acff9c0d3000104c5ff3018872f0f247c" args="(int floor) const " -->
@@ -259,6 +288,14 @@ Inheritance diagram for AbstractSplitStack:</div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Number of not-opened items in specific floor. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>floor</em>&nbsp;</td><td>Specific floor (starts with 1) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -371,7 +408,7 @@ Inheritance diagram for AbstractSplitStack:</div>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to new instance of <a class="el" href="class_split_stack.html">SplitStack</a> </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to new instance of SplitStack </dd></dl>
 
 <p>Implemented in <a class="el" href="class_d_split_stack.html#a26d42fac61e8c5b1d41f828cd4499434">DSplitStack</a>, <a class="el" href="class_d_r_split_stack.html#afeb09c69c6cc131fa064f957f6830b1a">DRSplitStack</a>, and <a class="el" href="class_r_split_stack.html#a39fc1ac6d8d2cec9d65cdb7d0d286a59">RSplitStack</a>.</p>
 
@@ -393,7 +430,7 @@ Inheritance diagram for AbstractSplitStack:</div>
 <div class="memdoc">
 
 <p>Split the stack (extract half - default divider is 2). </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to new instance of <a class="el" href="class_split_stack.html">SplitStack</a> </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to new instance of SplitStack </dd></dl>
 
 </div>
 </div>
@@ -480,6 +517,7 @@ Inheritance diagram for AbstractSplitStack:</div>
 <div class="memdoc">
 
 <p>Turn head value into negative. </p>
+<p>Negative numbers represent open position (graph node) </p>
 
 </div>
 </div>
@@ -495,6 +533,23 @@ Inheritance diagram for AbstractSplitStack:</div>
 </div>
 <div class="memdoc">
 
+<p>The storage for the data (integers). </p>
+
+</div>
+</div>
+<a class="anchor" id="a62d5e1d936599740cc85173b9f256428"></a><!-- doxytag: member="AbstractSplitStack::maxSplitDepth" ref="a62d5e1d936599740cc85173b9f256428" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_abstract_split_stack.html#a62d5e1d936599740cc85173b9f256428">AbstractSplitStack::maxSplitDepth</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The stack could be splitted up to this depth. </p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -507,7 +562,7 @@ Inheritance diagram for AbstractSplitStack:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -516,7 +571,7 @@ Inheritance diagram for AbstractSplitStack:</div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Sep 5 18:25:33 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

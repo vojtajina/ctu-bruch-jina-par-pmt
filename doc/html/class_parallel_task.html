@@ -18,7 +18,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -46,6 +45,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>ParallelTask Class Reference</h1><!-- doxytag: class="ParallelTask" --><!-- doxytag: inherits="AbstractTask" -->
+<p>Parallel sollution algorithm - uses MPI.  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="parallel__task_8h_source.html">parallel_task.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ParallelTask:</div>
@@ -60,20 +62,32 @@ Inheritance diagram for ParallelTask:</div>
 
 <p><a href="class_parallel_task-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public Types</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4">SelectDonorAlgorithm</a> { <a class="el" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4a1e555334ba7508dd4c338aaac78510ab">LOCAL</a>, 
+<a class="el" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4a8ed367a2aa34f0b9e8a7de56c89e22cc">GLOBAL</a>, 
+<a class="el" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4a2d58a607058a2da271e1afc901b22a99">RANDOM</a>
+ }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Enum of possible select donor algorithms. </p>
+ <a href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a32cb3c361f7b4373f941f0993940576f">ParallelTask</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Default constructor (init MPI).  <a href="#a32cb3c361f7b4373f941f0993940576f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#aa0832c15ace4a003c1a9e617e48ccb17">~ParallelTask</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Default destructor (closes MPI).  <a href="#aa0832c15ace4a003c1a9e617e48ccb17"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a7a57c917ef28b0c6c3d8b6d8666070f3">getPeerId</a> () const </td></tr>
 <tr><td colspan="2"><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a905c707cad787bc748a458a76b080c69">initConfiguration</a> (<a class="el" href="class_configuration.html">Configuration</a> *init)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise all requirements.  <a href="#a905c707cad787bc748a458a76b080c69"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a1190fe904871b77ea6c53994812ca2a0">processConfiguration</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The core logic of the process (state machine).  <a href="#a1190fe904871b77ea6c53994812ca2a0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a478364efeee52c9e8030dc4e5d291dc8">checkConfiguration</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Checks working configuration, whether it is a sollution, determine end of the algorithm.  <a href="#a478364efeee52c9e8030dc4e5d291dc8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a1b3ceb4e71b61eb2f9b9204e9462a412">releaseMemory</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Release dynamic allocated memory.  <a href="#a1b3ceb4e71b61eb2f9b9204e9462a412"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#ae3a2cf393a5c5357368101804b5334d5">handleWorkRequest</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Handles MSG_WORK_REQUEST received.  <a href="#ae3a2cf393a5c5357368101804b5334d5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#ad5e740b50e73c247990da152e5c073af">handleWorkRequestIndirect</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Handles MSG_WORK_REQ_INDIRECT received.  <a href="#ad5e740b50e73c247990da152e5c073af"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a14f59ad4012edf4cf5d5cfb8ca700f2f">handleWorkSent</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Handles MSG_WORK_SENT received.  <a href="#a14f59ad4012edf4cf5d5cfb8ca700f2f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#ae2a7a4679587445121e1508a05a9386f">handleWorkNone</a> ()</td></tr>
@@ -86,12 +100,28 @@ Inheritance diagram for ParallelTask:</div>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Handles MSG_SOLLUTION received.  <a href="#adbdf487faa3ca7864a0366ec11f095de"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#aacd54362bdda0b1d2aa901a59ef4a787">handleNoSollution</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Handles MSG_NO_SOLLUTION received.  <a href="#aacd54362bdda0b1d2aa901a59ef4a787"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a8fb751a4f49fd24599b3e96d24fe2479">handleSollutionSteps</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Handles MSG_SOLLUTION_STEPS received.  <a href="#a8fb751a4f49fd24599b3e96d24fe2479"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#adba3871e350536a6e501e0b64e4055d2">send</a> (int recieverId, int tag)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sends message without any content.  <a href="#adba3871e350536a6e501e0b64e4055d2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a1984576eca5c58356d157ebc00a62dce">send</a> (int recieverId, int tag, int message)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sends message with one integer.  <a href="#a1984576eca5c58356d157ebc00a62dce"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#aa54dabbe3ef435af721d1abe5281422f">send</a> (int recieverId, int tag, char message)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sends message with one character.  <a href="#aa54dabbe3ef435af721d1abe5281422f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#af912e7299ed5f9dd038fbe165c87a7f6">send</a> (int recieverId, int tag, int *message, int msgLength)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sends message with array of integers.  <a href="#af912e7299ed5f9dd038fbe165c87a7f6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a985688ad1d3c1e83484e51c49b5cc662">broadcast</a> (int tag)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sends message without any content to all peers.  <a href="#a985688ad1d3c1e83484e51c49b5cc662"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a391f85f7642364aaddfd81c74c4fe880">broadcast</a> (int tag, int message)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sends message with one integer to all peers.  <a href="#a391f85f7642364aaddfd81c74c4fe880"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#aaeaf890d19847c6aca9f203565f74c7e">broadcast</a> (int tag, char message)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sends message with one character to all peers.  <a href="#aaeaf890d19847c6aca9f203565f74c7e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#add9c0ef75794a5ebb71c67918707d4f3">broadcast</a> (int tag, int *message, int msgLength)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sends message with array of integers to all peers.  <a href="#add9c0ef75794a5ebb71c67918707d4f3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a09c2e22158bd36ad0f8fb18f2345b665">sendWorkRequest</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Send request for work - with selected algorithm.  <a href="#a09c2e22158bd36ad0f8fb18f2345b665"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a63daa85d692f53d5d744ba118a4f98bc">sendWork</a> (int recieverId)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check stack and send MSG_WORK_SENT or MSG_WORK_NOWORK.  <a href="#a63daa85d692f53d5d744ba118a4f98bc"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#ae239223b3dcf8f31bfca5001c9389ce7">checkNewMessage</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check whether there is a new message.  <a href="#ae239223b3dcf8f31bfca5001c9389ce7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a84dec4765d8bb28bb5fbf0c1c946c060">processStack</a> ()</td></tr>
@@ -102,8 +132,6 @@ Inheritance diagram for ParallelTask:</div>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Counts id of the next peer.  <a href="#ad10e6ae570294a35d1b4f5af9a3d7d28"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#ad752a7afd929a217ec6989dff35dca95">getNextPeerId</a> (int id) const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Counts id of the next peer (from specific peer).  <a href="#ad752a7afd929a217ec6989dff35dca95"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a4900d143420e938488f3e9dc1ea2bb57">getNextWorkRequestPeerId</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Determine next peer to send request for work.  <a href="#a4900d143420e938488f3e9dc1ea2bb57"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a4cbeaec86e2661fb8aaf812013e1d0af">incRecievedSollutions</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Increment sollutions counter and check whether it was the last.  <a href="#a4cbeaec86e2661fb8aaf812013e1d0af"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#adbdad4e38b18c1af46bf090de292696f">isMaster</a> () const </td></tr>
@@ -113,6 +141,8 @@ Inheritance diagram for ParallelTask:</div>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stack used for DFS.  <a href="#a7a187d89f7ae33e1ff4ce1df633f4470"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a9754bc1fb8440f4998437fca6efa2ca5">isActive</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Whether this peer is still active in the MPI communication (can be finished, but still active).  <a href="#a9754bc1fb8440f4998437fca6efa2ca5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4">SelectDonorAlgorithm</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a85d666de6096634a6a1d2710b09ea9e5">donorAlg</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Algorithm, that will be used for requesting work.  <a href="#a85d666de6096634a6a1d2710b09ea9e5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#adf9776a5d2959d61a3f2adb49802bd82">requestSent</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Whether request for work has been sent.  <a href="#adf9776a5d2959d61a3f2adb49802bd82"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a47e4a603581731a18f1624871b72d7d1">tokenSent</a></td></tr>
@@ -125,10 +155,41 @@ Inheritance diagram for ParallelTask:</div>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">MPI ID of this peer.  <a href="#a7353853767d144a873406a97cd91da44"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a15c778ce2634be234930d7d022786dd6">peersCount</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Number of peers in the MPI network.  <a href="#a15c778ce2634be234930d7d022786dd6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#a28ec1066a2776a040f1f14fc414bf633">globalBestConfSteps</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The best sollution (across all peers).  <a href="#a28ec1066a2776a040f1f14fc414bf633"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parallel_task.html#ac9d838f970f5e993c5555bc27e81fbd0">startTime</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Start time (after the work is divided).  <a href="#ac9d838f970f5e993c5555bc27e81fbd0"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Parallel sollution algorithm - uses MPI. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Vojta Jina </dd></dl>
 <dl class="date"><dt><b>Date:</b></dt><dd>04/22/2010 </dd></dl>
+<hr/><h2>Member Enumeration Documentation</h2>
+<a class="anchor" id="a919986ffbcc8509a7d2bf739bdc3f6e4"></a><!-- doxytag: member="ParallelTask::SelectDonorAlgorithm" ref="a919986ffbcc8509a7d2bf739bdc3f6e4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4">ParallelTask::SelectDonorAlgorithm</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Enum of possible select donor algorithms. </p>
+<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a919986ffbcc8509a7d2bf739bdc3f6e4a1e555334ba7508dd4c338aaac78510ab"></a><!-- doxytag: member="LOCAL" ref="a919986ffbcc8509a7d2bf739bdc3f6e4a1e555334ba7508dd4c338aaac78510ab" args="" -->LOCAL</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a919986ffbcc8509a7d2bf739bdc3f6e4a8ed367a2aa34f0b9e8a7de56c89e22cc"></a><!-- doxytag: member="GLOBAL" ref="a919986ffbcc8509a7d2bf739bdc3f6e4a8ed367a2aa34f0b9e8a7de56c89e22cc" args="" -->GLOBAL</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a919986ffbcc8509a7d2bf739bdc3f6e4a2d58a607058a2da271e1afc901b22a99"></a><!-- doxytag: member="RANDOM" ref="a919986ffbcc8509a7d2bf739bdc3f6e4a2d58a607058a2da271e1afc901b22a99" args="" -->RANDOM</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a32cb3c361f7b4373f941f0993940576f"></a><!-- doxytag: member="ParallelTask::ParallelTask" ref="a32cb3c361f7b4373f941f0993940576f" args="()" -->
 <div class="memitem">
@@ -169,6 +230,173 @@ Inheritance diagram for ParallelTask:</div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="add9c0ef75794a5ebb71c67918707d4f3"></a><!-- doxytag: member="ParallelTask::broadcast" ref="add9c0ef75794a5ebb71c67918707d4f3" args="(int tag, int *message, int msgLength)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParallelTask::broadcast </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>msgLength</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sends message with array of integers to all peers. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="class_parallel_task.html#af912e7299ed5f9dd038fbe165c87a7f6" title="Sends message with array of integers.">ParallelTask::send(int recieverId, int tag, int* message, int msgLength)</a>; </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>tag</em>&nbsp;</td><td>Tag of the message </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>message</em>&nbsp;</td><td>Pointer to array of integers, that should be sent </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>msgLength</em>&nbsp;</td><td>Size of the content array </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aaeaf890d19847c6aca9f203565f74c7e"></a><!-- doxytag: member="ParallelTask::broadcast" ref="aaeaf890d19847c6aca9f203565f74c7e" args="(int tag, char message)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParallelTask::broadcast </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>message</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sends message with one character to all peers. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="class_parallel_task.html#aa54dabbe3ef435af721d1abe5281422f" title="Sends message with one character.">ParallelTask::send(int recieverId, int tag, char message)</a> </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>tag</em>&nbsp;</td><td>Tag of the message </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>message</em>&nbsp;</td><td>The content of the message </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a391f85f7642364aaddfd81c74c4fe880"></a><!-- doxytag: member="ParallelTask::broadcast" ref="a391f85f7642364aaddfd81c74c4fe880" args="(int tag, int message)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParallelTask::broadcast </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>message</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sends message with one integer to all peers. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="class_parallel_task.html#a1984576eca5c58356d157ebc00a62dce" title="Sends message with one integer.">ParallelTask::send(int recieverId, int tag, int message)</a> </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>tag</em>&nbsp;</td><td>Tag of the message </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>message</em>&nbsp;</td><td>The content of the message </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a985688ad1d3c1e83484e51c49b5cc662"></a><!-- doxytag: member="ParallelTask::broadcast" ref="a985688ad1d3c1e83484e51c49b5cc662" args="(int tag)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParallelTask::broadcast </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>tag</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sends message without any content to all peers. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="class_parallel_task.html#adba3871e350536a6e501e0b64e4055d2" title="Sends message without any content.">ParallelTask::send(int recieverId, int tag)</a> </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>tag</em>&nbsp;</td><td>Tag of the message </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a478364efeee52c9e8030dc4e5d291dc8"></a><!-- doxytag: member="ParallelTask::checkConfiguration" ref="a478364efeee52c9e8030dc4e5d291dc8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ParallelTask::checkConfiguration </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Checks working configuration, whether it is a sollution, determine end of the algorithm. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True if configuration should be expanded, False otherwise </dd></dl>
+
+<p>Reimplemented from <a class="el" href="class_abstract_task.html#a6147c4ac136ebcc84860f9ea0cc30cc9">AbstractTask</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ae239223b3dcf8f31bfca5001c9389ce7"></a><!-- doxytag: member="ParallelTask::checkNewMessage" ref="ae239223b3dcf8f31bfca5001c9389ce7" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -235,25 +463,20 @@ Inheritance diagram for ParallelTask:</div>
 
 </div>
 </div>
-<a class="anchor" id="a4900d143420e938488f3e9dc1ea2bb57"></a><!-- doxytag: member="ParallelTask::getNextWorkRequestPeerId" ref="a4900d143420e938488f3e9dc1ea2bb57" args="()" -->
+<a class="anchor" id="a7a57c917ef28b0c6c3d8b6d8666070f3"></a><!-- doxytag: member="ParallelTask::getPeerId" ref="a7a57c917ef28b0c6c3d8b6d8666070f3" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ParallelTask::getNextWorkRequestPeerId </td>
+          <td class="memname">int ParallelTask::getPeerId </td>
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [protected]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Determine next peer to send request for work. </p>
-<p>Uses local counter </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Different implementations </dd></dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Id of the peer </dd></dl>
 
 </div>
 </div>
@@ -317,6 +540,26 @@ Inheritance diagram for ParallelTask:</div>
 
 </div>
 </div>
+<a class="anchor" id="a8fb751a4f49fd24599b3e96d24fe2479"></a><!-- doxytag: member="ParallelTask::handleSollutionSteps" ref="a8fb751a4f49fd24599b3e96d24fe2479" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParallelTask::handleSollutionSteps </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Handles MSG_SOLLUTION_STEPS received. </p>
+<p>This message contains new global sollution (current best) </p>
+
+</div>
+</div>
 <a class="anchor" id="a000aaa7fc723df703dd6296cf07da42b"></a><!-- doxytag: member="ParallelTask::handleToken" ref="a000aaa7fc723df703dd6296cf07da42b" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -374,6 +617,26 @@ Inheritance diagram for ParallelTask:</div>
 
 <p>Handles MSG_WORK_REQUEST received. </p>
 <p>Reply some work or MSG_WORK_NOWORK </p>
+
+</div>
+</div>
+<a class="anchor" id="ad5e740b50e73c247990da152e5c073af"></a><!-- doxytag: member="ParallelTask::handleWorkRequestIndirect" ref="ad5e740b50e73c247990da152e5c073af" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParallelTask::handleWorkRequestIndirect </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Handles MSG_WORK_REQ_INDIRECT received. </p>
+<p>Master can receive msg from requester (without any data </p>
 
 </div>
 </div>
@@ -640,6 +903,49 @@ Inheritance diagram for ParallelTask:</div>
 
 </div>
 </div>
+<a class="anchor" id="a1984576eca5c58356d157ebc00a62dce"></a><!-- doxytag: member="ParallelTask::send" ref="a1984576eca5c58356d157ebc00a62dce" args="(int recieverId, int tag, int message)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParallelTask::send </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>recieverId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>message</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sends message with one integer. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>recieverId</em>&nbsp;</td><td>Id of the receiver </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>tag</em>&nbsp;</td><td>Tag of the message </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>message</em>&nbsp;</td><td>The content of the message </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="adba3871e350536a6e501e0b64e4055d2"></a><!-- doxytag: member="ParallelTask::send" ref="adba3871e350536a6e501e0b64e4055d2" args="(int recieverId, int tag)" -->
 <div class="memitem">
 <div class="memproto">
@@ -676,7 +982,85 @@ Inheritance diagram for ParallelTask:</div>
 
 </div>
 </div>
+<a class="anchor" id="a63daa85d692f53d5d744ba118a4f98bc"></a><!-- doxytag: member="ParallelTask::sendWork" ref="a63daa85d692f53d5d744ba118a4f98bc" args="(int recieverId)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParallelTask::sendWork </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>recieverId</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Check stack and send MSG_WORK_SENT or MSG_WORK_NOWORK. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>recieverId</em>&nbsp;</td><td>Id of the receiver </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a09c2e22158bd36ad0f8fb18f2345b665"></a><!-- doxytag: member="ParallelTask::sendWorkRequest" ref="a09c2e22158bd36ad0f8fb18f2345b665" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParallelTask::sendWorkRequest </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Send request for work - with selected algorithm. </p>
+<p>The algorithm is set in donorAlg member </p>
+
+</div>
+</div>
 <hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a85d666de6096634a6a1d2710b09ea9e5"></a><!-- doxytag: member="ParallelTask::donorAlg" ref="a85d666de6096634a6a1d2710b09ea9e5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4">SelectDonorAlgorithm</a> <a class="el" href="class_parallel_task.html#a85d666de6096634a6a1d2710b09ea9e5">ParallelTask::donorAlg</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Algorithm, that will be used for requesting work. </p>
+<p>Default is LOCAL counter </p>
+
+</div>
+</div>
+<a class="anchor" id="a28ec1066a2776a040f1f14fc414bf633"></a><!-- doxytag: member="ParallelTask::globalBestConfSteps" ref="a28ec1066a2776a040f1f14fc414bf633" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_parallel_task.html#a28ec1066a2776a040f1f14fc414bf633">ParallelTask::globalBestConfSteps</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The best sollution (across all peers). </p>
+<p>It's not whole configuration object (only number of its steps) When peer finds better <a class="el" href="class_configuration.html" title="This class represents instance of the problem.">Configuration</a> than this number, broadcast the new value to all peers </p>
+
+</div>
+</div>
 <a class="anchor" id="a9754bc1fb8440f4998437fca6efa2ca5"></a><!-- doxytag: member="ParallelTask::isActive" ref="a9754bc1fb8440f4998437fca6efa2ca5" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -784,6 +1168,22 @@ Inheritance diagram for ParallelTask:</div>
 
 </div>
 </div>
+<a class="anchor" id="ac9d838f970f5e993c5555bc27e81fbd0"></a><!-- doxytag: member="ParallelTask::startTime" ref="ac9d838f970f5e993c5555bc27e81fbd0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="class_parallel_task.html#ac9d838f970f5e993c5555bc27e81fbd0">ParallelTask::startTime</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Start time (after the work is divided). </p>
+<p>[used only by master] </p>
+
+</div>
+</div>
 <a class="anchor" id="a47e4a603581731a18f1624871b72d7d1"></a><!-- doxytag: member="ParallelTask::tokenSent" ref="a47e4a603581731a18f1624871b72d7d1" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -810,7 +1210,7 @@ Inheritance diagram for ParallelTask:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -819,7 +1219,7 @@ Inheritance diagram for ParallelTask:</div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Sep 5 18:25:33 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

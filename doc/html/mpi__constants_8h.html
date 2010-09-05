@@ -18,7 +18,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -45,32 +44,55 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>src/mpi_constants.h File Reference</h1>
+<p>Definition of all constants.  
+<a href="#_details">More...</a></p>
+
 <p><a href="mpi__constants_8h_source.html">Go to the source code of this file.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Defines</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#a7d24e848bc61973d92caf93849c5f83b">MSG_WORK_REQUEST</a>&nbsp;&nbsp;&nbsp;1000</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sender peer requests some work.  <a href="#a7d24e848bc61973d92caf93849c5f83b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#a9fd7d491122ff9fbcd07bb862c1d3234">MSG_WORK_REQ_INDIRECT</a>&nbsp;&nbsp;&nbsp;1008</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sender peer requests some for indirect.  <a href="#a9fd7d491122ff9fbcd07bb862c1d3234"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#abfc1358fae5e7854689e95aa5866eb21">MSG_WORK_SENT</a>&nbsp;&nbsp;&nbsp;1001</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sender peer sends some work.  <a href="#abfc1358fae5e7854689e95aa5866eb21"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#a060a79854067a87e5bd0f1144a020ee2">MSG_WORK_NOWORK</a>&nbsp;&nbsp;&nbsp;1002</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sender has no work for us.  <a href="#a060a79854067a87e5bd0f1144a020ee2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#acf79f38eaa4ac7f890f061ae52f5ffeb">MSG_TOKEN</a>&nbsp;&nbsp;&nbsp;1003</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Finishing token.  <a href="#acf79f38eaa4ac7f890f061ae52f5ffeb"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#a0a8882e685d98c038e3a0186c47c078c">MSG_FINISH</a>&nbsp;&nbsp;&nbsp;1004</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Signal from master peer (end of the whole process).  <a href="#a0a8882e685d98c038e3a0186c47c078c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#aef374e10fb043c1c98ed371780e83938">MSG_SOLLUTION</a>&nbsp;&nbsp;&nbsp;1005</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Send sollution to master, after finish recieved.  <a href="#aef374e10fb043c1c98ed371780e83938"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#a9107aa3e24e0feb3ad54cf6a960e464b">MSG_NO_SOLLUTION</a>&nbsp;&nbsp;&nbsp;1006</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Send to master - no sollution found by this peer.  <a href="#a9107aa3e24e0feb3ad54cf6a960e464b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#a13a8b79190c6aaf3d5ebbb3bbefbd37b">MSG_SOLLUTION_STEPS</a>&nbsp;&nbsp;&nbsp;1007</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sender has found better sollution (than current global best).  <a href="#a13a8b79190c6aaf3d5ebbb3bbefbd37b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#aa7ad16cafffd6952eddf26c23c4c9dd3">TOKEN_WHITE</a>&nbsp;&nbsp;&nbsp;'w'</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Token white.  <a href="#aa7ad16cafffd6952eddf26c23c4c9dd3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#a090b02eb4b5295ae84eb769c29f798c7">TOKEN_BLACK</a>&nbsp;&nbsp;&nbsp;'b'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>&nbsp;&nbsp;&nbsp;20</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#ad6b53ee589e1eccffa5b1d92f2201d12">CHECK_MSG_INTERVAL</a>&nbsp;&nbsp;&nbsp;100</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Token black.  <a href="#a090b02eb4b5295ae84eb769c29f798c7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>&nbsp;&nbsp;&nbsp;30</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Size of the buffer.  <a href="#a6b20d41d6252e9871430c242cb1a56e7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpi__constants_8h.html#ad6b53ee589e1eccffa5b1d92f2201d12">CHECK_MSG_INTERVAL</a>&nbsp;&nbsp;&nbsp;80</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">How often should be new messages checked ?  <a href="#ad6b53ee589e1eccffa5b1d92f2201d12"></a><br/></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Definition of all constants. </p>
 <hr/><h2>Define Documentation</h2>
 <a class="anchor" id="a6b20d41d6252e9871430c242cb1a56e7"></a><!-- doxytag: member="mpi_constants.h::BUFFER_SIZE" ref="a6b20d41d6252e9871430c242cb1a56e7" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BUFFER_SIZE&nbsp;&nbsp;&nbsp;20</td>
+          <td class="memname">#define BUFFER_SIZE&nbsp;&nbsp;&nbsp;30</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Size of the buffer. </p>
+<p>Buffer is used for reading message content </p>
 
 </div>
 </div>
@@ -79,11 +101,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CHECK_MSG_INTERVAL&nbsp;&nbsp;&nbsp;100</td>
+          <td class="memname">#define CHECK_MSG_INTERVAL&nbsp;&nbsp;&nbsp;80</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>How often should be new messages checked ? </p>
+<p>The number is number of positions checked before checking messages again </p>
 
 </div>
 </div>
@@ -98,6 +123,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
+<p>Signal from master peer (end of the whole process). </p>
+<p>Peers reply to this message by MSG_SOLLUTION or MSG_NO_SOLLUTION </p>
+
 </div>
 </div>
 <a class="anchor" id="a9107aa3e24e0feb3ad54cf6a960e464b"></a><!-- doxytag: member="mpi_constants.h::MSG_NO_SOLLUTION" ref="a9107aa3e24e0feb3ad54cf6a960e464b" args="" -->
@@ -110,6 +138,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </table>
 </div>
 <div class="memdoc">
+
+<p>Send to master - no sollution found by this peer. </p>
 
 </div>
 </div>
@@ -124,6 +154,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
+<p>Send sollution to master, after finish recieved. </p>
+<p>Contains the sollution (array of integers - steps) </p>
+
+</div>
+</div>
+<a class="anchor" id="a13a8b79190c6aaf3d5ebbb3bbefbd37b"></a><!-- doxytag: member="mpi_constants.h::MSG_SOLLUTION_STEPS" ref="a13a8b79190c6aaf3d5ebbb3bbefbd37b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MSG_SOLLUTION_STEPS&nbsp;&nbsp;&nbsp;1007</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sender has found better sollution (than current global best). </p>
+<p>Contains number of steps of this best sollution </p>
+
 </div>
 </div>
 <a class="anchor" id="acf79f38eaa4ac7f890f061ae52f5ffeb"></a><!-- doxytag: member="mpi_constants.h::MSG_TOKEN" ref="acf79f38eaa4ac7f890f061ae52f5ffeb" args="" -->
@@ -136,6 +185,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </table>
 </div>
 <div class="memdoc">
+
+<p>Finishing token. </p>
+<p>Contains a token (white/black) </p>
 
 </div>
 </div>
@@ -150,6 +202,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
+<p>Sender has no work for us. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9fd7d491122ff9fbcd07bb862c1d3234"></a><!-- doxytag: member="mpi_constants.h::MSG_WORK_REQ_INDIRECT" ref="a9fd7d491122ff9fbcd07bb862c1d3234" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MSG_WORK_REQ_INDIRECT&nbsp;&nbsp;&nbsp;1008</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sender peer requests some for indirect. </p>
+<p>requester -&gt; master (without data) master -&gt; donor (with integer - id of requester) donor will reply MSG_WORK_SENT or MSG_WORK_NOWORK to requester </p>
+
 </div>
 </div>
 <a class="anchor" id="a7d24e848bc61973d92caf93849c5f83b"></a><!-- doxytag: member="mpi_constants.h::MSG_WORK_REQUEST" ref="a7d24e848bc61973d92caf93849c5f83b" args="" -->
@@ -162,6 +232,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </table>
 </div>
 <div class="memdoc">
+
+<p>Sender peer requests some work. </p>
 
 </div>
 </div>
@@ -176,6 +248,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
+<p>Sender peer sends some work. </p>
+<p>Contains the work (array of integers) </p>
+
 </div>
 </div>
 <a class="anchor" id="a090b02eb4b5295ae84eb769c29f798c7"></a><!-- doxytag: member="mpi_constants.h::TOKEN_BLACK" ref="a090b02eb4b5295ae84eb769c29f798c7" args="" -->
@@ -188,6 +263,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </table>
 </div>
 <div class="memdoc">
+
+<p>Token black. </p>
+<p>There is no bool type in MPI, so we use char </p>
 
 </div>
 </div>
@@ -202,6 +280,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
+<p>Token white. </p>
+<p>There is no bool type in MPI, so we use char </p>
+
 </div>
 </div>
 </div>
@@ -210,7 +291,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -219,7 +300,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Sep 5 18:25:33 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
