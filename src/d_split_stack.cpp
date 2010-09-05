@@ -1,5 +1,11 @@
 #include "d_split_stack.h"
 
+/**
+ * @file d_split_stack.cpp
+ * @author Jirka
+ * @brief Implementation of the DSplitStack class
+ */
+ 
 bool DSplitStack::canSplit(int divider) const
 {
   //TODO

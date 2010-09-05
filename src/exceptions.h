@@ -1,23 +1,22 @@
 #ifndef EXCEPTIONS_H
 #define EXCEPTIONS_H
 
+/**
+ * @file exceptions.h
+ * @brief Definition and implementation of all exceptions
+ */
+ 
 #include <exception>
 #include <stdio.h>
 
 using namespace std;
 
 /**
- * @file exceptions.h
- * @brief This file contains exceptions
- */
-
-/**
  * @class InvalidPositionException
- * @author Vojta
+ * @author Vojta Jina
  * @date 04/04/10
- * @file exceptions.h
  * @brief This exception is thrown when someone refers to invalid position.
- * Invalid position is out of field range of the configuration.
+ * @brief Invalid position is out of field range of the configuration.
  */
 
 class InvalidPositionException: public exception
@@ -42,7 +41,6 @@ class InvalidPositionException: public exception
  * @class InvalidPriorityException
  * @author Vojta Jina
  * @date 04/16/2010
- * @file exceptions.h
  * @brief This exception is thrown when someone uses out of range priority
  */
 

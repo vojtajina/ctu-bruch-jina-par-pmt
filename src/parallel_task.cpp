@@ -1,5 +1,11 @@
 #include "parallel_task.h"
 
+/**
+ * @file parallel_task.cpp
+ * @author Vojta Jina
+ * @brief Implementation of the ParallelTask class
+ */
+ 
 ParallelTask::ParallelTask()
 {
   // init MPI

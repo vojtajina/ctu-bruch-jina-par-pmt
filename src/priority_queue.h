@@ -1,6 +1,11 @@
 #ifndef PRIORITYQUEUE_H
 #define PRIORITYQUEUE_H
 
+/**
+ * @file priority_queue.h
+ * @brief Definition of the PriorityQueue class
+ */
+ 
 #include "exceptions.h"
 #include <queue>
 using namespace std;
@@ -9,9 +14,8 @@ using namespace std;
  * @class PriorityQueue
  * @author Vojta
  * @date 04/01/10
- * @file priority_queue.h
  * @brief Different implementation of priority queue than std::priority_queue.
- * This queue contains an array of queues, instead of applying sorting algorithms.
+ * @brief This queue contains an array of queues, instead of applying sorting algorithms.
  */
 template <typename T>
 class PriorityQueue
@@ -26,7 +30,7 @@ class PriorityQueue
 
     /**
      * @brief Constructor
-     * @param Number of allowed
+     * @param priorityCount Number of allowed priorities
      */
     PriorityQueue(int priorityCount);
     
@@ -37,8 +41,8 @@ class PriorityQueue
 
     /**
      * @brief Add item to the queue
-     * @param Item
-     * @param Priority of the item
+     * @param item Added item
+     * @param priority Priority of the item
      */
     void push(T item, int priority);
 

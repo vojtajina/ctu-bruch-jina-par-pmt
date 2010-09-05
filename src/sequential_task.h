@@ -1,6 +1,11 @@
 #ifndef SEQUENTIALTASK_H
 #define SEQUENTIALTASK_H
 
+/**
+ * @file sequential_task.h
+ * @brief Definition of the SequentialTask class
+ */
+ 
 #include "abstract_task.h" // Base class: AbstractTask
 #include <ctime>
 
@@ -8,7 +13,6 @@
  * @class SequentialTask
  * @author Vojta Jina
  * @date 04/22/2010
- * @file sequential_task.h
  * @brief Sequential sollution algorithm
  * @brief Uses recursion instead of stack
  */

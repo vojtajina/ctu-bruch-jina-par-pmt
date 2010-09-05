@@ -1,6 +1,12 @@
 #include "abstract_split_stack.h"
 #include "math.h"
 
+/**
+ * @file abstract_split_stack.cpp
+ * @author Vojta Jina
+ * @brief Implementation of the AbstractSplitStack class
+ */
+ 
 using namespace std;
 
 /*

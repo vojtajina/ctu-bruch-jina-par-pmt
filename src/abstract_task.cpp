@@ -1,5 +1,11 @@
 #include "abstract_task.h"
 
+/**
+ * @file abstract_task.cpp
+ * @author Vojta Jina
+ * @brief Implementation of the AbstractTask class
+ */
+ 
 AbstractTask::AbstractTask()
 {
   stopOnFirstFound = false;

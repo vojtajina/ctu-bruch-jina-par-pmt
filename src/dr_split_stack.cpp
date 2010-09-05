@@ -1,5 +1,11 @@
 #include "dr_split_stack.h"
 
+/**
+ * @file dr_split_stack.cpp
+ * @author Jirka
+ * @brief Implementation of the DRSplitStack class
+ */
+ 
 bool DRSplitStack::canSplit(int divider) const
 {
   int states = this->data->size();

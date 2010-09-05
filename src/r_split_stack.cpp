@@ -1,5 +1,11 @@
 #include "r_split_stack.h"
 
+/**
+ * @file r_split_stack.cpp
+ * @author Jirka
+ * @brief Implementation of the RSplitStack class
+ */
+ 
 bool RSplitStack::canSplit(int divider) const
 {
   //TODO
