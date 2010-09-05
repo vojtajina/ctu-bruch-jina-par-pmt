@@ -1,5 +1,11 @@
 #include "sequential_task.h"
 
+/**
+ * @file sequential_task.cpp
+ * @author Vojta Jina
+ * @brief Implementation of the SequentialTask class
+ */
+ 
 Configuration* SequentialTask::solve(Configuration* init)
 {
   this->initConfiguration(init);

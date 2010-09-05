@@ -1,45 +1,87 @@
 #ifndef MPICONSTANTS_H
 #define MPICONSTANTS_H
 
-// sender peer requests some work
+/**
+ * @file mpi_constants.h
+ * @brief Definition of all constants
+ */
+
+/**
+ * @brief Sender peer requests some work
+ */
 #define MSG_WORK_REQUEST 1000
 
-// sender peer requests some for indirect
-// requester to master (without data)
-// master to donor (with integer - id of requester)
-// donor will reply MSG_WORK_SENT or MSG_WORK_NOWORK to requester
+/**
+ * @brief Sender peer requests some for indirect
+ * @brief requester -> master (without data)
+ * @brief master -> donor (with integer - id of requester)
+ * @brief donor will reply MSG_WORK_SENT or MSG_WORK_NOWORK to requester
+ */
 #define MSG_WORK_REQ_INDIRECT 1008
 
-// sender peer sends some work
+/**
+ * @brief Sender peer sends some work
+ * @brief Contains the work (array of integers)
+ */
 #define MSG_WORK_SENT    1001
 
-// sender has no work for us
+/**
+ * @brief Sender has no work for us
+ */
 #define MSG_WORK_NOWORK  1002
 
-// finishing token
+/**
+ * @brief Finishing token
+ * @brief Contains a token (white/black)
+ */
 #define MSG_TOKEN        1003
 
-// signal from master peer - number 0 (end of the whole process)
+/**
+ * @brief Signal from master peer (end of the whole process)
+ * @brief Peers reply to this message by MSG_SOLLUTION or MSG_NO_SOLLUTION
+ */
 #define MSG_FINISH       1004
 
-// send sollution to master, after finish recieved
+/**
+ * @brief Send sollution to master, after finish recieved
+ * @brief Contains the sollution (array of integers - steps)
+ */
 #define MSG_SOLLUTION    1005
 
-// send to master - no sollution found by this peer
+/**
+ * @brief Send to master - no sollution found by this peer
+ */
 #define MSG_NO_SOLLUTION 1006
 
-// sender has found better sollution (than current global best)
-// this message contains only number of steps not whole configuration
+/**
+ * @brief Sender has found better sollution (than current global best)
+ * @brief Contains number of steps of this best sollution
+ */
 #define MSG_SOLLUTION_STEPS 1007
 
-// token values
-// MPI has no type bool, therefore I have used char
+/**
+ * @brief Token white
+ * @brief There is no bool type in MPI, so we use char
+ */
 #define TOKEN_WHITE      'w'
+
+/**
+ * @brief Token black
+ * @brief There is no bool type in MPI, so we use char
+ */
 #define TOKEN_BLACK      'b'
 
 
-// configuration
+/**
+ * @brief Size of the buffer
+ * @brief Buffer is used for reading message content
+ */
 #define BUFFER_SIZE        30
+
+/**
+ * @brief How often should be new messages checked ?
+ * @brief The number is number of positions checked before checking messages again
+ */
 #define CHECK_MSG_INTERVAL 80
 
 #endif // MPICONSTANTS_H

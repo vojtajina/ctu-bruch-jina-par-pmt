@@ -1,14 +1,18 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
+/**
+ * @file configuration.h
+ * @brief Definition of the Configuration class
+ */
+ 
 #include "exceptions.h"
 #include "priority_queue.h"
 
 /**
  * @class Configuration
- * @author Vojta
+ * @author Vojta Jina
  * @date 04/01/10
- * @file configuration.h
  * @brief This class represents instance of the problem
  */
 class Configuration
@@ -17,20 +21,20 @@ class Configuration
   
     /**
      * @brief Count of Configuration instances
-     * Used for checking in destructor (remove shared memory if its last instance)
+     * @brief Used for checking in destructor (remove shared memory if its last instance)
      */
     static int instanceCount;
 
     /**
      * @brief Current position of remaining figures
-     * Array of bools - true if position is full, false if position is empty
+     * @brief Array of bools - true if position is full, false if position is empty
      */
     bool* figuresPosition;
 
     /**
      * @brief Original position of all figures
-     * Array of bools - true if position is full, false if position is empty
-     * This array is constant - these values wil not change (its for moving back)
+     * @brief Array of bools - true if position is full, false if position is empty
+     * @brief This array is constant - these values wil not change (its for moving back)
      */
     bool* figuresStartPosition;
 
@@ -56,7 +60,7 @@ class Configuration
     
     /**
      * @brief Size of one side of the field = k
-     * fieldLength = sideLength x sideLength
+     * @brief fieldLength = sideLength x sideLength
      */
     int sideLength;
 
@@ -110,8 +114,8 @@ class Configuration
     
     /**
      * @brief Abstract method for adding available position into PriorityQueue
-     * This method is used by all methods like addAvailableLeftBottom, addAvailableRightBottom, etc...
-     * Determines the priority of specific position
+     * @brief This method is used by all methods like addAvailableLeftBottom, addAvailableRightBottom, etc...
+     * @brief Determines the priority of specific position
      * @param pq PriorityQueu
      * @param position Index of the position to add
      * @return Priority of the avaible position
@@ -165,8 +169,8 @@ class Configuration
     
     /**
      * @brief Copying constructor
+     * @brief Object is deeply copyied (except figuresStartPosition pointer)
      * @param src Source Configuration object
-     * Object is deeply copyied (except figuresStartPosition pointer)
      */
     Configuration(const Configuration &src);
     
@@ -218,7 +222,7 @@ class Configuration
     
     /**
      * @brief Dump the configuration to console
-     * Test and debug purposes
+     * @brief Test and debug purposes
      */
     void dump() const;
     

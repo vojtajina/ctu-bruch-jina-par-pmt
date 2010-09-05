@@ -1,6 +1,11 @@
 #ifndef PARALLELTASK_H
 #define PARALLELTASK_H
 
+/**
+ * @file parallel_task.h
+ * @brief Definition of the ParallelTask class
+ */
+ 
 #include <mpi.h>
 #include <cstdlib>
 #include "math.h"
@@ -14,7 +19,6 @@
  * @class ParallelTask
  * @author Vojta Jina
  * @date 04/22/2010
- * @file parallel_task.h
  * @brief Parallel sollution algorithm - uses MPI
  */
 class ParallelTask : public AbstractTask

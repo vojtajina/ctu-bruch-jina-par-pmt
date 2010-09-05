@@ -1,19 +1,25 @@
 #ifndef SPLITSTACK_H
 #define SPLITSTACK_H
 
+/**
+ * @file abstract_split_stack.h
+ * @brief Definition of the AbstractSplitStack class
+ */
+ 
 #include <vector>
 #include "string.h"
 #include <sstream>
 
 using namespace std;
-/**
- * @class SplitStack
- * @author Vojta
- * @date 04/12/10
- * @file split_stack.h
- * @brief Stack with some special features (can be splitted)
- */
 
+/**
+ * @class AbstractSplitStack
+ * @author Vojta Jina
+ * @date 04/12/10
+ * @brief Stack with some special features (can be splitted)
+ * @brief This is an abstract class, that provides the basic API for all concrete stacks
+ * @brief Conrete stacks contain the logic of splitting the stack
+ */
 class AbstractSplitStack
 {
   public:
@@ -49,6 +55,7 @@ class AbstractSplitStack
 
     /**
     *	@brief Turn head value into negative
+    * @brief Negative numbers represent open position (graph node)
     */
     virtual void turnHead();
 
@@ -112,7 +119,10 @@ class AbstractSplitStack
     virtual string toString() const;
 
   protected:
-    // TODO
+  
+    /**
+     * @brief The storage for the data (integers)
+     */
     vector<int>* data;
     
     /**

@@ -1,6 +1,18 @@
 #include <stdlib.h>
 #include "configuration.h"
 
+/**
+ * @file main.cpp
+ * @author Vojta Jina
+ * @brief The starting point of the application
+ * @brief Parsing the arguments
+ * @brief Arguments are:
+ * @brief 1 - k = field side length
+ * @brief 2 - K = queen position (first position is 1 not zero !!!)
+ * @brief 3 - q = number of figures
+ * @brief 4 - positions of all figures
+ */
+ 
 #ifdef SEQUENTIAL
   #include "sequential_task.h"
 #else

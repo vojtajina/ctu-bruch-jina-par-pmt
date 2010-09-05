@@ -1,6 +1,11 @@
 #ifndef ABSTRACTTASK_H
 #define ABSTRACTTASK_H
 
+/**
+ * @file abstract_task.h
+ * @brief Definition of the AbstractTask class
+ */
+ 
 #include "configuration.h"
 #include "priority_queue.h"
 #include "exceptions.h"
@@ -9,8 +14,7 @@
  * @class AbstractTask
  * @author Vojta Jina
  * @date 04/21/2010
- * @file abstract_task.h
- * @brief Provides interface for handling all tasks and some shared logic
+ * @brief Provides API for handling all tasks and some shared logic
  */
 class AbstractTask
 {

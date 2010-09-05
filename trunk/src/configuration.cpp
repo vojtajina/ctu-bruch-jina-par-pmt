@@ -1,6 +1,12 @@
 #include "configuration.h"
 #include <iostream>
 
+/**
+ * @file configuration.cpp
+ * @author Vojta Jina
+ * @brief Implementation of the Configuration class
+ */
+ 
 using namespace std;
 
 Configuration::Configuration(int k, int q, int* F, int K)

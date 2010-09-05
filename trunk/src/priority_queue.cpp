@@ -1,5 +1,11 @@
 #include "priority_queue.h"
 
+/**
+ * @file priority_queue.cpp
+ * @author Vojta Jina
+ * @brief Implementation of the PriorityQueue class
+ */
+ 
 template <typename T>
 PriorityQueue<T>::PriorityQueue(int priorityCount)
 {
