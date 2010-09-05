@@ -18,7 +18,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -45,90 +44,120 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>src/parallel_task.h</h1><a href="parallel__task_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef PARALLELTASK_H</span>
 <a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define PARALLELTASK_H</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
-<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;mpi.h&gt;</span>
-<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="d__split__stack_8h.html">d_split_stack.h</a>&quot;</span>
-<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="dr__split__stack_8h.html">dr_split_stack.h</a>&quot;</span>
-<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;<a class="code" href="r__split__stack_8h.html">r_split_stack.h</a>&quot;</span>
-<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="mpi__constants_8h.html">mpi_constants.h</a>&quot;</span>
-<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="abstract__task_8h.html" title="Provides interface for handling all tasks and some shared logic.">abstract_task.h</a>&quot;</span> <span class="comment">// Base class: AbstractTask</span>
-<a name="l00010"></a>00010 
-<a name="l00018"></a><a class="code" href="class_parallel_task.html">00018</a> <span class="keyword">class </span><a class="code" href="class_parallel_task.html">ParallelTask</a> : <span class="keyword">public</span> <a class="code" href="class_abstract_task.html">AbstractTask</a>
-<a name="l00019"></a>00019 {
-<a name="l00020"></a>00020   <span class="keyword">public</span>:
-<a name="l00021"></a>00021 
-<a name="l00025"></a>00025     <a class="code" href="class_parallel_task.html#a32cb3c361f7b4373f941f0993940576f" title="Default constructor (init MPI).">ParallelTask</a>();
-<a name="l00026"></a>00026 
-<a name="l00030"></a>00030     <a class="code" href="class_parallel_task.html#aa0832c15ace4a003c1a9e617e48ccb17" title="Default destructor (closes MPI).">~ParallelTask</a>();
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032   <span class="keyword">protected</span>:
-<a name="l00033"></a>00033 
-<a name="l00039"></a>00039     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a905c707cad787bc748a458a76b080c69" title="Initialise all requirements.">initConfiguration</a>(<a class="code" href="class_configuration.html">Configuration</a>* init);
-<a name="l00040"></a>00040 
-<a name="l00044"></a>00044     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a1190fe904871b77ea6c53994812ca2a0" title="The core logic of the process (state machine).">processConfiguration</a>();
-<a name="l00045"></a>00045 
-<a name="l00049"></a>00049     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a1b3ceb4e71b61eb2f9b9204e9462a412" title="Release dynamic allocated memory.">releaseMemory</a>();
-<a name="l00050"></a>00050 
-<a name="l00054"></a><a class="code" href="class_parallel_task.html#a7a187d89f7ae33e1ff4ce1df633f4470">00054</a>     <a class="code" href="class_abstract_split_stack.html">AbstractSplitStack</a>* <a class="code" href="class_parallel_task.html#a7a187d89f7ae33e1ff4ce1df633f4470" title="Stack used for DFS.">stack</a>;
-<a name="l00055"></a>00055 
-<a name="l00059"></a><a class="code" href="class_parallel_task.html#a9754bc1fb8440f4998437fca6efa2ca5">00059</a>     <span class="keywordtype">bool</span> <a class="code" href="class_parallel_task.html#a9754bc1fb8440f4998437fca6efa2ca5" title="Whether this peer is still active in the MPI communication (can be finished, but...">isActive</a>;
-<a name="l00060"></a>00060 
-<a name="l00065"></a><a class="code" href="class_parallel_task.html#adf9776a5d2959d61a3f2adb49802bd82">00065</a>     <span class="keywordtype">bool</span> <a class="code" href="class_parallel_task.html#adf9776a5d2959d61a3f2adb49802bd82" title="Whether request for work has been sent.">requestSent</a>;
-<a name="l00066"></a>00066 
-<a name="l00071"></a><a class="code" href="class_parallel_task.html#a47e4a603581731a18f1624871b72d7d1">00071</a>     <span class="keywordtype">bool</span> <a class="code" href="class_parallel_task.html#a47e4a603581731a18f1624871b72d7d1" title="Whether finishing token has beenn sent.">tokenSent</a>;
-<a name="l00072"></a>00072 
-<a name="l00077"></a><a class="code" href="class_parallel_task.html#a1af35435ab2b8c5e25ee9f3174aa4660">00077</a>     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#a1af35435ab2b8c5e25ee9f3174aa4660" title="Number of received sollutions (master must wait for all peers).">recievedSollutionsCount</a>;
-<a name="l00078"></a>00078 
-<a name="l00082"></a><a class="code" href="class_parallel_task.html#a93f9ee0bc295414125155ff588e8b244">00082</a>     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#a93f9ee0bc295414125155ff588e8b244" title="Local counter to determine peer to ask for some work.">localRequestsCounter</a>;
-<a name="l00083"></a>00083 
-<a name="l00087"></a><a class="code" href="class_parallel_task.html#a7353853767d144a873406a97cd91da44">00087</a>     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#a7353853767d144a873406a97cd91da44" title="MPI ID of this peer.">peerId</a>;
-<a name="l00088"></a>00088     
-<a name="l00092"></a><a class="code" href="class_parallel_task.html#a15c778ce2634be234930d7d022786dd6">00092</a>     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#a15c778ce2634be234930d7d022786dd6" title="Number of peers in the MPI network.">peersCount</a>;
-<a name="l00093"></a>00093 
-<a name="l00098"></a>00098     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#ae3a2cf393a5c5357368101804b5334d5" title="Handles MSG_WORK_REQUEST received.">handleWorkRequest</a>();
-<a name="l00099"></a>00099     
-<a name="l00104"></a>00104     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a14f59ad4012edf4cf5d5cfb8ca700f2f" title="Handles MSG_WORK_SENT received.">handleWorkSent</a>();
-<a name="l00105"></a>00105     
-<a name="l00111"></a>00111     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#ae2a7a4679587445121e1508a05a9386f" title="Handles MSG_WORK_NOWORK received.">handleWorkNone</a>();
-<a name="l00112"></a>00112     
-<a name="l00118"></a>00118     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a000aaa7fc723df703dd6296cf07da42b" title="Handles MSG_TOKEN received.">handleToken</a>();
-<a name="l00119"></a>00119     
-<a name="l00124"></a>00124     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#ae9b29849269b1e7f6ed1649cb6f78f78" title="Handles MSG_FINISH received.">handleFinish</a>();
-<a name="l00125"></a>00125     
-<a name="l00131"></a>00131     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#adbdf487faa3ca7864a0366ec11f095de" title="Handles MSG_SOLLUTION received.">handleSollution</a>();
-<a name="l00132"></a>00132     
-<a name="l00137"></a>00137     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#aacd54362bdda0b1d2aa901a59ef4a787" title="Handles MSG_NO_SOLLUTION received.">handleNoSollution</a>();
-<a name="l00138"></a>00138 
-<a name="l00144"></a>00144     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#adba3871e350536a6e501e0b64e4055d2" title="Sends message without any content.">send</a>(<span class="keywordtype">int</span> recieverId, <span class="keywordtype">int</span> tag);
-<a name="l00145"></a>00145     
-<a name="l00152"></a>00152     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#adba3871e350536a6e501e0b64e4055d2" title="Sends message without any content.">send</a>(<span class="keywordtype">int</span> recieverId, <span class="keywordtype">int</span> tag, <span class="keywordtype">char</span> message);
-<a name="l00153"></a>00153     
-<a name="l00161"></a>00161     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#adba3871e350536a6e501e0b64e4055d2" title="Sends message without any content.">send</a>(<span class="keywordtype">int</span> recieverId, <span class="keywordtype">int</span> tag, <span class="keywordtype">int</span>* message, <span class="keywordtype">int</span> msgLength);
-<a name="l00162"></a>00162 
-<a name="l00166"></a>00166     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#ae239223b3dcf8f31bfca5001c9389ce7" title="Check whether there is a new message.">checkNewMessage</a>();
-<a name="l00167"></a>00167     
-<a name="l00171"></a>00171     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a84dec4765d8bb28bb5fbf0c1c946c060" title="Check whether the stack contains something and process it.">processStack</a>();
-<a name="l00172"></a>00172     
-<a name="l00177"></a>00177     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#adb0e7184fec862a05f232a7640d12cb2" title="There is no work.">noWork</a>();
-<a name="l00178"></a>00178 
-<a name="l00183"></a>00183     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#ad10e6ae570294a35d1b4f5af9a3d7d28" title="Counts id of the next peer.">getNextPeerId</a>() <span class="keyword">const</span>;
-<a name="l00184"></a>00184     
-<a name="l00190"></a>00190     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#ad10e6ae570294a35d1b4f5af9a3d7d28" title="Counts id of the next peer.">getNextPeerId</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) <span class="keyword">const</span>;
-<a name="l00191"></a>00191     
-<a name="l00198"></a>00198     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#a4900d143420e938488f3e9dc1ea2bb57" title="Determine next peer to send request for work.">getNextWorkRequestPeerId</a>();
-<a name="l00199"></a>00199     
-<a name="l00204"></a>00204     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a4cbeaec86e2661fb8aaf812013e1d0af" title="Increment sollutions counter and check whether it was the last.">incRecievedSollutions</a>();
-<a name="l00205"></a>00205     
-<a name="l00210"></a>00210     <span class="keywordtype">bool</span> <a class="code" href="class_parallel_task.html#adbdad4e38b18c1af46bf090de292696f" title="Is this peer master.">isMaster</a>() <span class="keyword">const</span>;
-<a name="l00211"></a>00211 };
-<a name="l00212"></a>00212 
-<a name="l00213"></a>00213 <span class="preprocessor">#endif // PARALLELTASK_H</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;mpi.h&gt;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;cstdlib&gt;</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;math.h&quot;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="d__split__stack_8h.html" title="Definition of the DSplitStack class.">d_split_stack.h</a>&quot;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &quot;<a class="code" href="dr__split__stack_8h.html" title="Definition of the DRSplitStack class.">dr_split_stack.h</a>&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="r__split__stack_8h.html" title="Definition of the RSplitStack class.">r_split_stack.h</a>&quot;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &quot;<a class="code" href="mpi__constants_8h.html" title="Definition of all constants.">mpi_constants.h</a>&quot;</span>
+<a name="l00016"></a>00016 <span class="preprocessor">#include &quot;<a class="code" href="abstract__task_8h.html" title="Definition of the AbstractTask class.">abstract_task.h</a>&quot;</span> <span class="comment">// Base class: AbstractTask</span>
+<a name="l00017"></a>00017 
+<a name="l00024"></a><a class="code" href="class_parallel_task.html">00024</a> <span class="keyword">class </span><a class="code" href="class_parallel_task.html" title="Parallel sollution algorithm - uses MPI.">ParallelTask</a> : <span class="keyword">public</span> <a class="code" href="class_abstract_task.html" title="Provides API for handling all tasks and some shared logic.">AbstractTask</a>
+<a name="l00025"></a>00025 {
+<a name="l00026"></a>00026   <span class="keyword">public</span>:
+<a name="l00027"></a>00027 
+<a name="l00031"></a>00031     <a class="code" href="class_parallel_task.html#a32cb3c361f7b4373f941f0993940576f" title="Default constructor (init MPI).">ParallelTask</a>();
+<a name="l00032"></a>00032 
+<a name="l00036"></a>00036     <a class="code" href="class_parallel_task.html#aa0832c15ace4a003c1a9e617e48ccb17" title="Default destructor (closes MPI).">~ParallelTask</a>();
+<a name="l00037"></a>00037     
+<a name="l00041"></a><a class="code" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4">00041</a>     <span class="keyword">enum</span> <a class="code" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4" title="Enum of possible select donor algorithms.">SelectDonorAlgorithm</a> { <a class="code" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4a1e555334ba7508dd4c338aaac78510ab">LOCAL</a>, <a class="code" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4a8ed367a2aa34f0b9e8a7de56c89e22cc">GLOBAL</a>, <a class="code" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4a2d58a607058a2da271e1afc901b22a99">RANDOM</a> };
+<a name="l00042"></a>00042     
+<a name="l00043"></a>00043     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#a7a57c917ef28b0c6c3d8b6d8666070f3">getPeerId</a>() <span class="keyword">const</span>;
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045   <span class="keyword">protected</span>:
+<a name="l00046"></a>00046 
+<a name="l00052"></a>00052     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a905c707cad787bc748a458a76b080c69" title="Initialise all requirements.">initConfiguration</a>(<a class="code" href="class_configuration.html" title="This class represents instance of the problem.">Configuration</a>* init);
+<a name="l00053"></a>00053 
+<a name="l00057"></a>00057     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a1190fe904871b77ea6c53994812ca2a0" title="The core logic of the process (state machine).">processConfiguration</a>();
+<a name="l00058"></a>00058     
+<a name="l00063"></a>00063     <span class="keywordtype">bool</span> <a class="code" href="class_parallel_task.html#a478364efeee52c9e8030dc4e5d291dc8" title="Checks working configuration, whether it is a sollution, determine end of the algorithm...">checkConfiguration</a>();
+<a name="l00064"></a>00064 
+<a name="l00068"></a>00068     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a1b3ceb4e71b61eb2f9b9204e9462a412" title="Release dynamic allocated memory.">releaseMemory</a>();
+<a name="l00069"></a>00069 
+<a name="l00073"></a><a class="code" href="class_parallel_task.html#a7a187d89f7ae33e1ff4ce1df633f4470">00073</a>     <a class="code" href="class_abstract_split_stack.html" title="Stack with some special features (can be splitted).">AbstractSplitStack</a>* <a class="code" href="class_parallel_task.html#a7a187d89f7ae33e1ff4ce1df633f4470" title="Stack used for DFS.">stack</a>;
+<a name="l00074"></a>00074 
+<a name="l00078"></a><a class="code" href="class_parallel_task.html#a9754bc1fb8440f4998437fca6efa2ca5">00078</a>     <span class="keywordtype">bool</span> <a class="code" href="class_parallel_task.html#a9754bc1fb8440f4998437fca6efa2ca5" title="Whether this peer is still active in the MPI communication (can be finished, but...">isActive</a>;
+<a name="l00079"></a>00079     
+<a name="l00084"></a><a class="code" href="class_parallel_task.html#a85d666de6096634a6a1d2710b09ea9e5">00084</a>     <a class="code" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4" title="Enum of possible select donor algorithms.">SelectDonorAlgorithm</a> <a class="code" href="class_parallel_task.html#a85d666de6096634a6a1d2710b09ea9e5" title="Algorithm, that will be used for requesting work.">donorAlg</a>;
+<a name="l00085"></a>00085 
+<a name="l00090"></a><a class="code" href="class_parallel_task.html#adf9776a5d2959d61a3f2adb49802bd82">00090</a>     <span class="keywordtype">bool</span> <a class="code" href="class_parallel_task.html#adf9776a5d2959d61a3f2adb49802bd82" title="Whether request for work has been sent.">requestSent</a>;
+<a name="l00091"></a>00091 
+<a name="l00096"></a><a class="code" href="class_parallel_task.html#a47e4a603581731a18f1624871b72d7d1">00096</a>     <span class="keywordtype">bool</span> <a class="code" href="class_parallel_task.html#a47e4a603581731a18f1624871b72d7d1" title="Whether finishing token has beenn sent.">tokenSent</a>;
+<a name="l00097"></a>00097 
+<a name="l00102"></a><a class="code" href="class_parallel_task.html#a1af35435ab2b8c5e25ee9f3174aa4660">00102</a>     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#a1af35435ab2b8c5e25ee9f3174aa4660" title="Number of received sollutions (master must wait for all peers).">recievedSollutionsCount</a>;
+<a name="l00103"></a>00103 
+<a name="l00107"></a><a class="code" href="class_parallel_task.html#a93f9ee0bc295414125155ff588e8b244">00107</a>     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#a93f9ee0bc295414125155ff588e8b244" title="Local counter to determine peer to ask for some work.">localRequestsCounter</a>;
+<a name="l00108"></a>00108 
+<a name="l00112"></a><a class="code" href="class_parallel_task.html#a7353853767d144a873406a97cd91da44">00112</a>     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#a7353853767d144a873406a97cd91da44" title="MPI ID of this peer.">peerId</a>;
+<a name="l00113"></a>00113     
+<a name="l00117"></a><a class="code" href="class_parallel_task.html#a15c778ce2634be234930d7d022786dd6">00117</a>     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#a15c778ce2634be234930d7d022786dd6" title="Number of peers in the MPI network.">peersCount</a>;
+<a name="l00118"></a>00118 
+<a name="l00123"></a>00123     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#ae3a2cf393a5c5357368101804b5334d5" title="Handles MSG_WORK_REQUEST received.">handleWorkRequest</a>();
+<a name="l00124"></a>00124     
+<a name="l00129"></a>00129     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#ad5e740b50e73c247990da152e5c073af" title="Handles MSG_WORK_REQ_INDIRECT received.">handleWorkRequestIndirect</a>();
+<a name="l00130"></a>00130     
+<a name="l00135"></a>00135     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a14f59ad4012edf4cf5d5cfb8ca700f2f" title="Handles MSG_WORK_SENT received.">handleWorkSent</a>();
+<a name="l00136"></a>00136     
+<a name="l00142"></a>00142     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#ae2a7a4679587445121e1508a05a9386f" title="Handles MSG_WORK_NOWORK received.">handleWorkNone</a>();
+<a name="l00143"></a>00143     
+<a name="l00149"></a>00149     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a000aaa7fc723df703dd6296cf07da42b" title="Handles MSG_TOKEN received.">handleToken</a>();
+<a name="l00150"></a>00150     
+<a name="l00155"></a>00155     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#ae9b29849269b1e7f6ed1649cb6f78f78" title="Handles MSG_FINISH received.">handleFinish</a>();
+<a name="l00156"></a>00156     
+<a name="l00162"></a>00162     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#adbdf487faa3ca7864a0366ec11f095de" title="Handles MSG_SOLLUTION received.">handleSollution</a>();
+<a name="l00163"></a>00163     
+<a name="l00168"></a>00168     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#aacd54362bdda0b1d2aa901a59ef4a787" title="Handles MSG_NO_SOLLUTION received.">handleNoSollution</a>();
+<a name="l00169"></a>00169     
+<a name="l00174"></a>00174     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a8fb751a4f49fd24599b3e96d24fe2479" title="Handles MSG_SOLLUTION_STEPS received.">handleSollutionSteps</a>();
+<a name="l00175"></a>00175 
+<a name="l00181"></a>00181     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#adba3871e350536a6e501e0b64e4055d2" title="Sends message without any content.">send</a>(<span class="keywordtype">int</span> recieverId, <span class="keywordtype">int</span> tag);
+<a name="l00182"></a>00182     
+<a name="l00189"></a>00189     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#adba3871e350536a6e501e0b64e4055d2" title="Sends message without any content.">send</a>(<span class="keywordtype">int</span> recieverId, <span class="keywordtype">int</span> tag, <span class="keywordtype">int</span> message);
+<a name="l00190"></a>00190     
+<a name="l00197"></a>00197     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#adba3871e350536a6e501e0b64e4055d2" title="Sends message without any content.">send</a>(<span class="keywordtype">int</span> recieverId, <span class="keywordtype">int</span> tag, <span class="keywordtype">char</span> message);
+<a name="l00198"></a>00198     
+<a name="l00206"></a>00206     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#adba3871e350536a6e501e0b64e4055d2" title="Sends message without any content.">send</a>(<span class="keywordtype">int</span> recieverId, <span class="keywordtype">int</span> tag, <span class="keywordtype">int</span>* message, <span class="keywordtype">int</span> msgLength);
+<a name="l00207"></a>00207 
+<a name="l00213"></a>00213     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a985688ad1d3c1e83484e51c49b5cc662" title="Sends message without any content to all peers.">broadcast</a>(<span class="keywordtype">int</span> tag);
+<a name="l00214"></a>00214     
+<a name="l00221"></a>00221     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a985688ad1d3c1e83484e51c49b5cc662" title="Sends message without any content to all peers.">broadcast</a>(<span class="keywordtype">int</span> tag, <span class="keywordtype">int</span> message);
+<a name="l00222"></a>00222     
+<a name="l00229"></a>00229     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a985688ad1d3c1e83484e51c49b5cc662" title="Sends message without any content to all peers.">broadcast</a>(<span class="keywordtype">int</span> tag, <span class="keywordtype">char</span> message);
+<a name="l00230"></a>00230     
+<a name="l00238"></a>00238     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a985688ad1d3c1e83484e51c49b5cc662" title="Sends message without any content to all peers.">broadcast</a>(<span class="keywordtype">int</span> tag, <span class="keywordtype">int</span>* message, <span class="keywordtype">int</span> msgLength);
+<a name="l00239"></a>00239     
+<a name="l00244"></a>00244     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a09c2e22158bd36ad0f8fb18f2345b665" title="Send request for work - with selected algorithm.">sendWorkRequest</a>();
+<a name="l00245"></a>00245     
+<a name="l00250"></a>00250     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a63daa85d692f53d5d744ba118a4f98bc" title="Check stack and send MSG_WORK_SENT or MSG_WORK_NOWORK.">sendWork</a>(<span class="keywordtype">int</span> recieverId);
+<a name="l00251"></a>00251     
+<a name="l00255"></a>00255     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#ae239223b3dcf8f31bfca5001c9389ce7" title="Check whether there is a new message.">checkNewMessage</a>();
+<a name="l00256"></a>00256     
+<a name="l00260"></a>00260     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a84dec4765d8bb28bb5fbf0c1c946c060" title="Check whether the stack contains something and process it.">processStack</a>();
+<a name="l00261"></a>00261     
+<a name="l00266"></a>00266     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#adb0e7184fec862a05f232a7640d12cb2" title="There is no work.">noWork</a>();
+<a name="l00267"></a>00267 
+<a name="l00272"></a>00272     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#ad10e6ae570294a35d1b4f5af9a3d7d28" title="Counts id of the next peer.">getNextPeerId</a>() <span class="keyword">const</span>;
+<a name="l00273"></a>00273     
+<a name="l00279"></a>00279     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#ad10e6ae570294a35d1b4f5af9a3d7d28" title="Counts id of the next peer.">getNextPeerId</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) <span class="keyword">const</span>;
+<a name="l00280"></a>00280     
+<a name="l00285"></a>00285     <span class="keywordtype">void</span> <a class="code" href="class_parallel_task.html#a4cbeaec86e2661fb8aaf812013e1d0af" title="Increment sollutions counter and check whether it was the last.">incRecievedSollutions</a>();
+<a name="l00286"></a>00286     
+<a name="l00291"></a>00291     <span class="keywordtype">bool</span> <a class="code" href="class_parallel_task.html#adbdad4e38b18c1af46bf090de292696f" title="Is this peer master.">isMaster</a>() <span class="keyword">const</span>;
+<a name="l00292"></a>00292     
+<a name="l00298"></a><a class="code" href="class_parallel_task.html#a28ec1066a2776a040f1f14fc414bf633">00298</a>     <span class="keywordtype">int</span> <a class="code" href="class_parallel_task.html#a28ec1066a2776a040f1f14fc414bf633" title="The best sollution (across all peers).">globalBestConfSteps</a>;
+<a name="l00299"></a>00299     
+<a name="l00304"></a><a class="code" href="class_parallel_task.html#ac9d838f970f5e993c5555bc27e81fbd0">00304</a>     <span class="keywordtype">double</span> <a class="code" href="class_parallel_task.html#ac9d838f970f5e993c5555bc27e81fbd0" title="Start time (after the work is divided).">startTime</a>;
+<a name="l00305"></a>00305 };
+<a name="l00306"></a>00306 
+<a name="l00307"></a>00307 <span class="preprocessor">#endif // PARALLELTASK_H</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -137,7 +166,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Sep 5 18:25:33 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

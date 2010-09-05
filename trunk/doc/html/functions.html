@@ -18,7 +18,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -48,6 +47,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
     </ul>
   </div>
   <div class="tabs">
@@ -78,7 +79,7 @@ Here is a list of all class members with links to the classes they belong to:
 
 <h3><a class="anchor" id="index_a">- a -</a></h3><ul>
 <li>AbstractSplitStack()
-: <a class="el" href="class_abstract_split_stack.html#a45c9981792deccecb273a8d0ceae95dc">AbstractSplitStack</a>
+: <a class="el" href="class_abstract_split_stack.html#a59ddb52366e40953ba8cd087a746724b">AbstractSplitStack</a>
 </li>
 <li>AbstractTask()
 : <a class="el" href="class_abstract_task.html#a7c5b59475e757e7268f6b42b75811f1a">AbstractTask</a>
@@ -89,6 +90,9 @@ Here is a list of all class members with links to the classes they belong to:
 <h3><a class="anchor" id="index_b">- b -</a></h3><ul>
 <li>bestConf
 : <a class="el" href="class_abstract_task.html#a4518cfbfb7bc6542aaddccef3a161817">AbstractTask</a>
+</li>
+<li>broadcast()
+: <a class="el" href="class_parallel_task.html#add9c0ef75794a5ebb71c67918707d4f3">ParallelTask</a>
 </li>
 </ul>
 
@@ -102,6 +106,7 @@ Here is a list of all class members with links to the classes they belong to:
 </li>
 <li>checkConfiguration()
 : <a class="el" href="class_abstract_task.html#a6147c4ac136ebcc84860f9ea0cc30cc9">AbstractTask</a>
+, <a class="el" href="class_parallel_task.html#a478364efeee52c9e8030dc4e5d291dc8">ParallelTask</a>
 </li>
 <li>checkNewMessage()
 : <a class="el" href="class_parallel_task.html#ae239223b3dcf8f31bfca5001c9389ce7">ParallelTask</a>
@@ -116,6 +121,15 @@ Here is a list of all class members with links to the classes they belong to:
 <li>data
 : <a class="el" href="class_abstract_split_stack.html#ad42d57ab8807b924f8d20ef410b88c55">AbstractSplitStack</a>
 </li>
+<li>donorAlg
+: <a class="el" href="class_parallel_task.html#a85d666de6096634a6a1d2710b09ea9e5">ParallelTask</a>
+</li>
+<li>DRSplitStack()
+: <a class="el" href="class_d_r_split_stack.html#abcf49cf8cc62e4ebedd79116ee88b332">DRSplitStack</a>
+</li>
+<li>DSplitStack()
+: <a class="el" href="class_d_split_stack.html#a922328f60847a9276eb1d8b20fb68318">DSplitStack</a>
+</li>
 <li>dump()
 : <a class="el" href="class_configuration.html#a154b6bf5556ec7e5953652171876dca4">Configuration</a>
 </li>
@@ -123,9 +137,12 @@ Here is a list of all class members with links to the classes they belong to:
 
 
 <h3><a class="anchor" id="index_e">- e -</a></h3><ul>
+<li>elapsedTime
+: <a class="el" href="class_abstract_task.html#a6d0772e7961e5355cea11a1c822eb470">AbstractTask</a>
+</li>
 <li>empty()
-: <a class="el" href="class_abstract_split_stack.html#ae7fe2247839b5e1243587d3fe36b5347">AbstractSplitStack</a>
-, <a class="el" href="class_priority_queue.html#a495abe086dd248059e4325cdf08e1bb1">PriorityQueue&lt; T &gt;</a>
+: <a class="el" href="class_priority_queue.html#a495abe086dd248059e4325cdf08e1bb1">PriorityQueue&lt; T &gt;</a>
+, <a class="el" href="class_abstract_split_stack.html#ae7fe2247839b5e1243587d3fe36b5347">AbstractSplitStack</a>
 </li>
 </ul>
 
@@ -153,8 +170,8 @@ Here is a list of all class members with links to the classes they belong to:
 <li>getNextPeerId()
 : <a class="el" href="class_parallel_task.html#ad10e6ae570294a35d1b4f5af9a3d7d28">ParallelTask</a>
 </li>
-<li>getNextWorkRequestPeerId()
-: <a class="el" href="class_parallel_task.html#a4900d143420e938488f3e9dc1ea2bb57">ParallelTask</a>
+<li>getPeerId()
+: <a class="el" href="class_parallel_task.html#a7a57c917ef28b0c6c3d8b6d8666070f3">ParallelTask</a>
 </li>
 <li>getSideLength()
 : <a class="el" href="class_configuration.html#a6c683c5112b783922f924446cb5a8e5b">Configuration</a>
@@ -164,6 +181,15 @@ Here is a list of all class members with links to the classes they belong to:
 </li>
 <li>getStepsCount()
 : <a class="el" href="class_configuration.html#a899f2320c29a361457f95262eff51571">Configuration</a>
+</li>
+<li>getTime()
+: <a class="el" href="class_abstract_task.html#a70d4a02f6efdffe8f233605a2a322ed2">AbstractTask</a>
+</li>
+<li>GLOBAL
+: <a class="el" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4a8ed367a2aa34f0b9e8a7de56c89e22cc">ParallelTask</a>
+</li>
+<li>globalBestConfSteps
+: <a class="el" href="class_parallel_task.html#a28ec1066a2776a040f1f14fc414bf633">ParallelTask</a>
 </li>
 </ul>
 
@@ -178,6 +204,9 @@ Here is a list of all class members with links to the classes they belong to:
 <li>handleSollution()
 : <a class="el" href="class_parallel_task.html#adbdf487faa3ca7864a0366ec11f095de">ParallelTask</a>
 </li>
+<li>handleSollutionSteps()
+: <a class="el" href="class_parallel_task.html#a8fb751a4f49fd24599b3e96d24fe2479">ParallelTask</a>
+</li>
 <li>handleToken()
 : <a class="el" href="class_parallel_task.html#a000aaa7fc723df703dd6296cf07da42b">ParallelTask</a>
 </li>
@@ -186,6 +215,9 @@ Here is a list of all class members with links to the classes they belong to:
 </li>
 <li>handleWorkRequest()
 : <a class="el" href="class_parallel_task.html#ae3a2cf393a5c5357368101804b5334d5">ParallelTask</a>
+</li>
+<li>handleWorkRequestIndirect()
+: <a class="el" href="class_parallel_task.html#ad5e740b50e73c247990da152e5c073af">ParallelTask</a>
 </li>
 <li>handleWorkSent()
 : <a class="el" href="class_parallel_task.html#a14f59ad4012edf4cf5d5cfb8ca700f2f">ParallelTask</a>
@@ -226,6 +258,9 @@ Here is a list of all class members with links to the classes they belong to:
 
 
 <h3><a class="anchor" id="index_l">- l -</a></h3><ul>
+<li>LOCAL
+: <a class="el" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4a1e555334ba7508dd4c338aaac78510ab">ParallelTask</a>
+</li>
 <li>localRequestsCounter
 : <a class="el" href="class_parallel_task.html#a93f9ee0bc295414125155ff588e8b244">ParallelTask</a>
 </li>
@@ -233,6 +268,9 @@ Here is a list of all class members with links to the classes they belong to:
 
 
 <h3><a class="anchor" id="index_m">- m -</a></h3><ul>
+<li>maxSplitDepth
+: <a class="el" href="class_abstract_split_stack.html#a62d5e1d936599740cc85173b9f256428">AbstractSplitStack</a>
+</li>
 <li>maxSteps
 : <a class="el" href="class_abstract_task.html#adf3081928a6e1fcb510b4e5c5b0ecfd0">AbstractTask</a>
 </li>
@@ -285,12 +323,15 @@ Here is a list of all class members with links to the classes they belong to:
 
 
 <h3><a class="anchor" id="index_r">- r -</a></h3><ul>
+<li>RANDOM
+: <a class="el" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4a2d58a607058a2da271e1afc901b22a99">ParallelTask</a>
+</li>
 <li>recievedSollutionsCount
 : <a class="el" href="class_parallel_task.html#a1af35435ab2b8c5e25ee9f3174aa4660">ParallelTask</a>
 </li>
 <li>releaseMemory()
-: <a class="el" href="class_abstract_task.html#a03dca0bb7b204aa819805d79b265c93d">AbstractTask</a>
-, <a class="el" href="class_parallel_task.html#a1b3ceb4e71b61eb2f9b9204e9462a412">ParallelTask</a>
+: <a class="el" href="class_parallel_task.html#a1b3ceb4e71b61eb2f9b9204e9462a412">ParallelTask</a>
+, <a class="el" href="class_abstract_task.html#a03dca0bb7b204aa819805d79b265c93d">AbstractTask</a>
 </li>
 <li>requestSent
 : <a class="el" href="class_parallel_task.html#adf9776a5d2959d61a3f2adb49802bd82">ParallelTask</a>
@@ -298,12 +339,24 @@ Here is a list of all class members with links to the classes they belong to:
 <li>reversePop()
 : <a class="el" href="class_priority_queue.html#ab07f2f035e32a43449feffc6c5093320">PriorityQueue&lt; T &gt;</a>
 </li>
+<li>RSplitStack()
+: <a class="el" href="class_r_split_stack.html#a423cfa0151e277be81c3c38a05d4e0fc">RSplitStack</a>
+</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_s">- s -</a></h3><ul>
+<li>SelectDonorAlgorithm
+: <a class="el" href="class_parallel_task.html#a919986ffbcc8509a7d2bf739bdc3f6e4">ParallelTask</a>
+</li>
 <li>send()
 : <a class="el" href="class_parallel_task.html#adba3871e350536a6e501e0b64e4055d2">ParallelTask</a>
+</li>
+<li>sendWork()
+: <a class="el" href="class_parallel_task.html#a63daa85d692f53d5d744ba118a4f98bc">ParallelTask</a>
+</li>
+<li>sendWorkRequest()
+: <a class="el" href="class_parallel_task.html#a09c2e22158bd36ad0f8fb18f2345b665">ParallelTask</a>
 </li>
 <li>size()
 : <a class="el" href="class_abstract_split_stack.html#a27fc16ce365082f9e1a5e48d7c1abb21">AbstractSplitStack</a>
@@ -311,16 +364,20 @@ Here is a list of all class members with links to the classes they belong to:
 </li>
 <li>solve()
 : <a class="el" href="class_abstract_task.html#abf65eb5d2bc8dcf16394bce466dadbb4">AbstractTask</a>
+, <a class="el" href="class_sequential_task.html#a27acbf76a7d0d19f3988c48e272e79d7">SequentialTask</a>
 </li>
 <li>split()
-: <a class="el" href="class_d_split_stack.html#a26d42fac61e8c5b1d41f828cd4499434">DSplitStack</a>
-, <a class="el" href="class_r_split_stack.html#a39fc1ac6d8d2cec9d65cdb7d0d286a59">RSplitStack</a>
+: <a class="el" href="class_r_split_stack.html#a39fc1ac6d8d2cec9d65cdb7d0d286a59">RSplitStack</a>
 , <a class="el" href="class_abstract_split_stack.html#a07c39eac52601e13594a9c24eba1b2b2">AbstractSplitStack</a>
 , <a class="el" href="class_d_r_split_stack.html#afeb09c69c6cc131fa064f957f6830b1a">DRSplitStack</a>
+, <a class="el" href="class_d_split_stack.html#a26d42fac61e8c5b1d41f828cd4499434">DSplitStack</a>
 , <a class="el" href="class_abstract_split_stack.html#af2fc59031504aa94168b9ab221b90a3d">AbstractSplitStack</a>
 </li>
 <li>stack
 : <a class="el" href="class_parallel_task.html#a7a187d89f7ae33e1ff4ce1df633f4470">ParallelTask</a>
+</li>
+<li>startTime
+: <a class="el" href="class_parallel_task.html#ac9d838f970f5e993c5555bc27e81fbd0">ParallelTask</a>
 </li>
 <li>stopOnBestFound
 : <a class="el" href="class_abstract_task.html#a33ce82234f853f61b0e55eb7a05d894e">AbstractTask</a>
@@ -382,7 +439,7 @@ Here is a list of all class members with links to the classes they belong to:
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -391,7 +448,7 @@ Here is a list of all class members with links to the classes they belong to:
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Sep 5 18:25:33 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

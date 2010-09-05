@@ -18,7 +18,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -46,6 +45,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>SequentialTask Class Reference</h1><!-- doxytag: class="SequentialTask" --><!-- doxytag: inherits="AbstractTask" -->
+<p>Sequential sollution algorithm.  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="sequential__task_8h_source.html">sequential_task.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SequentialTask:</div>
@@ -60,13 +62,17 @@ Inheritance diagram for SequentialTask:</div>
 
 <p><a href="class_sequential_task-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_configuration.html">Configuration</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sequential_task.html#a27acbf76a7d0d19f3988c48e272e79d7">solve</a> (<a class="el" href="class_configuration.html">Configuration</a> *init)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Added elapsed time counting.  <a href="#a27acbf76a7d0d19f3988c48e272e79d7"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sequential_task.html#ab37f3fc518432b044fbb95a72572d643">processConfiguration</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The main logic of this algorithm.  <a href="#ab37f3fc518432b044fbb95a72572d643"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Sequential sollution algorithm. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Vojta Jina </dd></dl>
-<dl class="date"><dt><b>Date:</b></dt><dd>04/22/2010 </dd></dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>04/22/2010 Uses recursion instead of stack </dd></dl>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="ab37f3fc518432b044fbb95a72572d643"></a><!-- doxytag: member="SequentialTask::processConfiguration" ref="ab37f3fc518432b044fbb95a72572d643" args="()" -->
 <div class="memitem">
@@ -89,6 +95,28 @@ Inheritance diagram for SequentialTask:</div>
 
 </div>
 </div>
+<a class="anchor" id="a27acbf76a7d0d19f3988c48e272e79d7"></a><!-- doxytag: member="SequentialTask::solve" ref="a27acbf76a7d0d19f3988c48e272e79d7" args="(Configuration *init)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_configuration.html">Configuration</a> * SequentialTask::solve </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_configuration.html">Configuration</a> *&nbsp;</td>
+          <td class="paramname"> <em>init</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Added elapsed time counting. </p>
+
+<p>Reimplemented from <a class="el" href="class_abstract_task.html#abf65eb5d2bc8dcf16394bce466dadbb4">AbstractTask</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="sequential__task_8h_source.html">sequential_task.h</a></li>
 <li>src/<a class="el" href="sequential__task_8cpp.html">sequential_task.cpp</a></li>
@@ -99,7 +127,7 @@ Inheritance diagram for SequentialTask:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -108,7 +136,7 @@ Inheritance diagram for SequentialTask:</div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Sep 5 18:25:33 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

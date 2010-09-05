@@ -18,7 +18,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -46,7 +45,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>AbstractSplitStack Member List</h1>This is the complete list of members for <a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a>, including all inherited members.<table>
-  <tr class="memlist"><td><a class="el" href="class_abstract_split_stack.html#a45c9981792deccecb273a8d0ceae95dc">AbstractSplitStack</a>()</td><td><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_abstract_split_stack.html#a59ddb52366e40953ba8cd087a746724b">AbstractSplitStack</a>(int maxSplitDepth)</td><td><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_abstract_split_stack.html#a0ab57b5060fddc86bb130ab64ab0c914">canSplit</a>() const </td><td><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td><code> [virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_abstract_split_stack.html#ab52869472277ec22b4573b9e97e4d01a">canSplit</a>(int divider) const =0</td><td><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td><code> [pure virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_abstract_split_stack.html#ad42d57ab8807b924f8d20ef410b88c55">data</a></td><td><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td><code> [protected]</code></td></tr>
@@ -55,6 +54,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <tr class="memlist"><td><a class="el" href="class_abstract_split_stack.html#ac385754ce657a02188fbda53bcf3fc77">getFloorStartIndex</a>(int floor) const </td><td><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_abstract_split_stack.html#acff9c0d3000104c5ff3018872f0f247c">getStatesCountInFloor</a>(int floor) const </td><td><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_abstract_split_stack.html#a8c01cba977ecbf69fadf47e5534a6d4c">head</a>() const </td><td><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_abstract_split_stack.html#a62d5e1d936599740cc85173b9f256428">maxSplitDepth</a></td><td><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_abstract_split_stack.html#a44329b3f7de47424cf411a8723cfb782">pop</a>()</td><td><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td><code> [virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_abstract_split_stack.html#acfb4b7c62fe89bc740b3f5f11f565d52">push</a>(int item)</td><td><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td><code> [virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_abstract_split_stack.html#a27fc16ce365082f9e1a5e48d7c1abb21">size</a>() const </td><td><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td><code> [virtual]</code></td></tr>
@@ -71,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -80,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Sep 5 18:25:33 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

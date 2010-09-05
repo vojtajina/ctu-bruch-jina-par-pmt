@@ -18,7 +18,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -46,18 +45,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>Class List</h1>Here are the classes, structs, unions and interfaces with brief descriptions:<table>
-  <tr><td class="indexkey"><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_abstract_task.html">AbstractTask</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_configuration.html">Configuration</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_d_r_split_stack.html">DRSplitStack</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_d_split_stack.html">DSplitStack</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_invalid_position_exception.html">InvalidPositionException</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_invalid_priority_exception.html">InvalidPriorityException</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_parallel_task.html">ParallelTask</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_priority_queue.html">PriorityQueue&lt; T &gt;</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_r_split_stack.html">RSplitStack</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_sequential_task.html">SequentialTask</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_split_stack.html">SplitStack</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_abstract_split_stack.html">AbstractSplitStack</a></td><td class="indexvalue">Stack with some special features (can be splitted) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_abstract_task.html">AbstractTask</a></td><td class="indexvalue">Provides API for handling all tasks and some shared logic </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_configuration.html">Configuration</a></td><td class="indexvalue">This class represents instance of the problem </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_d_r_split_stack.html">DRSplitStack</a></td><td class="indexvalue">Represents DR type of stack </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_d_split_stack.html">DSplitStack</a></td><td class="indexvalue">Represents D type of stack </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_invalid_position_exception.html">InvalidPositionException</a></td><td class="indexvalue">This exception is thrown when someone refers to invalid position </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_invalid_priority_exception.html">InvalidPriorityException</a></td><td class="indexvalue">This exception is thrown when someone uses out of range priority </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_parallel_task.html">ParallelTask</a></td><td class="indexvalue">Parallel sollution algorithm - uses MPI </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_priority_queue.html">PriorityQueue&lt; T &gt;</a></td><td class="indexvalue">Different implementation of priority queue than std::priority_queue </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_r_split_stack.html">RSplitStack</a></td><td class="indexvalue">Represents R type of stack </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sequential_task.html">SequentialTask</a></td><td class="indexvalue">Sequential sollution algorithm </td></tr>
 </table>
 </div>
 <!--- window showing the filter options -->
@@ -65,7 +63,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -74,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Apr 22 14:56:50 2010 for XD36PAR by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Sep 5 18:25:33 2010 for XD36PAR by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
