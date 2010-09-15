@@ -40,7 +40,7 @@ RSplitStack* RSplitStack::split(int divider)
   }
 
   int startFloorIndex = this->getFloorStartIndex(floor);
-  int countToMove = ceil(statesInFloor / (double)divider); //number of possible states to divide
+  int countToMove = ceil(statesInFloor / (double)divider) -1; //number of possible states to divide
 
   for(i = startFloorIndex,j = 0; j < countToMove; i++)	//foreach state which is selected to move
   {
