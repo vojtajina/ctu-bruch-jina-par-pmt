@@ -610,7 +610,7 @@ void ParallelTask::sendWorkRequest()
       break;
       // send request to master
     case ParallelTask::GLOBAL:
-      // TODO
+      this->send(0, MSG_WORK_REQ_INDIRECT);
       break;
   }
 
