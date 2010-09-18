@@ -604,7 +604,7 @@ void ParallelTask::sendWorkRequest()
         localRequestsCounter = (donorAlg == ParallelTask::RANDOM) ? (rand() % peersCount) : this->getNextPeerId(localRequestsCounter);
       }
       // do not send to self and do not send to last
-      while (localRequestsCounter == peerId && (peersCount > 2 && localRequestsCounter == lastRequestPeerId));
+      while (localRequestsCounter == peerId || (peersCount > 2 && localRequestsCounter == lastRequestPeerId));
 
       this->send(localRequestsCounter, MSG_WORK_REQUEST);
       break;
