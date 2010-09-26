@@ -48,6 +48,12 @@ DSplitStack* DSplitStack::split(int divider)
       j++;
     }
   }
+  
+  if (s->size() > 0)
+  {
+    delete s;
+    return 0;
+  }
 
-  return (s->size() > 0) ? s : 0;
+  return s;
 }

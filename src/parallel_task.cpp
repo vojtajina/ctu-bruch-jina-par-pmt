@@ -620,14 +620,18 @@ void ParallelTask::sendWorkRequest()
 
 void ParallelTask::sendWork(int recieverId)
 {
+//  if (isFinished || !isActive)
+//    return;
+    
+  AbstractSplitStack* newStack = stack->split();
+  
   // there is some available work
-  if (stack->canSplit() && !isFinished)
+  if (newStack)
   {
-    AbstractSplitStack* s = stack->split();
-    int* sa = s->toArray();
-    this->send(recieverId, MSG_WORK_SENT, sa, s->size());
+    int* sa = newStack->toArray();
+    this->send(recieverId, MSG_WORK_SENT, sa, newStack->size());
 
-    delete s;
+    delete newStack;
     delete sa;
   }
 
