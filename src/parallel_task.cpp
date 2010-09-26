@@ -41,7 +41,7 @@ void ParallelTask::initConfiguration(Configuration* init)
   {
     IntPriQueue* positions = init->getAvailablePositions();
 
-//    printf("%d: init positions(%d)\n", peerId, positions->size());
+    printf("%d: init positions(%d)\n", peerId, positions->size());
 
     while (!positions->empty() )
       stack->push (positions->reversePop() );
@@ -56,7 +56,7 @@ void ParallelTask::initConfiguration(Configuration* init)
     for (int i = 1; i < peersCount; i++)
     {
       splitDivider = peersCount - i + 1;
-//      printf("%d: split for %d\n", peerId, splitDivider);
+      printf("%d: split for %d\n", peerId, splitDivider);
       ss = stack->split(splitDivider);
       if (ss)
       {
@@ -141,13 +141,13 @@ void ParallelTask::incRecievedSollutions()
   if (recievedSollutionsCount == (peersCount - 1))
   {
     isActive = false;
-//    printf("%d: MASTER RECIEVED ALL SOLLUTIONS - TIME TO END THIS SHIT!\n", peerId);
+    printf("%d: MASTER RECIEVED ALL SOLLUTIONS - TIME TO END THIS SHIT!\n", peerId);
   }
 }
 
 void ParallelTask::checkNewMessage()
 {
-  //printf("%d: check messages\n", peerId);
+//  printf("%d: check messages\n", peerId);
 
   int flag;
   MPI_Status status;
@@ -157,7 +157,7 @@ void ParallelTask::checkNewMessage()
 
   if (flag)
   {
-//    printf("%d: new msg(%d)\n", peerId, status.MPI_TAG);
+    printf("%d: new msg(%d)\n", peerId, status.MPI_TAG);
 
     switch (status.MPI_TAG)
     {
@@ -224,9 +224,6 @@ void ParallelTask::processStack()
       workConf->move(position);
       stack->turnHead();
 
-//      if (workConf->final())
-//        printf("%d: SOLLUTION(%d)\n", peerId, workConf->getStepsCount());
-
       if (this->checkConfiguration())
       {
         IntPriQueue* pq = workConf->getAvailablePositions();
@@ -245,7 +242,7 @@ void ParallelTask::processStack()
 
 void ParallelTask::noWork()
 {
-//  printf("%d: no work (active: %s, finished: %s)\n", peerId, isActive ? "true" : "false", isFinished ? "true" : "false");
+  printf("%d: no work (active: %s, finished: %s)\n", peerId, isActive ? "true" : "false", isFinished ? "true" : "false");
 
   // master does not request for work
   // send finish token
@@ -299,7 +296,7 @@ void ParallelTask::handleToken ()
   char token;
   MPI_Recv(&token, 1, MPI_CHAR, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
-//  printf("%d: recieved token: %c\n", peerId, token);
+  printf("%d: recieved token: %c\n", peerId, token);
 
   if (this->isMaster())
   {
@@ -331,7 +328,7 @@ void ParallelTask::handleWorkNone ()
   MPI_Status status;
   MPI_Recv(0, 0, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
-//  printf("%d: no work\n", peerId);
+  printf("%d: no work\n", peerId);
 
   // send new request
   this->sendWorkRequest();
@@ -342,7 +339,7 @@ void ParallelTask::handleWorkRequest ()
   MPI_Status status;
   MPI_Recv(0, 0, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
-//  printf("%d: recieved work request\n", peerId);
+  printf("%d: recieved work request\n", peerId);
 
   this->sendWork(status.MPI_SOURCE);
 }
@@ -374,12 +371,12 @@ void ParallelTask::handleWorkSent ()
     i++;
   }
 
-//  printf("%d: recieved work(%d)\n", peerId, i);
+  printf("%d: recieved work(%d)\n", peerId, i);
 }
 
 void ParallelTask::handleSollution()
 {
-//  printf("%d: recieved sollution\n", peerId);
+  printf("%d: recieved sollution\n", peerId);
 
   MPI_Status status;
   int buffer[BUFFER_SIZE];
@@ -425,28 +422,28 @@ void ParallelTask::handleNoSollution()
 
 void ParallelTask::send(int recieverId, int tag)
 {
-//  printf("%d: send %d to %d\n", peerId, tag, recieverId);
+  printf("%d: send %d to %d\n", peerId, tag, recieverId);
 
   MPI_Send (0, 0, MPI_INT, recieverId, tag, MPI_COMM_WORLD);
 }
 
 void ParallelTask::send(int recieverId, int tag, int message)
 {
-//  printf("%d: send %d(value: %d) to %d\n", peerId, tag, message, recieverId);
+  printf("%d: send %d(value: %d) to %d\n", peerId, tag, message, recieverId);
 
   MPI_Send (&message, 1, MPI_INT, recieverId, tag, MPI_COMM_WORLD);
 }
 
 void ParallelTask::send(int recieverId, int tag, char message)
 {
-//  printf("%d: send(%c) %d to %d\n", peerId, message, tag, recieverId);
+  printf("%d: send(%c) %d to %d\n", peerId, message, tag, recieverId);
 
   MPI_Send (&message, 1, MPI_CHAR, recieverId, tag, MPI_COMM_WORLD);
 }
 
 void ParallelTask::send(int recieverId, int tag, int* message, int msgLength)
 {
-//  printf("%d: send(size: %d) %d to %d\n", peerId, msgLength, tag, recieverId);
+  printf("%d: send(size: %d) %d to %d\n", peerId, msgLength, tag, recieverId);
 
   // TODO add enclosing zero during export (stack, configuration)
   // and remove this extra copying whole array
@@ -503,7 +500,7 @@ void ParallelTask::handleSollutionSteps()
   int buffer;
   MPI_Recv(&buffer, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
-//  printf("%d: recieved new global sollution (steps: %d)\n", peerId, buffer);
+  printf("%d: recieved new global sollution (steps: %d)\n", peerId, buffer);
 
   // received globalBest is better than my current
   if (globalBestConfSteps > buffer || globalBestConfSteps == 0)
@@ -564,7 +561,7 @@ bool ParallelTask::checkConfiguration()
 
   if (workConf->final() && (globalBestConfSteps == 0 || globalBestConfSteps > workConf->getStepsCount()))
   {
-//    printf("%d: new globalBest - broadcast\n", peerId);
+    printf("%d: new globalBest - broadcast\n", peerId);
     globalBestConfSteps = workConf->getStepsCount();
 
     // if master finds the best sollution - stop immediately
