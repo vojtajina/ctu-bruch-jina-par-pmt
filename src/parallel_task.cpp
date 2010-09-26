@@ -620,8 +620,8 @@ void ParallelTask::sendWorkRequest()
 
 void ParallelTask::sendWork(int recieverId)
 {
-//  if (isFinished || !isActive)
-//    return;
+  if (isFinished || !isActive)
+    return;
     
   AbstractSplitStack* newStack = stack->split();
   
