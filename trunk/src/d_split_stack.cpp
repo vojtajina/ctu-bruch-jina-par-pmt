@@ -50,10 +50,8 @@ DSplitStack* DSplitStack::split(int divider)
   }
   
   if (s->size() > 0)
-  {
-    delete s;
-    return 0;
-  }
-
-  return s;
+    return s;
+    
+  delete s;
+  return 0;
 }
