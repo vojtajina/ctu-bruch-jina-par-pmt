@@ -165,6 +165,11 @@ void ParallelTask::checkNewMessage()
       case MSG_WORK_REQUEST:
         this->handleWorkRequest();
         break;
+        
+      // indirect work request (via master) (global donor)
+      case MSG_WORK_REQ_INDIRECT:
+        this->handleWorkRequestIndirect();
+        break;
 
         // work for us is comming
       case MSG_WORK_SENT:
@@ -328,7 +333,7 @@ void ParallelTask::handleWorkNone ()
   MPI_Status status;
   MPI_Recv(0, 0, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
-  printf("%d: no work\n", peerId);
+  //printf("%d: no work\n", peerId);
 
   // send new request
   this->sendWorkRequest();

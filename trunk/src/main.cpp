@@ -78,6 +78,7 @@ int main(int argc, char **argv)
       printf("TIME: %f ms\n", t->getTime());
       delete cnf;
     }
+    printf("END");
   }
   catch (exception& e)
   {
