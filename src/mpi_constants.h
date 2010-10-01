@@ -76,7 +76,7 @@
  * @brief Size of the buffer
  * @brief Buffer is used for reading message content
  */
-#define BUFFER_SIZE        30
+#define BUFFER_SIZE        130
 
 /**
  * @brief How often should be new messages checked ?
