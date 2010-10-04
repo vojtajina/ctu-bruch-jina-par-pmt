@@ -4,4 +4,5 @@ configuration.cpp \
 priority_queue.cpp \
 abstract_task.cpp \
 sequential_task.cpp \
+argument_parser.cpp \
 -o sequential

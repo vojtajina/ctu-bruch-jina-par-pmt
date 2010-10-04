@@ -6,7 +6,7 @@
  * @brief Implementation of the ParallelTask class
  */
  
-ParallelTask::ParallelTask()
+ParallelTask::ParallelTask(DonorAlgorithm donor, StackType stack)
 {
   // init MPI
   MPI_Init (0, 0);
@@ -18,7 +18,8 @@ ParallelTask::ParallelTask()
 
   stopOnFirstFound = false;
   stopOnBestFound = true;
-  donorAlg = ParallelTask::GLOBAL;
+  donorAlg = donor;
+  stackType = stack;
 }
 
 ParallelTask::~ParallelTask()
@@ -35,7 +36,19 @@ void ParallelTask::initConfiguration(Configuration* init)
   tokenSent = false;
   recievedSollutionsCount = 0;
   globalBestConfSteps = 0;
-  stack = new DSplitStack(ceil(maxSteps / 2));
+  
+  switch (stackType)
+  {
+    case STACK_D:
+      stack = new DSplitStack(ceil(maxSteps / 2));
+      break;
+    case STACK_DR:
+      stack = new DRSplitStack(ceil(maxSteps / 2));
+      break;
+    case STACK_R:
+      stack = new RSplitStack(ceil(maxSteps / 2));
+      break;
+  }
 
   if (this->isMaster() )
   {
@@ -141,7 +154,7 @@ void ParallelTask::incRecievedSollutions()
   if (recievedSollutionsCount == (peersCount - 1))
   {
     isActive = false;
-    printf("%d: MASTER RECIEVED ALL SOLLUTIONS - TIME TO END THIS SHIT!\n", peerId);
+    //printf("%d: MASTER RECIEVED ALL SOLLUTIONS - TIME TO END THIS SHIT!\n", peerId);
   }
 }
 
@@ -591,19 +604,19 @@ void ParallelTask::sendWorkRequest()
 {
   // this situation should not occur (master does not request)
   // if so, the global behavior is local (global counter is master's local counter)
-  if (this->isMaster() && donorAlg == ParallelTask::GLOBAL)
-    donorAlg = ParallelTask::LOCAL;
+  if (this->isMaster() && donorAlg == DONOR_GLOBAL)
+    donorAlg = DONOR_LOCAL;
 
   int lastRequestPeerId = localRequestsCounter;
 
   switch (donorAlg)
   {
       // send direct request to specific peer
-    case ParallelTask::RANDOM:
-    case ParallelTask::LOCAL:
+    case DONOR_RANDOM:
+    case DONOR_LOCAL:
       do
       {
-        localRequestsCounter = (donorAlg == ParallelTask::RANDOM) ? (rand() % peersCount) : this->getNextPeerId(localRequestsCounter);
+        localRequestsCounter = (donorAlg == DONOR_RANDOM) ? (rand() % peersCount) : this->getNextPeerId(localRequestsCounter);
       }
       // do not send to self and do not send to last
       while (localRequestsCounter == peerId || (peersCount > 2 && localRequestsCounter == lastRequestPeerId));
@@ -611,7 +624,7 @@ void ParallelTask::sendWorkRequest()
       this->send(localRequestsCounter, MSG_WORK_REQUEST);
       break;
       // send request to master
-    case ParallelTask::GLOBAL:
+    case DONOR_GLOBAL:
       this->send(0, MSG_WORK_REQ_INDIRECT);
       break;
   }

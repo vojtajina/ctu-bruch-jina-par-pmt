@@ -61,4 +61,31 @@ class InvalidPriorityException: public exception
     }
 };
 
+/**
+ * @class InvalidArgumentsException
+ * @author Vojta Jina
+ * @date 10/04/2010
+ * @brief Invalid input command arguments
+ */
+
+class InvalidArgumentException: public exception
+{
+  private:
+    char message[50];
+
+  public:
+    InvalidArgumentException(char* invalidArg)
+    {
+      if (invalidArg)
+        sprintf(message, "Invalid argument \"%s\"", invalidArg);
+      else
+        sprintf(message, "%s", "To few arguments");
+    }
+
+    virtual const char* what() const throw()
+    {
+      return message;
+    }
+};
+
 #endif // EXCEPTIONS_H

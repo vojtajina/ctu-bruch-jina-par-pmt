@@ -18,6 +18,7 @@
     <File Name="abstract_task.cpp"/>
     <File Name="parallel_task.cpp"/>
     <File Name="sequential_task.cpp"/>
+    <File Name="argument_parser.cpp"/>
   </VirtualDirectory>
   <VirtualDirectory Name="header">
     <File Name="abstract_split_stack.h"/>
@@ -31,6 +32,8 @@
     <File Name="abstract_task.h"/>
     <File Name="parallel_task.h"/>
     <File Name="sequential_task.h"/>
+    <File Name="argument_parser.h"/>
+    <File Name="enums.h"/>
   </VirtualDirectory>
   <Dependencies Name="Release"/>
   <Settings Type="Executable">
