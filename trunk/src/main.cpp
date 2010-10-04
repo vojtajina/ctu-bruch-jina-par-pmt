@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "configuration.h"
+#include "argument_parser.h"
 
 /**
  * @file main.cpp
@@ -28,27 +29,11 @@
  */
 int main(int argc, char **argv)
 {
-  // parse inputs
-  int k, K, q;
-  int* F;
-
-  if (argc < 4)
-    goto bad_args;
-
+  ArgumentParser* ap = new ArgumentParser();
+  
   try
   {
-    k = atoi(argv[1]);
-    K = atoi(argv[2]);
-    q = atoi(argv[3]);
-
-    if (argc < (4 + q))
-      goto bad_args;
-
-    F = new int[q];
-
-    for (int i = 0; i < q; i++)
-      F[i] = atoi(argv[i+4]);
-
+    ap->parse(argc, argv);
   }
   catch (exception& e)
   {
@@ -65,10 +50,10 @@ int main(int argc, char **argv)
     #ifdef SEQUENTIAL
       t = new SequentialTask();
     #else
-      t = new ParallelTask();
+      t = new ParallelTask(ap->getDonorAlgorithm(), ap->getStackType());
     #endif
     
-    cnf = new Configuration(k, q, F, K);   
+    cnf = new Configuration(ap->getSize(), ap->getFiguresCount(), ap->getFiguresPositions(), ap->getQueenPosition());   
     cnf = t->solve(cnf);
 
     if (cnf)
@@ -78,7 +63,7 @@ int main(int argc, char **argv)
       printf("TIME: %f ms\n", t->getTime());
       delete cnf;
     }
-    printf("END");
+    printf("END\n");
   }
   catch (exception& e)
   {
@@ -90,7 +75,7 @@ int main(int argc, char **argv)
   }
 
   // free the memory
-  delete[] F;
+  delete ap;
   delete t;
 
   return 0;

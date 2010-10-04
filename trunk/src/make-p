@@ -8,4 +8,6 @@ abstract_split_stack.cpp \
 d_split_stack.cpp \
 dr_split_stack.cpp \
 r_split_stack.cpp \
+argument_parser.cpp \
+enums.h \
 -o parallel

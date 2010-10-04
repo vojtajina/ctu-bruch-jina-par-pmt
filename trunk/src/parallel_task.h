@@ -14,6 +14,7 @@
 #include "r_split_stack.h"
 #include "mpi_constants.h"
 #include "abstract_task.h" // Base class: AbstractTask
+#include "enums.h"
 
 /**
  * @class ParallelTask
@@ -28,17 +29,12 @@ class ParallelTask : public AbstractTask
     /**
      * @brief Default constructor (init MPI)
      */
-    ParallelTask();
+    ParallelTask(DonorAlgorithm donor, StackType stack);
 
     /**
      * @brief Default destructor (closes MPI)
      */
     ~ParallelTask();
-    
-    /**
-     * @brief Enum of possible select donor algorithms
-     */
-    enum SelectDonorAlgorithm { LOCAL, GLOBAL, RANDOM };
     
     int getPeerId() const;
 
@@ -79,9 +75,13 @@ class ParallelTask : public AbstractTask
     
     /**
      * @brief Algorithm, that will be used for requesting work
-     * @brief Default is LOCAL counter
      */
-    SelectDonorAlgorithm donorAlg;
+    DonorAlgorithm donorAlg;
+    
+    /**
+     * @brief Stack type, that will be used
+     */
+    StackType stackType;
 
     /**
     * @brief Whether request for work has been sent
