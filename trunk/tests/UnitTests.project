@@ -15,6 +15,7 @@
     <File Name="test_priority_queue.cpp"/>
     <File Name="test_r_split_stack.cpp"/>
     <File Name="test_split_stack.cpp"/>
+    <File Name="test_argument_parser.cpp"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <VirtualDirectory Name="src">
@@ -24,6 +25,7 @@
     <File Name="../src/d_split_stack.cpp"/>
     <File Name="../src/priority_queue.cpp"/>
     <File Name="../src/r_split_stack.cpp"/>
+    <File Name="../src/argument_parser.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <Configuration Name="Debug" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
